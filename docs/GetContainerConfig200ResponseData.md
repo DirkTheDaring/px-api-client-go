@@ -12,6 +12,36 @@ Name | Type | Description | Notes
 **Cpuunits** | Pointer to **int64** | CPU weight for a container, will be clamped to [1, 10000] in cgroup v2. | [optional] 
 **Debug** | Pointer to **int32** | Try to be more verbose. For now this only enables debug log-level on start. | [optional] 
 **Description** | Pointer to **string** | Description for the Container. Shown in the web-interface CT&#39;s summary. This is saved as comment inside the configuration file. | [optional] 
+**Dev0** | Pointer to **string** | Device to pass through to the container | [optional] 
+**Dev1** | Pointer to **string** | Device to pass through to the container | [optional] 
+**Dev2** | Pointer to **string** | Device to pass through to the container | [optional] 
+**Dev3** | Pointer to **string** | Device to pass through to the container | [optional] 
+**Dev4** | Pointer to **string** | Device to pass through to the container | [optional] 
+**Dev5** | Pointer to **string** | Device to pass through to the container | [optional] 
+**Dev6** | Pointer to **string** | Device to pass through to the container | [optional] 
+**Dev7** | Pointer to **string** | Device to pass through to the container | [optional] 
+**Dev8** | Pointer to **string** | Device to pass through to the container | [optional] 
+**Dev9** | Pointer to **string** | Device to pass through to the container | [optional] 
+**Dev10** | Pointer to **string** | Device to pass through to the container | [optional] 
+**Dev11** | Pointer to **string** | Device to pass through to the container | [optional] 
+**Dev12** | Pointer to **string** | Device to pass through to the container | [optional] 
+**Dev13** | Pointer to **string** | Device to pass through to the container | [optional] 
+**Dev14** | Pointer to **string** | Device to pass through to the container | [optional] 
+**Dev15** | Pointer to **string** | Device to pass through to the container | [optional] 
+**Dev16** | Pointer to **string** | Device to pass through to the container | [optional] 
+**Dev17** | Pointer to **string** | Device to pass through to the container | [optional] 
+**Dev18** | Pointer to **string** | Device to pass through to the container | [optional] 
+**Dev19** | Pointer to **string** | Device to pass through to the container | [optional] 
+**Dev20** | Pointer to **string** | Device to pass through to the container | [optional] 
+**Dev21** | Pointer to **string** | Device to pass through to the container | [optional] 
+**Dev22** | Pointer to **string** | Device to pass through to the container | [optional] 
+**Dev23** | Pointer to **string** | Device to pass through to the container | [optional] 
+**Dev24** | Pointer to **string** | Device to pass through to the container | [optional] 
+**Dev25** | Pointer to **string** | Device to pass through to the container | [optional] 
+**Dev26** | Pointer to **string** | Device to pass through to the container | [optional] 
+**Dev27** | Pointer to **string** | Device to pass through to the container | [optional] 
+**Dev28** | Pointer to **string** | Device to pass through to the container | [optional] 
+**Dev29** | Pointer to **string** | Device to pass through to the container | [optional] 
 **Digest** | Pointer to **string** | SHA1 digest of configuration file. This can be used to prevent concurrent modifications. | [optional] 
 **Features** | Pointer to **string** | Allow containers access to advanced features. | [optional] 
 **Hookscript** | Pointer to **string** | Script that will be exectued during various steps in the containers lifetime. | [optional] 
@@ -569,6 +599,756 @@ SetDescription sets Description field to given value.
 `func (o *GetContainerConfig200ResponseData) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### GetDev0
+
+`func (o *GetContainerConfig200ResponseData) GetDev0() string`
+
+GetDev0 returns the Dev0 field if non-nil, zero value otherwise.
+
+### GetDev0Ok
+
+`func (o *GetContainerConfig200ResponseData) GetDev0Ok() (*string, bool)`
+
+GetDev0Ok returns a tuple with the Dev0 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDev0
+
+`func (o *GetContainerConfig200ResponseData) SetDev0(v string)`
+
+SetDev0 sets Dev0 field to given value.
+
+### HasDev0
+
+`func (o *GetContainerConfig200ResponseData) HasDev0() bool`
+
+HasDev0 returns a boolean if a field has been set.
+
+### GetDev1
+
+`func (o *GetContainerConfig200ResponseData) GetDev1() string`
+
+GetDev1 returns the Dev1 field if non-nil, zero value otherwise.
+
+### GetDev1Ok
+
+`func (o *GetContainerConfig200ResponseData) GetDev1Ok() (*string, bool)`
+
+GetDev1Ok returns a tuple with the Dev1 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDev1
+
+`func (o *GetContainerConfig200ResponseData) SetDev1(v string)`
+
+SetDev1 sets Dev1 field to given value.
+
+### HasDev1
+
+`func (o *GetContainerConfig200ResponseData) HasDev1() bool`
+
+HasDev1 returns a boolean if a field has been set.
+
+### GetDev2
+
+`func (o *GetContainerConfig200ResponseData) GetDev2() string`
+
+GetDev2 returns the Dev2 field if non-nil, zero value otherwise.
+
+### GetDev2Ok
+
+`func (o *GetContainerConfig200ResponseData) GetDev2Ok() (*string, bool)`
+
+GetDev2Ok returns a tuple with the Dev2 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDev2
+
+`func (o *GetContainerConfig200ResponseData) SetDev2(v string)`
+
+SetDev2 sets Dev2 field to given value.
+
+### HasDev2
+
+`func (o *GetContainerConfig200ResponseData) HasDev2() bool`
+
+HasDev2 returns a boolean if a field has been set.
+
+### GetDev3
+
+`func (o *GetContainerConfig200ResponseData) GetDev3() string`
+
+GetDev3 returns the Dev3 field if non-nil, zero value otherwise.
+
+### GetDev3Ok
+
+`func (o *GetContainerConfig200ResponseData) GetDev3Ok() (*string, bool)`
+
+GetDev3Ok returns a tuple with the Dev3 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDev3
+
+`func (o *GetContainerConfig200ResponseData) SetDev3(v string)`
+
+SetDev3 sets Dev3 field to given value.
+
+### HasDev3
+
+`func (o *GetContainerConfig200ResponseData) HasDev3() bool`
+
+HasDev3 returns a boolean if a field has been set.
+
+### GetDev4
+
+`func (o *GetContainerConfig200ResponseData) GetDev4() string`
+
+GetDev4 returns the Dev4 field if non-nil, zero value otherwise.
+
+### GetDev4Ok
+
+`func (o *GetContainerConfig200ResponseData) GetDev4Ok() (*string, bool)`
+
+GetDev4Ok returns a tuple with the Dev4 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDev4
+
+`func (o *GetContainerConfig200ResponseData) SetDev4(v string)`
+
+SetDev4 sets Dev4 field to given value.
+
+### HasDev4
+
+`func (o *GetContainerConfig200ResponseData) HasDev4() bool`
+
+HasDev4 returns a boolean if a field has been set.
+
+### GetDev5
+
+`func (o *GetContainerConfig200ResponseData) GetDev5() string`
+
+GetDev5 returns the Dev5 field if non-nil, zero value otherwise.
+
+### GetDev5Ok
+
+`func (o *GetContainerConfig200ResponseData) GetDev5Ok() (*string, bool)`
+
+GetDev5Ok returns a tuple with the Dev5 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDev5
+
+`func (o *GetContainerConfig200ResponseData) SetDev5(v string)`
+
+SetDev5 sets Dev5 field to given value.
+
+### HasDev5
+
+`func (o *GetContainerConfig200ResponseData) HasDev5() bool`
+
+HasDev5 returns a boolean if a field has been set.
+
+### GetDev6
+
+`func (o *GetContainerConfig200ResponseData) GetDev6() string`
+
+GetDev6 returns the Dev6 field if non-nil, zero value otherwise.
+
+### GetDev6Ok
+
+`func (o *GetContainerConfig200ResponseData) GetDev6Ok() (*string, bool)`
+
+GetDev6Ok returns a tuple with the Dev6 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDev6
+
+`func (o *GetContainerConfig200ResponseData) SetDev6(v string)`
+
+SetDev6 sets Dev6 field to given value.
+
+### HasDev6
+
+`func (o *GetContainerConfig200ResponseData) HasDev6() bool`
+
+HasDev6 returns a boolean if a field has been set.
+
+### GetDev7
+
+`func (o *GetContainerConfig200ResponseData) GetDev7() string`
+
+GetDev7 returns the Dev7 field if non-nil, zero value otherwise.
+
+### GetDev7Ok
+
+`func (o *GetContainerConfig200ResponseData) GetDev7Ok() (*string, bool)`
+
+GetDev7Ok returns a tuple with the Dev7 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDev7
+
+`func (o *GetContainerConfig200ResponseData) SetDev7(v string)`
+
+SetDev7 sets Dev7 field to given value.
+
+### HasDev7
+
+`func (o *GetContainerConfig200ResponseData) HasDev7() bool`
+
+HasDev7 returns a boolean if a field has been set.
+
+### GetDev8
+
+`func (o *GetContainerConfig200ResponseData) GetDev8() string`
+
+GetDev8 returns the Dev8 field if non-nil, zero value otherwise.
+
+### GetDev8Ok
+
+`func (o *GetContainerConfig200ResponseData) GetDev8Ok() (*string, bool)`
+
+GetDev8Ok returns a tuple with the Dev8 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDev8
+
+`func (o *GetContainerConfig200ResponseData) SetDev8(v string)`
+
+SetDev8 sets Dev8 field to given value.
+
+### HasDev8
+
+`func (o *GetContainerConfig200ResponseData) HasDev8() bool`
+
+HasDev8 returns a boolean if a field has been set.
+
+### GetDev9
+
+`func (o *GetContainerConfig200ResponseData) GetDev9() string`
+
+GetDev9 returns the Dev9 field if non-nil, zero value otherwise.
+
+### GetDev9Ok
+
+`func (o *GetContainerConfig200ResponseData) GetDev9Ok() (*string, bool)`
+
+GetDev9Ok returns a tuple with the Dev9 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDev9
+
+`func (o *GetContainerConfig200ResponseData) SetDev9(v string)`
+
+SetDev9 sets Dev9 field to given value.
+
+### HasDev9
+
+`func (o *GetContainerConfig200ResponseData) HasDev9() bool`
+
+HasDev9 returns a boolean if a field has been set.
+
+### GetDev10
+
+`func (o *GetContainerConfig200ResponseData) GetDev10() string`
+
+GetDev10 returns the Dev10 field if non-nil, zero value otherwise.
+
+### GetDev10Ok
+
+`func (o *GetContainerConfig200ResponseData) GetDev10Ok() (*string, bool)`
+
+GetDev10Ok returns a tuple with the Dev10 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDev10
+
+`func (o *GetContainerConfig200ResponseData) SetDev10(v string)`
+
+SetDev10 sets Dev10 field to given value.
+
+### HasDev10
+
+`func (o *GetContainerConfig200ResponseData) HasDev10() bool`
+
+HasDev10 returns a boolean if a field has been set.
+
+### GetDev11
+
+`func (o *GetContainerConfig200ResponseData) GetDev11() string`
+
+GetDev11 returns the Dev11 field if non-nil, zero value otherwise.
+
+### GetDev11Ok
+
+`func (o *GetContainerConfig200ResponseData) GetDev11Ok() (*string, bool)`
+
+GetDev11Ok returns a tuple with the Dev11 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDev11
+
+`func (o *GetContainerConfig200ResponseData) SetDev11(v string)`
+
+SetDev11 sets Dev11 field to given value.
+
+### HasDev11
+
+`func (o *GetContainerConfig200ResponseData) HasDev11() bool`
+
+HasDev11 returns a boolean if a field has been set.
+
+### GetDev12
+
+`func (o *GetContainerConfig200ResponseData) GetDev12() string`
+
+GetDev12 returns the Dev12 field if non-nil, zero value otherwise.
+
+### GetDev12Ok
+
+`func (o *GetContainerConfig200ResponseData) GetDev12Ok() (*string, bool)`
+
+GetDev12Ok returns a tuple with the Dev12 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDev12
+
+`func (o *GetContainerConfig200ResponseData) SetDev12(v string)`
+
+SetDev12 sets Dev12 field to given value.
+
+### HasDev12
+
+`func (o *GetContainerConfig200ResponseData) HasDev12() bool`
+
+HasDev12 returns a boolean if a field has been set.
+
+### GetDev13
+
+`func (o *GetContainerConfig200ResponseData) GetDev13() string`
+
+GetDev13 returns the Dev13 field if non-nil, zero value otherwise.
+
+### GetDev13Ok
+
+`func (o *GetContainerConfig200ResponseData) GetDev13Ok() (*string, bool)`
+
+GetDev13Ok returns a tuple with the Dev13 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDev13
+
+`func (o *GetContainerConfig200ResponseData) SetDev13(v string)`
+
+SetDev13 sets Dev13 field to given value.
+
+### HasDev13
+
+`func (o *GetContainerConfig200ResponseData) HasDev13() bool`
+
+HasDev13 returns a boolean if a field has been set.
+
+### GetDev14
+
+`func (o *GetContainerConfig200ResponseData) GetDev14() string`
+
+GetDev14 returns the Dev14 field if non-nil, zero value otherwise.
+
+### GetDev14Ok
+
+`func (o *GetContainerConfig200ResponseData) GetDev14Ok() (*string, bool)`
+
+GetDev14Ok returns a tuple with the Dev14 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDev14
+
+`func (o *GetContainerConfig200ResponseData) SetDev14(v string)`
+
+SetDev14 sets Dev14 field to given value.
+
+### HasDev14
+
+`func (o *GetContainerConfig200ResponseData) HasDev14() bool`
+
+HasDev14 returns a boolean if a field has been set.
+
+### GetDev15
+
+`func (o *GetContainerConfig200ResponseData) GetDev15() string`
+
+GetDev15 returns the Dev15 field if non-nil, zero value otherwise.
+
+### GetDev15Ok
+
+`func (o *GetContainerConfig200ResponseData) GetDev15Ok() (*string, bool)`
+
+GetDev15Ok returns a tuple with the Dev15 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDev15
+
+`func (o *GetContainerConfig200ResponseData) SetDev15(v string)`
+
+SetDev15 sets Dev15 field to given value.
+
+### HasDev15
+
+`func (o *GetContainerConfig200ResponseData) HasDev15() bool`
+
+HasDev15 returns a boolean if a field has been set.
+
+### GetDev16
+
+`func (o *GetContainerConfig200ResponseData) GetDev16() string`
+
+GetDev16 returns the Dev16 field if non-nil, zero value otherwise.
+
+### GetDev16Ok
+
+`func (o *GetContainerConfig200ResponseData) GetDev16Ok() (*string, bool)`
+
+GetDev16Ok returns a tuple with the Dev16 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDev16
+
+`func (o *GetContainerConfig200ResponseData) SetDev16(v string)`
+
+SetDev16 sets Dev16 field to given value.
+
+### HasDev16
+
+`func (o *GetContainerConfig200ResponseData) HasDev16() bool`
+
+HasDev16 returns a boolean if a field has been set.
+
+### GetDev17
+
+`func (o *GetContainerConfig200ResponseData) GetDev17() string`
+
+GetDev17 returns the Dev17 field if non-nil, zero value otherwise.
+
+### GetDev17Ok
+
+`func (o *GetContainerConfig200ResponseData) GetDev17Ok() (*string, bool)`
+
+GetDev17Ok returns a tuple with the Dev17 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDev17
+
+`func (o *GetContainerConfig200ResponseData) SetDev17(v string)`
+
+SetDev17 sets Dev17 field to given value.
+
+### HasDev17
+
+`func (o *GetContainerConfig200ResponseData) HasDev17() bool`
+
+HasDev17 returns a boolean if a field has been set.
+
+### GetDev18
+
+`func (o *GetContainerConfig200ResponseData) GetDev18() string`
+
+GetDev18 returns the Dev18 field if non-nil, zero value otherwise.
+
+### GetDev18Ok
+
+`func (o *GetContainerConfig200ResponseData) GetDev18Ok() (*string, bool)`
+
+GetDev18Ok returns a tuple with the Dev18 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDev18
+
+`func (o *GetContainerConfig200ResponseData) SetDev18(v string)`
+
+SetDev18 sets Dev18 field to given value.
+
+### HasDev18
+
+`func (o *GetContainerConfig200ResponseData) HasDev18() bool`
+
+HasDev18 returns a boolean if a field has been set.
+
+### GetDev19
+
+`func (o *GetContainerConfig200ResponseData) GetDev19() string`
+
+GetDev19 returns the Dev19 field if non-nil, zero value otherwise.
+
+### GetDev19Ok
+
+`func (o *GetContainerConfig200ResponseData) GetDev19Ok() (*string, bool)`
+
+GetDev19Ok returns a tuple with the Dev19 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDev19
+
+`func (o *GetContainerConfig200ResponseData) SetDev19(v string)`
+
+SetDev19 sets Dev19 field to given value.
+
+### HasDev19
+
+`func (o *GetContainerConfig200ResponseData) HasDev19() bool`
+
+HasDev19 returns a boolean if a field has been set.
+
+### GetDev20
+
+`func (o *GetContainerConfig200ResponseData) GetDev20() string`
+
+GetDev20 returns the Dev20 field if non-nil, zero value otherwise.
+
+### GetDev20Ok
+
+`func (o *GetContainerConfig200ResponseData) GetDev20Ok() (*string, bool)`
+
+GetDev20Ok returns a tuple with the Dev20 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDev20
+
+`func (o *GetContainerConfig200ResponseData) SetDev20(v string)`
+
+SetDev20 sets Dev20 field to given value.
+
+### HasDev20
+
+`func (o *GetContainerConfig200ResponseData) HasDev20() bool`
+
+HasDev20 returns a boolean if a field has been set.
+
+### GetDev21
+
+`func (o *GetContainerConfig200ResponseData) GetDev21() string`
+
+GetDev21 returns the Dev21 field if non-nil, zero value otherwise.
+
+### GetDev21Ok
+
+`func (o *GetContainerConfig200ResponseData) GetDev21Ok() (*string, bool)`
+
+GetDev21Ok returns a tuple with the Dev21 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDev21
+
+`func (o *GetContainerConfig200ResponseData) SetDev21(v string)`
+
+SetDev21 sets Dev21 field to given value.
+
+### HasDev21
+
+`func (o *GetContainerConfig200ResponseData) HasDev21() bool`
+
+HasDev21 returns a boolean if a field has been set.
+
+### GetDev22
+
+`func (o *GetContainerConfig200ResponseData) GetDev22() string`
+
+GetDev22 returns the Dev22 field if non-nil, zero value otherwise.
+
+### GetDev22Ok
+
+`func (o *GetContainerConfig200ResponseData) GetDev22Ok() (*string, bool)`
+
+GetDev22Ok returns a tuple with the Dev22 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDev22
+
+`func (o *GetContainerConfig200ResponseData) SetDev22(v string)`
+
+SetDev22 sets Dev22 field to given value.
+
+### HasDev22
+
+`func (o *GetContainerConfig200ResponseData) HasDev22() bool`
+
+HasDev22 returns a boolean if a field has been set.
+
+### GetDev23
+
+`func (o *GetContainerConfig200ResponseData) GetDev23() string`
+
+GetDev23 returns the Dev23 field if non-nil, zero value otherwise.
+
+### GetDev23Ok
+
+`func (o *GetContainerConfig200ResponseData) GetDev23Ok() (*string, bool)`
+
+GetDev23Ok returns a tuple with the Dev23 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDev23
+
+`func (o *GetContainerConfig200ResponseData) SetDev23(v string)`
+
+SetDev23 sets Dev23 field to given value.
+
+### HasDev23
+
+`func (o *GetContainerConfig200ResponseData) HasDev23() bool`
+
+HasDev23 returns a boolean if a field has been set.
+
+### GetDev24
+
+`func (o *GetContainerConfig200ResponseData) GetDev24() string`
+
+GetDev24 returns the Dev24 field if non-nil, zero value otherwise.
+
+### GetDev24Ok
+
+`func (o *GetContainerConfig200ResponseData) GetDev24Ok() (*string, bool)`
+
+GetDev24Ok returns a tuple with the Dev24 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDev24
+
+`func (o *GetContainerConfig200ResponseData) SetDev24(v string)`
+
+SetDev24 sets Dev24 field to given value.
+
+### HasDev24
+
+`func (o *GetContainerConfig200ResponseData) HasDev24() bool`
+
+HasDev24 returns a boolean if a field has been set.
+
+### GetDev25
+
+`func (o *GetContainerConfig200ResponseData) GetDev25() string`
+
+GetDev25 returns the Dev25 field if non-nil, zero value otherwise.
+
+### GetDev25Ok
+
+`func (o *GetContainerConfig200ResponseData) GetDev25Ok() (*string, bool)`
+
+GetDev25Ok returns a tuple with the Dev25 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDev25
+
+`func (o *GetContainerConfig200ResponseData) SetDev25(v string)`
+
+SetDev25 sets Dev25 field to given value.
+
+### HasDev25
+
+`func (o *GetContainerConfig200ResponseData) HasDev25() bool`
+
+HasDev25 returns a boolean if a field has been set.
+
+### GetDev26
+
+`func (o *GetContainerConfig200ResponseData) GetDev26() string`
+
+GetDev26 returns the Dev26 field if non-nil, zero value otherwise.
+
+### GetDev26Ok
+
+`func (o *GetContainerConfig200ResponseData) GetDev26Ok() (*string, bool)`
+
+GetDev26Ok returns a tuple with the Dev26 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDev26
+
+`func (o *GetContainerConfig200ResponseData) SetDev26(v string)`
+
+SetDev26 sets Dev26 field to given value.
+
+### HasDev26
+
+`func (o *GetContainerConfig200ResponseData) HasDev26() bool`
+
+HasDev26 returns a boolean if a field has been set.
+
+### GetDev27
+
+`func (o *GetContainerConfig200ResponseData) GetDev27() string`
+
+GetDev27 returns the Dev27 field if non-nil, zero value otherwise.
+
+### GetDev27Ok
+
+`func (o *GetContainerConfig200ResponseData) GetDev27Ok() (*string, bool)`
+
+GetDev27Ok returns a tuple with the Dev27 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDev27
+
+`func (o *GetContainerConfig200ResponseData) SetDev27(v string)`
+
+SetDev27 sets Dev27 field to given value.
+
+### HasDev27
+
+`func (o *GetContainerConfig200ResponseData) HasDev27() bool`
+
+HasDev27 returns a boolean if a field has been set.
+
+### GetDev28
+
+`func (o *GetContainerConfig200ResponseData) GetDev28() string`
+
+GetDev28 returns the Dev28 field if non-nil, zero value otherwise.
+
+### GetDev28Ok
+
+`func (o *GetContainerConfig200ResponseData) GetDev28Ok() (*string, bool)`
+
+GetDev28Ok returns a tuple with the Dev28 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDev28
+
+`func (o *GetContainerConfig200ResponseData) SetDev28(v string)`
+
+SetDev28 sets Dev28 field to given value.
+
+### HasDev28
+
+`func (o *GetContainerConfig200ResponseData) HasDev28() bool`
+
+HasDev28 returns a boolean if a field has been set.
+
+### GetDev29
+
+`func (o *GetContainerConfig200ResponseData) GetDev29() string`
+
+GetDev29 returns the Dev29 field if non-nil, zero value otherwise.
+
+### GetDev29Ok
+
+`func (o *GetContainerConfig200ResponseData) GetDev29Ok() (*string, bool)`
+
+GetDev29Ok returns a tuple with the Dev29 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDev29
+
+`func (o *GetContainerConfig200ResponseData) SetDev29(v string)`
+
+SetDev29 sets Dev29 field to given value.
+
+### HasDev29
+
+`func (o *GetContainerConfig200ResponseData) HasDev29() bool`
+
+HasDev29 returns a boolean if a field has been set.
 
 ### GetDigest
 

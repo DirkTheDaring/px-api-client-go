@@ -224,8 +224,8 @@ type UpdateVMConfigRequest struct {
 	Lock *string `json:"lock,omitempty"`
 	// Specifies the QEMU machine type.
 	Machine *string `json:"machine,omitempty"`
-	// Amount of RAM for the VM in MiB. This is the maximum available memory when you use the balloon device.
-	Memory *int64 `json:"memory,omitempty"`
+	// Memory properties.
+	Memory *string `json:"memory,omitempty"`
 	// Set maximum tolerated downtime (in seconds) for migrations.
 	MigrateDowntime *float32 `json:"migrate_downtime,omitempty"`
 	// Set maximum speed (in MB/s) for migrations. Value 0 is no limit.
@@ -3886,9 +3886,9 @@ func (o *UpdateVMConfigRequest) SetMachine(v string) {
 }
 
 // GetMemory returns the Memory field value if set, zero value otherwise.
-func (o *UpdateVMConfigRequest) GetMemory() int64 {
+func (o *UpdateVMConfigRequest) GetMemory() string {
 	if o == nil || IsNil(o.Memory) {
-		var ret int64
+		var ret string
 		return ret
 	}
 	return *o.Memory
@@ -3896,7 +3896,7 @@ func (o *UpdateVMConfigRequest) GetMemory() int64 {
 
 // GetMemoryOk returns a tuple with the Memory field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateVMConfigRequest) GetMemoryOk() (*int64, bool) {
+func (o *UpdateVMConfigRequest) GetMemoryOk() (*string, bool) {
 	if o == nil || IsNil(o.Memory) {
 		return nil, false
 	}
@@ -3912,8 +3912,8 @@ func (o *UpdateVMConfigRequest) HasMemory() bool {
 	return false
 }
 
-// SetMemory gets a reference to the given int64 and assigns it to the Memory field.
-func (o *UpdateVMConfigRequest) SetMemory(v int64) {
+// SetMemory gets a reference to the given string and assigns it to the Memory field.
+func (o *UpdateVMConfigRequest) SetMemory(v string) {
 	o.Memory = &v
 }
 
