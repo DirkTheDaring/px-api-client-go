@@ -13730,7 +13730,7 @@ components:
         ipconfig29: ipconfig29
         citype: configdrive2
         ipconfig24: ipconfig24
-        shares: 5865
+        shares: 24826
         ipconfig23: ipconfig23
         ipconfig22: ipconfig22
         ipconfig21: ipconfig21
@@ -13783,7 +13783,7 @@ components:
         net26: net26
         net25: net25
         net28: net28
-        migrate_downtime: 0.7386281948385884
+        migrate_downtime: 0.12315135367772556
         net27: net27
         net22: net22
         scsi11: scsi11
@@ -13828,7 +13828,7 @@ components:
         virtio1: virtio1
         net16: net16
         virtio2: virtio2
-        memory: memory
+        memory: 7
         hostpci23: hostpci23
         scsi1: scsi1
         description: description
@@ -13873,7 +13873,7 @@ components:
         ide1: ide1
         hostpci13: hostpci13
         ide0: ide0
-        onboot: 1
+        onboot: 6
         ide3: ide3
         ide2: ide2
         ciupgrade: 5
@@ -13889,7 +13889,7 @@ components:
         efidisk0: efidisk0
         affinity: affinity
         audio0: audio0
-        template: 6
+        template: 8
         numa20: numa20
         numa21: numa21
         numa22: numa22
@@ -13897,7 +13897,7 @@ components:
         numa24: numa24
         numa25: numa25
         numa26: numa26
-        protection: 6
+        protection: 7
         cicustom: cicustom
         smp: 1
         digest: digest
@@ -13968,7 +13968,7 @@ components:
         cpuunits: 185110
         ciuser: ciuser
         hostpci0: hostpci0
-        reboot: 7
+        reboot: 1
         hostpci1: hostpci1
         keyboard: de
         balloon: 0
@@ -13983,7 +13983,7 @@ components:
         hostpci7: hostpci7
         vcpus: 1
         vmgenid: vmgenid
-        tdf: 9
+        tdf: 6
       properties:
         acpi:
           description: Enable/disable ACPI.
@@ -14697,8 +14697,9 @@ components:
           description: Specifies the QEMU machine type.
           type: string
         memory:
-          description: Memory properties.
-          type: string
+          description: Memory
+          format: int64
+          type: integer
         migrate_downtime:
           description: Set maximum tolerated downtime (in seconds) for migrations.
           minimum: 0
@@ -15375,7 +15376,7 @@ components:
           ipconfig29: ipconfig29
           citype: configdrive2
           ipconfig24: ipconfig24
-          shares: 5865
+          shares: 24826
           ipconfig23: ipconfig23
           ipconfig22: ipconfig22
           ipconfig21: ipconfig21
@@ -15428,7 +15429,7 @@ components:
           net26: net26
           net25: net25
           net28: net28
-          migrate_downtime: 0.7386281948385884
+          migrate_downtime: 0.12315135367772556
           net27: net27
           net22: net22
           scsi11: scsi11
@@ -15473,7 +15474,7 @@ components:
           virtio1: virtio1
           net16: net16
           virtio2: virtio2
-          memory: memory
+          memory: 7
           hostpci23: hostpci23
           scsi1: scsi1
           description: description
@@ -15518,7 +15519,7 @@ components:
           ide1: ide1
           hostpci13: hostpci13
           ide0: ide0
-          onboot: 1
+          onboot: 6
           ide3: ide3
           ide2: ide2
           ciupgrade: 5
@@ -15534,7 +15535,7 @@ components:
           efidisk0: efidisk0
           affinity: affinity
           audio0: audio0
-          template: 6
+          template: 8
           numa20: numa20
           numa21: numa21
           numa22: numa22
@@ -15542,7 +15543,7 @@ components:
           numa24: numa24
           numa25: numa25
           numa26: numa26
-          protection: 6
+          protection: 7
           cicustom: cicustom
           smp: 1
           digest: digest
@@ -15613,7 +15614,7 @@ components:
           cpuunits: 185110
           ciuser: ciuser
           hostpci0: hostpci0
-          reboot: 7
+          reboot: 1
           hostpci1: hostpci1
           keyboard: de
           balloon: 0
@@ -15628,7 +15629,7 @@ components:
           hostpci7: hostpci7
           vcpus: 1
           vmgenid: vmgenid
-          tdf: 9
+          tdf: 6
         errors:
         - errors
         - errors
