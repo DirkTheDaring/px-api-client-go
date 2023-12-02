@@ -13738,7 +13738,7 @@ components:
         ipconfig29: ipconfig29
         citype: configdrive2
         ipconfig24: ipconfig24
-        shares: 24826
+        shares: 5865
         ipconfig23: ipconfig23
         ipconfig22: ipconfig22
         ipconfig21: ipconfig21
@@ -13791,7 +13791,7 @@ components:
         net26: net26
         net25: net25
         net28: net28
-        migrate_downtime: 0.12315135367772556
+        migrate_downtime: 0.7386281948385884
         net27: net27
         net22: net22
         scsi11: scsi11
@@ -13836,7 +13836,7 @@ components:
         virtio1: virtio1
         net16: net16
         virtio2: virtio2
-        memory: 7
+        memory: memory
         hostpci23: hostpci23
         scsi1: scsi1
         description: description
@@ -13881,7 +13881,7 @@ components:
         ide1: ide1
         hostpci13: hostpci13
         ide0: ide0
-        onboot: 6
+        onboot: 1
         ide3: ide3
         ide2: ide2
         ciupgrade: 5
@@ -13897,7 +13897,7 @@ components:
         efidisk0: efidisk0
         affinity: affinity
         audio0: audio0
-        template: 8
+        template: 6
         numa20: numa20
         numa21: numa21
         numa22: numa22
@@ -13905,7 +13905,7 @@ components:
         numa24: numa24
         numa25: numa25
         numa26: numa26
-        protection: 7
+        protection: 6
         cicustom: cicustom
         smp: 1
         digest: digest
@@ -13976,7 +13976,7 @@ components:
         cpuunits: 185110
         ciuser: ciuser
         hostpci0: hostpci0
-        reboot: 1
+        reboot: 7
         hostpci1: hostpci1
         keyboard: de
         balloon: 0
@@ -13991,7 +13991,7 @@ components:
         hostpci7: hostpci7
         vcpus: 1
         vmgenid: vmgenid
-        tdf: 6
+        tdf: 9
       properties:
         acpi:
           description: Enable/disable ACPI.
@@ -14706,8 +14706,7 @@ components:
           type: string
         memory:
           description: Memory
-          format: int64
-          type: integer
+          type: string
         migrate_downtime:
           description: Set maximum tolerated downtime (in seconds) for migrations.
           minimum: 0
@@ -15384,7 +15383,7 @@ components:
           ipconfig29: ipconfig29
           citype: configdrive2
           ipconfig24: ipconfig24
-          shares: 24826
+          shares: 5865
           ipconfig23: ipconfig23
           ipconfig22: ipconfig22
           ipconfig21: ipconfig21
@@ -15437,7 +15436,7 @@ components:
           net26: net26
           net25: net25
           net28: net28
-          migrate_downtime: 0.12315135367772556
+          migrate_downtime: 0.7386281948385884
           net27: net27
           net22: net22
           scsi11: scsi11
@@ -15482,7 +15481,7 @@ components:
           virtio1: virtio1
           net16: net16
           virtio2: virtio2
-          memory: 7
+          memory: memory
           hostpci23: hostpci23
           scsi1: scsi1
           description: description
@@ -15527,7 +15526,7 @@ components:
           ide1: ide1
           hostpci13: hostpci13
           ide0: ide0
-          onboot: 6
+          onboot: 1
           ide3: ide3
           ide2: ide2
           ciupgrade: 5
@@ -15543,7 +15542,7 @@ components:
           efidisk0: efidisk0
           affinity: affinity
           audio0: audio0
-          template: 8
+          template: 6
           numa20: numa20
           numa21: numa21
           numa22: numa22
@@ -15551,7 +15550,7 @@ components:
           numa24: numa24
           numa25: numa25
           numa26: numa26
-          protection: 7
+          protection: 6
           cicustom: cicustom
           smp: 1
           digest: digest
@@ -15622,7 +15621,7 @@ components:
           cpuunits: 185110
           ciuser: ciuser
           hostpci0: hostpci0
-          reboot: 1
+          reboot: 7
           hostpci1: hostpci1
           keyboard: de
           balloon: 0
@@ -15637,7 +15636,7 @@ components:
           hostpci7: hostpci7
           vcpus: 1
           vmgenid: vmgenid
-          tdf: 6
+          tdf: 9
         errors:
         - errors
         - errors
