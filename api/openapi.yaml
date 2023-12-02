@@ -3043,7 +3043,7 @@ components:
         smbios1: smbios1
         freeze: 2
         ivshmem: ivshmem
-        vmid: 288416283
+        vmid: 677832527
         pool: pool
         virtio13: virtio13
         virtio12: virtio12
@@ -3053,7 +3053,7 @@ components:
         virtio11: virtio11
         tags: tags
         virtio10: virtio10
-        unique: 6
+        unique: 1
         net11: net11
         net10: net10
         net13: net13
@@ -3062,7 +3062,7 @@ components:
         ipconfig29: ipconfig29
         citype: configdrive2
         ipconfig24: ipconfig24
-        shares: 49828
+        shares: 46846
         ipconfig23: ipconfig23
         ipconfig22: ipconfig22
         ipconfig21: ipconfig21
@@ -3115,7 +3115,7 @@ components:
         net26: net26
         net25: net25
         net28: net28
-        migrate_downtime: 0.14894159098541704
+        migrate_downtime: 0.684685269835264
         net27: net27
         net22: net22
         scsi11: scsi11
@@ -3160,7 +3160,7 @@ components:
         virtio1: virtio1
         net16: net16
         virtio2: virtio2
-        memory: memory
+        memory: 1
         hostpci23: hostpci23
         scsi1: scsi1
         description: description
@@ -3191,7 +3191,7 @@ components:
         sata4: sata4
         boot: boot
         hostpci12: hostpci12
-        start: 8
+        start: 9
         hostpci11: hostpci11
         hostpci10: hostpci10
         ostype: other
@@ -3206,11 +3206,11 @@ components:
         ide1: ide1
         hostpci13: hostpci13
         ide0: ide0
-        onboot: 1
+        onboot: 4
         ide3: ide3
         ide2: ide2
         ciupgrade: 5
-        tablet: 9
+        tablet: 6
         cores: 1
         usb2: usb2
         lock: backup
@@ -3224,7 +3224,7 @@ components:
         force: 3
         affinity: affinity
         audio0: audio0
-        template: 3
+        template: 6
         numa20: numa20
         numa21: numa21
         numa22: numa22
@@ -3232,7 +3232,7 @@ components:
         numa24: numa24
         numa25: numa25
         numa26: numa26
-        protection: 4
+        protection: 5
         cicustom: cicustom
         smp: 1
         numa16: numa16
@@ -3282,7 +3282,7 @@ components:
         unused26: unused26
         unused29: unused29
         unused28: unused28
-        numa: 7
+        numa: 1
         cpu: cpu
         archive: archive
         numa0: numa0
@@ -3305,7 +3305,7 @@ components:
         cpuunits: 243831
         ciuser: ciuser
         hostpci0: hostpci0
-        reboot: 5
+        reboot: 9
         hostpci1: hostpci1
         keyboard: de
         balloon: 0
@@ -3320,7 +3320,7 @@ components:
         hostpci7: hostpci7
         vcpus: 1
         vmgenid: vmgenid
-        tdf: 6
+        tdf: 3
       properties:
         acpi:
           description: Enable/disable ACPI.
@@ -4059,8 +4059,9 @@ components:
           description: Specifies the QEMU machine type.
           type: string
         memory:
-          description: Memory properties.
-          type: string
+          description: Memory
+          format: int64
+          type: integer
         migrate_downtime:
           description: Set maximum tolerated downtime (in seconds) for migrations.
           minimum: 0
@@ -4857,6 +4858,7 @@ components:
           description: Create a virtual hardware watchdog device.
           type: string
       required:
+      - memory
       - vmid
       type: object
     UpdateVMConfigRequest:
@@ -4894,7 +4896,7 @@ components:
         ipconfig29: ipconfig29
         citype: configdrive2
         ipconfig24: ipconfig24
-        shares: 25125
+        shares: 49828
         ipconfig23: ipconfig23
         ipconfig22: ipconfig22
         ipconfig21: ipconfig21
@@ -4947,7 +4949,7 @@ components:
         net26: net26
         net25: net25
         net28: net28
-        migrate_downtime: 0.10246457001441578
+        migrate_downtime: 0.14894159098541704
         net27: net27
         net22: net22
         scsi11: scsi11
@@ -4993,7 +4995,7 @@ components:
         net16: net16
         virtio2: virtio2
         skiplock: 9
-        memory: memory
+        memory: 1
         hostpci23: hostpci23
         scsi1: scsi1
         description: description
@@ -5038,11 +5040,11 @@ components:
         ide1: ide1
         hostpci13: hostpci13
         ide0: ide0
-        onboot: 7
+        onboot: 1
         ide3: ide3
         ide2: ide2
         ciupgrade: 5
-        tablet: 8
+        tablet: 9
         cores: 1
         usb2: usb2
         lock: backup
@@ -5055,7 +5057,7 @@ components:
         force: 3
         affinity: affinity
         audio0: audio0
-        template: 6
+        template: 3
         numa20: numa20
         numa21: numa21
         numa22: numa22
@@ -5063,7 +5065,7 @@ components:
         numa24: numa24
         numa25: numa25
         numa26: numa26
-        protection: 1
+        protection: 4
         cicustom: cicustom
         smp: 1
         digest: digest
@@ -5114,7 +5116,7 @@ components:
         unused26: unused26
         unused29: unused29
         unused28: unused28
-        numa: 6
+        numa: 7
         cpu: cpu
         revert: revert
         numa0: numa0
@@ -5136,7 +5138,7 @@ components:
         cpuunits: 243831
         ciuser: ciuser
         hostpci0: hostpci0
-        reboot: 4
+        reboot: 5
         hostpci1: hostpci1
         keyboard: de
         balloon: 0
@@ -5151,7 +5153,7 @@ components:
         hostpci7: hostpci7
         vcpus: 1
         vmgenid: vmgenid
-        tdf: 9
+        tdf: 6
       properties:
         acpi:
           description: Enable/disable ACPI.
@@ -5893,8 +5895,9 @@ components:
           description: Specifies the QEMU machine type.
           type: string
         memory:
-          description: Memory properties.
-          type: string
+          description: Memory
+          format: int64
+          type: integer
         migrate_downtime:
           description: Set maximum tolerated downtime (in seconds) for migrations.
           minimum: 0
@@ -6678,6 +6681,8 @@ components:
         watchdog:
           description: Create a virtual hardware watchdog device.
           type: string
+      required:
+      - memory
       type: object
     UpdateVMConfigSyncRequest:
       example:
@@ -6713,7 +6718,7 @@ components:
         ipconfig29: ipconfig29
         citype: configdrive2
         ipconfig24: ipconfig24
-        shares: 24826
+        shares: 25125
         ipconfig23: ipconfig23
         ipconfig22: ipconfig22
         ipconfig21: ipconfig21
@@ -6766,7 +6771,7 @@ components:
         net26: net26
         net25: net25
         net28: net28
-        migrate_downtime: 0.12315135367772556
+        migrate_downtime: 0.10246457001441578
         net27: net27
         net22: net22
         scsi11: scsi11
@@ -6811,8 +6816,8 @@ components:
         virtio1: virtio1
         net16: net16
         virtio2: virtio2
-        skiplock: 5
-        memory: memory
+        skiplock: 9
+        memory: 1
         hostpci23: hostpci23
         scsi1: scsi1
         description: description
@@ -6857,11 +6862,11 @@ components:
         ide1: ide1
         hostpci13: hostpci13
         ide0: ide0
-        onboot: 6
+        onboot: 7
         ide3: ide3
         ide2: ide2
         ciupgrade: 5
-        tablet: 6
+        tablet: 8
         cores: 1
         usb2: usb2
         lock: backup
@@ -6874,7 +6879,7 @@ components:
         force: 9
         affinity: affinity
         audio0: audio0
-        template: 9
+        template: 6
         numa20: numa20
         numa21: numa21
         numa22: numa22
@@ -6882,7 +6887,7 @@ components:
         numa24: numa24
         numa25: numa25
         numa26: numa26
-        protection: 7
+        protection: 1
         cicustom: cicustom
         smp: 1
         digest: digest
@@ -6933,7 +6938,7 @@ components:
         unused26: unused26
         unused29: unused29
         unused28: unused28
-        numa: 1
+        numa: 6
         cpu: cpu
         revert: revert
         numa0: numa0
@@ -6955,7 +6960,7 @@ components:
         cpuunits: 185110
         ciuser: ciuser
         hostpci0: hostpci0
-        reboot: 1
+        reboot: 4
         hostpci1: hostpci1
         keyboard: de
         balloon: 0
@@ -6970,7 +6975,7 @@ components:
         hostpci7: hostpci7
         vcpus: 1
         vmgenid: vmgenid
-        tdf: 8
+        tdf: 9
       properties:
         acpi:
           description: Enable/disable ACPI.
@@ -7705,8 +7710,9 @@ components:
           description: Specifies the QEMU machine type.
           type: string
         memory:
-          description: Memory properties.
-          type: string
+          description: Memory
+          format: int64
+          type: integer
         migrate_downtime:
           description: Set maximum tolerated downtime (in seconds) for migrations.
           minimum: 0
@@ -8490,6 +8496,8 @@ components:
         watchdog:
           description: Create a virtual hardware watchdog device.
           type: string
+      required:
+      - memory
       type: object
     StartVMRequest:
       example:
