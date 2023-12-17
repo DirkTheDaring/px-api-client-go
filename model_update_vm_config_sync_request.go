@@ -13,6 +13,7 @@ package pxapiflat
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the UpdateVMConfigSyncRequest type satisfies the MappedNullable interface at compile time
@@ -601,6 +602,8 @@ type UpdateVMConfigSyncRequest struct {
 	// Create a virtual hardware watchdog device.
 	Watchdog *string `json:"watchdog,omitempty"`
 }
+
+type _UpdateVMConfigSyncRequest UpdateVMConfigSyncRequest
 
 // NewUpdateVMConfigSyncRequest instantiates a new UpdateVMConfigSyncRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -10771,6 +10774,41 @@ func (o UpdateVMConfigSyncRequest) ToMap() (map[string]interface{}, error) {
 		toSerialize["watchdog"] = o.Watchdog
 	}
 	return toSerialize, nil
+}
+
+func (o *UpdateVMConfigSyncRequest) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"memory",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varUpdateVMConfigSyncRequest := _UpdateVMConfigSyncRequest{}
+
+	err = json.Unmarshal(bytes, &varUpdateVMConfigSyncRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UpdateVMConfigSyncRequest(varUpdateVMConfigSyncRequest)
+
+	return err
 }
 
 type NullableUpdateVMConfigSyncRequest struct {
