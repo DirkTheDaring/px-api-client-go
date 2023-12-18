@@ -4858,7 +4858,6 @@ components:
           description: Create a virtual hardware watchdog device.
           type: string
       required:
-      - memory
       - vmid
       type: object
     UpdateVMConfigRequest:
@@ -6681,8 +6680,6 @@ components:
         watchdog:
           description: Create a virtual hardware watchdog device.
           type: string
-      required:
-      - memory
       type: object
     UpdateVMConfigSyncRequest:
       example:
@@ -8496,8 +8493,6 @@ components:
         watchdog:
           description: Create a virtual hardware watchdog device.
           type: string
-      required:
-      - memory
       type: object
     StartVMRequest:
       example:
