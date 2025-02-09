@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Description** | Pointer to **string** | A textual description or comment. | [optional] 
-**Snapname** | **string** | The name of the snapshot. | 
-**Vmstate** | Pointer to **int32** | Save the vmstate | [optional] 
+**Description** | Pointer to **string** |  | [optional] 
+**Snapname** | **string** |  | 
+**Vmstate** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
@@ -74,20 +74,20 @@ SetSnapname sets Snapname field to given value.
 
 ### GetVmstate
 
-`func (o *CreateVMSnapshotRequest) GetVmstate() int32`
+`func (o *CreateVMSnapshotRequest) GetVmstate() bool`
 
 GetVmstate returns the Vmstate field if non-nil, zero value otherwise.
 
 ### GetVmstateOk
 
-`func (o *CreateVMSnapshotRequest) GetVmstateOk() (*int32, bool)`
+`func (o *CreateVMSnapshotRequest) GetVmstateOk() (*bool, bool)`
 
 GetVmstateOk returns a tuple with the Vmstate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetVmstate
 
-`func (o *CreateVMSnapshotRequest) SetVmstate(v int32)`
+`func (o *CreateVMSnapshotRequest) SetVmstate(v bool)`
 
 SetVmstate sets Vmstate field to given value.
 

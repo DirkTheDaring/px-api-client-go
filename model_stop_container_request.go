@@ -3,7 +3,7 @@ ProxMox VE API
 
 ProxMox VE API
 
-API version: 8.0
+API version: 8.3
 Contact: baldur@email.de
 */
 
@@ -20,8 +20,8 @@ var _ MappedNullable = &StopContainerRequest{}
 
 // StopContainerRequest struct for StopContainerRequest
 type StopContainerRequest struct {
-	// Ignore locks - only root is allowed to use this option.
-	Skiplock *int32 `json:"skiplock,omitempty"`
+	OverruleShutdown *bool `json:"overrule-shutdown,omitempty"`
+	Skiplock *bool `json:"skiplock,omitempty"`
 }
 
 // NewStopContainerRequest instantiates a new StopContainerRequest object
@@ -41,10 +41,42 @@ func NewStopContainerRequestWithDefaults() *StopContainerRequest {
 	return &this
 }
 
+// GetOverruleShutdown returns the OverruleShutdown field value if set, zero value otherwise.
+func (o *StopContainerRequest) GetOverruleShutdown() bool {
+	if o == nil || IsNil(o.OverruleShutdown) {
+		var ret bool
+		return ret
+	}
+	return *o.OverruleShutdown
+}
+
+// GetOverruleShutdownOk returns a tuple with the OverruleShutdown field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StopContainerRequest) GetOverruleShutdownOk() (*bool, bool) {
+	if o == nil || IsNil(o.OverruleShutdown) {
+		return nil, false
+	}
+	return o.OverruleShutdown, true
+}
+
+// HasOverruleShutdown returns a boolean if a field has been set.
+func (o *StopContainerRequest) HasOverruleShutdown() bool {
+	if o != nil && !IsNil(o.OverruleShutdown) {
+		return true
+	}
+
+	return false
+}
+
+// SetOverruleShutdown gets a reference to the given bool and assigns it to the OverruleShutdown field.
+func (o *StopContainerRequest) SetOverruleShutdown(v bool) {
+	o.OverruleShutdown = &v
+}
+
 // GetSkiplock returns the Skiplock field value if set, zero value otherwise.
-func (o *StopContainerRequest) GetSkiplock() int32 {
+func (o *StopContainerRequest) GetSkiplock() bool {
 	if o == nil || IsNil(o.Skiplock) {
-		var ret int32
+		var ret bool
 		return ret
 	}
 	return *o.Skiplock
@@ -52,7 +84,7 @@ func (o *StopContainerRequest) GetSkiplock() int32 {
 
 // GetSkiplockOk returns a tuple with the Skiplock field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *StopContainerRequest) GetSkiplockOk() (*int32, bool) {
+func (o *StopContainerRequest) GetSkiplockOk() (*bool, bool) {
 	if o == nil || IsNil(o.Skiplock) {
 		return nil, false
 	}
@@ -68,8 +100,8 @@ func (o *StopContainerRequest) HasSkiplock() bool {
 	return false
 }
 
-// SetSkiplock gets a reference to the given int32 and assigns it to the Skiplock field.
-func (o *StopContainerRequest) SetSkiplock(v int32) {
+// SetSkiplock gets a reference to the given bool and assigns it to the Skiplock field.
+func (o *StopContainerRequest) SetSkiplock(v bool) {
 	o.Skiplock = &v
 }
 
@@ -83,6 +115,9 @@ func (o StopContainerRequest) MarshalJSON() ([]byte, error) {
 
 func (o StopContainerRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.OverruleShutdown) {
+		toSerialize["overrule-shutdown"] = o.OverruleShutdown
+	}
 	if !IsNil(o.Skiplock) {
 		toSerialize["skiplock"] = o.Skiplock
 	}

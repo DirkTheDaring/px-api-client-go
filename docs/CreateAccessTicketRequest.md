@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**NewFormat** | Pointer to **int32** | This parameter is now ignored and assumed to be 1. | [optional] 
-**Otp** | Pointer to **string** | One-time password for Two-factor authentication. | [optional] 
-**Password** | **string** | The secret password. This can also be a valid ticket. | 
-**Path** | Pointer to **string** | Verify ticket, and check if user have access &#39;privs&#39; on &#39;path&#39; | [optional] 
-**Privs** | Pointer to **string** | Verify ticket, and check if user have access &#39;privs&#39; on &#39;path&#39; | [optional] 
-**Realm** | Pointer to **string** | You can optionally pass the realm using this parameter. Normally the realm is simply added to the username &lt;username&gt;@&lt;relam&gt;. | [optional] 
-**TfaChallenge** | Pointer to **string** | The signed TFA challenge string the user wants to respond to. | [optional] 
-**Username** | **string** | User name | 
+**NewFormat** | Pointer to **bool** |  | [optional] 
+**Otp** | Pointer to **string** |  | [optional] 
+**Password** | **string** |  | 
+**Path** | Pointer to **string** |  | [optional] 
+**Privs** | Pointer to **string** |  | [optional] 
+**Realm** | Pointer to **string** |  | [optional] 
+**TfaChallenge** | Pointer to **string** |  | [optional] 
+**Username** | **string** |  | 
 
 ## Methods
 
@@ -34,20 +34,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetNewFormat
 
-`func (o *CreateAccessTicketRequest) GetNewFormat() int32`
+`func (o *CreateAccessTicketRequest) GetNewFormat() bool`
 
 GetNewFormat returns the NewFormat field if non-nil, zero value otherwise.
 
 ### GetNewFormatOk
 
-`func (o *CreateAccessTicketRequest) GetNewFormatOk() (*int32, bool)`
+`func (o *CreateAccessTicketRequest) GetNewFormatOk() (*bool, bool)`
 
 GetNewFormatOk returns a tuple with the NewFormat field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNewFormat
 
-`func (o *CreateAccessTicketRequest) SetNewFormat(v int32)`
+`func (o *CreateAccessTicketRequest) SetNewFormat(v bool)`
 
 SetNewFormat sets NewFormat field to given value.
 

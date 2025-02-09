@@ -3,7 +3,7 @@ ProxMox VE API
 
 ProxMox VE API
 
-API version: 8.0
+API version: 8.3
 Contact: baldur@email.de
 */
 
@@ -13,7 +13,6 @@ package pxapiflat
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the CreateVMRequest type satisfies the MappedNullable interface at compile time
@@ -21,597 +20,303 @@ var _ MappedNullable = &CreateVMRequest{}
 
 // CreateVMRequest struct for CreateVMRequest
 type CreateVMRequest struct {
-	// Enable/disable ACPI.
-	Acpi *int32 `json:"acpi,omitempty"`
-	// List of host cores used to execute guest processes, for example: 0,5,8-11
+	Acpi *bool `json:"acpi,omitempty"`
 	Affinity *string `json:"affinity,omitempty"`
-	// Enable/disable communication with the QEMU Guest Agent and its properties.
 	Agent *string `json:"agent,omitempty"`
-	// Virtual processor architecture. Defaults to the host.
+	AmdSev *string `json:"amd-sev,omitempty"`
 	Arch *string `json:"arch,omitempty"`
-	// The backup archive. Either the file system path to a .tar or .vma file (use '-' to pipe data from stdin) or a proxmox storage backup volume identifier.
 	Archive *string `json:"archive,omitempty"`
-	// Arbitrary arguments passed to kvm.
 	Args *string `json:"args,omitempty"`
-	// Configure a audio device, useful in combination with QXL/Spice.
 	Audio0 *string `json:"audio0,omitempty"`
-	// Automatic restart after crash (currently ignored).
-	Autostart *int32 `json:"autostart,omitempty"`
-	// Amount of target RAM for the VM in MiB. Using zero disables the ballon driver.
+	Autostart *bool `json:"autostart,omitempty"`
 	Balloon *int64 `json:"balloon,omitempty"`
-	// Select BIOS implementation.
 	Bios *string `json:"bios,omitempty"`
-	// Specify guest boot order. Use the 'order=' sub-property as usage with no key or 'legacy=' is deprecated.
 	Boot *string `json:"boot,omitempty"`
-	// Enable booting from specified disk. Deprecated: Use 'boot: order=foo;bar' instead.
 	Bootdisk *string `json:"bootdisk,omitempty"`
-	// Override I/O bandwidth limit (in KiB/s).
 	Bwlimit *int64 `json:"bwlimit,omitempty"`
-	// This is an alias for option -ide2
 	Cdrom *string `json:"cdrom,omitempty"`
-	// cloud-init: Specify custom files to replace the automatically generated ones at start.
 	Cicustom *string `json:"cicustom,omitempty"`
-	// cloud-init: Password to assign the user. Using this is generally not recommended. Use ssh keys instead. Also note that older cloud-init versions do not support hashed passwords.
 	Cipassword *string `json:"cipassword,omitempty"`
-	// Specifies the cloud-init configuration format. The default depends on the configured operating system type (`ostype`. We use the `nocloud` format for Linux, and `configdrive2` for windows.
 	Citype *string `json:"citype,omitempty"`
-	// cloud-init: do an automatic package upgrade after the first boot.
-	Ciupgrade *int32 `json:"ciupgrade,omitempty"`
-	// cloud-init: User name to change ssh keys and password for instead of the image's configured default user.
+	Ciupgrade *bool `json:"ciupgrade,omitempty"`
 	Ciuser *string `json:"ciuser,omitempty"`
-	// The number of cores per socket.
 	Cores *int64 `json:"cores,omitempty"`
-	// Emulated CPU type.
 	Cpu *string `json:"cpu,omitempty"`
-	// Limit of CPU usage.
 	Cpulimit *float32 `json:"cpulimit,omitempty"`
-	// CPU weight for a VM, will be clamped to [1, 10000] in cgroup v2.
 	Cpuunits *int64 `json:"cpuunits,omitempty"`
-	// Description for the VM. Shown in the web-interface VM's summary. This is saved as comment inside the configuration file.
 	Description *string `json:"description,omitempty"`
-	// Configure a disk for storing EFI vars. Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Note that SIZE_IN_GiB is ignored here and that the default EFI vars are copied to the volume instead. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.
 	Efidisk0 *string `json:"efidisk0,omitempty"`
-	// Allow to overwrite existing VM.
-	Force *int32 `json:"force,omitempty"`
-	// Freeze CPU at startup (use 'c' monitor command to start execution).
-	Freeze *int32 `json:"freeze,omitempty"`
-	// Script that will be executed during various steps in the vms lifetime.
+	Force *bool `json:"force,omitempty"`
+	Freeze *bool `json:"freeze,omitempty"`
 	Hookscript *string `json:"hookscript,omitempty"`
-	// Map host PCI devices into guest.
 	Hostpci0 *string `json:"hostpci0,omitempty"`
-	// Map host PCI devices into guest.
 	Hostpci1 *string `json:"hostpci1,omitempty"`
-	// Map host PCI devices into guest.
 	Hostpci2 *string `json:"hostpci2,omitempty"`
-	// Map host PCI devices into guest.
 	Hostpci3 *string `json:"hostpci3,omitempty"`
-	// Map host PCI devices into guest.
 	Hostpci4 *string `json:"hostpci4,omitempty"`
-	// Map host PCI devices into guest.
 	Hostpci5 *string `json:"hostpci5,omitempty"`
-	// Map host PCI devices into guest.
 	Hostpci6 *string `json:"hostpci6,omitempty"`
-	// Map host PCI devices into guest.
 	Hostpci7 *string `json:"hostpci7,omitempty"`
-	// Map host PCI devices into guest.
 	Hostpci8 *string `json:"hostpci8,omitempty"`
-	// Map host PCI devices into guest.
 	Hostpci9 *string `json:"hostpci9,omitempty"`
-	// Map host PCI devices into guest.
 	Hostpci10 *string `json:"hostpci10,omitempty"`
-	// Map host PCI devices into guest.
 	Hostpci11 *string `json:"hostpci11,omitempty"`
-	// Map host PCI devices into guest.
 	Hostpci12 *string `json:"hostpci12,omitempty"`
-	// Map host PCI devices into guest.
 	Hostpci13 *string `json:"hostpci13,omitempty"`
-	// Map host PCI devices into guest.
 	Hostpci14 *string `json:"hostpci14,omitempty"`
-	// Map host PCI devices into guest.
 	Hostpci15 *string `json:"hostpci15,omitempty"`
-	// Map host PCI devices into guest.
 	Hostpci16 *string `json:"hostpci16,omitempty"`
-	// Map host PCI devices into guest.
 	Hostpci17 *string `json:"hostpci17,omitempty"`
-	// Map host PCI devices into guest.
 	Hostpci18 *string `json:"hostpci18,omitempty"`
-	// Map host PCI devices into guest.
 	Hostpci19 *string `json:"hostpci19,omitempty"`
-	// Map host PCI devices into guest.
 	Hostpci20 *string `json:"hostpci20,omitempty"`
-	// Map host PCI devices into guest.
 	Hostpci21 *string `json:"hostpci21,omitempty"`
-	// Map host PCI devices into guest.
 	Hostpci22 *string `json:"hostpci22,omitempty"`
-	// Map host PCI devices into guest.
 	Hostpci23 *string `json:"hostpci23,omitempty"`
-	// Map host PCI devices into guest.
 	Hostpci24 *string `json:"hostpci24,omitempty"`
-	// Map host PCI devices into guest.
 	Hostpci25 *string `json:"hostpci25,omitempty"`
-	// Map host PCI devices into guest.
 	Hostpci26 *string `json:"hostpci26,omitempty"`
-	// Map host PCI devices into guest.
 	Hostpci27 *string `json:"hostpci27,omitempty"`
-	// Map host PCI devices into guest.
 	Hostpci28 *string `json:"hostpci28,omitempty"`
-	// Map host PCI devices into guest.
 	Hostpci29 *string `json:"hostpci29,omitempty"`
-	// Selectively enable hotplug features. This is a comma separated list of hotplug features: 'network', 'disk', 'cpu', 'memory', 'usb' and 'cloudinit'. Use '0' to disable hotplug completely. Using '1' as value is an alias for the default `network,disk,usb`. USB hotplugging is possible for guests with machine version >= 7.1 and ostype l26 or windows > 7.
 	Hotplug *string `json:"hotplug,omitempty"`
-	// Enable/disable hugepages memory.
 	Hugepages *string `json:"hugepages,omitempty"`
-	// Use volume as IDE hard disk or CD-ROM (n is 0 to 3). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.
 	Ide0 *string `json:"ide0,omitempty"`
-	// Use volume as IDE hard disk or CD-ROM (n is 0 to 3). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.
 	Ide1 *string `json:"ide1,omitempty"`
-	// Use volume as IDE hard disk or CD-ROM (n is 0 to 3). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.
 	Ide2 *string `json:"ide2,omitempty"`
-	// Use volume as IDE hard disk or CD-ROM (n is 0 to 3). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.
 	Ide3 *string `json:"ide3,omitempty"`
-	// cloud-init: Specify IP addresses and gateways for the corresponding interface.  IP addresses use CIDR notation, gateways are optional but need an IP of the same type specified.  The special string 'dhcp' can be used for IP addresses to use DHCP, in which case no explicit gateway should be provided. For IPv6 the special string 'auto' can be used to use stateless autoconfiguration. This requires cloud-init 19.4 or newer.  If cloud-init is enabled and neither an IPv4 nor an IPv6 address is specified, it defaults to using dhcp on IPv4. 
+	ImportWorkingStorage *string `json:"import-working-storage,omitempty"`
 	Ipconfig0 *string `json:"ipconfig0,omitempty"`
-	// cloud-init: Specify IP addresses and gateways for the corresponding interface.  IP addresses use CIDR notation, gateways are optional but need an IP of the same type specified.  The special string 'dhcp' can be used for IP addresses to use DHCP, in which case no explicit gateway should be provided. For IPv6 the special string 'auto' can be used to use stateless autoconfiguration. This requires cloud-init 19.4 or newer.  If cloud-init is enabled and neither an IPv4 nor an IPv6 address is specified, it defaults to using dhcp on IPv4. 
 	Ipconfig1 *string `json:"ipconfig1,omitempty"`
-	// cloud-init: Specify IP addresses and gateways for the corresponding interface.  IP addresses use CIDR notation, gateways are optional but need an IP of the same type specified.  The special string 'dhcp' can be used for IP addresses to use DHCP, in which case no explicit gateway should be provided. For IPv6 the special string 'auto' can be used to use stateless autoconfiguration. This requires cloud-init 19.4 or newer.  If cloud-init is enabled and neither an IPv4 nor an IPv6 address is specified, it defaults to using dhcp on IPv4. 
 	Ipconfig2 *string `json:"ipconfig2,omitempty"`
-	// cloud-init: Specify IP addresses and gateways for the corresponding interface.  IP addresses use CIDR notation, gateways are optional but need an IP of the same type specified.  The special string 'dhcp' can be used for IP addresses to use DHCP, in which case no explicit gateway should be provided. For IPv6 the special string 'auto' can be used to use stateless autoconfiguration. This requires cloud-init 19.4 or newer.  If cloud-init is enabled and neither an IPv4 nor an IPv6 address is specified, it defaults to using dhcp on IPv4. 
 	Ipconfig3 *string `json:"ipconfig3,omitempty"`
-	// cloud-init: Specify IP addresses and gateways for the corresponding interface.  IP addresses use CIDR notation, gateways are optional but need an IP of the same type specified.  The special string 'dhcp' can be used for IP addresses to use DHCP, in which case no explicit gateway should be provided. For IPv6 the special string 'auto' can be used to use stateless autoconfiguration. This requires cloud-init 19.4 or newer.  If cloud-init is enabled and neither an IPv4 nor an IPv6 address is specified, it defaults to using dhcp on IPv4. 
 	Ipconfig4 *string `json:"ipconfig4,omitempty"`
-	// cloud-init: Specify IP addresses and gateways for the corresponding interface.  IP addresses use CIDR notation, gateways are optional but need an IP of the same type specified.  The special string 'dhcp' can be used for IP addresses to use DHCP, in which case no explicit gateway should be provided. For IPv6 the special string 'auto' can be used to use stateless autoconfiguration. This requires cloud-init 19.4 or newer.  If cloud-init is enabled and neither an IPv4 nor an IPv6 address is specified, it defaults to using dhcp on IPv4. 
 	Ipconfig5 *string `json:"ipconfig5,omitempty"`
-	// cloud-init: Specify IP addresses and gateways for the corresponding interface.  IP addresses use CIDR notation, gateways are optional but need an IP of the same type specified.  The special string 'dhcp' can be used for IP addresses to use DHCP, in which case no explicit gateway should be provided. For IPv6 the special string 'auto' can be used to use stateless autoconfiguration. This requires cloud-init 19.4 or newer.  If cloud-init is enabled and neither an IPv4 nor an IPv6 address is specified, it defaults to using dhcp on IPv4. 
 	Ipconfig6 *string `json:"ipconfig6,omitempty"`
-	// cloud-init: Specify IP addresses and gateways for the corresponding interface.  IP addresses use CIDR notation, gateways are optional but need an IP of the same type specified.  The special string 'dhcp' can be used for IP addresses to use DHCP, in which case no explicit gateway should be provided. For IPv6 the special string 'auto' can be used to use stateless autoconfiguration. This requires cloud-init 19.4 or newer.  If cloud-init is enabled and neither an IPv4 nor an IPv6 address is specified, it defaults to using dhcp on IPv4. 
 	Ipconfig7 *string `json:"ipconfig7,omitempty"`
-	// cloud-init: Specify IP addresses and gateways for the corresponding interface.  IP addresses use CIDR notation, gateways are optional but need an IP of the same type specified.  The special string 'dhcp' can be used for IP addresses to use DHCP, in which case no explicit gateway should be provided. For IPv6 the special string 'auto' can be used to use stateless autoconfiguration. This requires cloud-init 19.4 or newer.  If cloud-init is enabled and neither an IPv4 nor an IPv6 address is specified, it defaults to using dhcp on IPv4. 
 	Ipconfig8 *string `json:"ipconfig8,omitempty"`
-	// cloud-init: Specify IP addresses and gateways for the corresponding interface.  IP addresses use CIDR notation, gateways are optional but need an IP of the same type specified.  The special string 'dhcp' can be used for IP addresses to use DHCP, in which case no explicit gateway should be provided. For IPv6 the special string 'auto' can be used to use stateless autoconfiguration. This requires cloud-init 19.4 or newer.  If cloud-init is enabled and neither an IPv4 nor an IPv6 address is specified, it defaults to using dhcp on IPv4. 
 	Ipconfig9 *string `json:"ipconfig9,omitempty"`
-	// cloud-init: Specify IP addresses and gateways for the corresponding interface.  IP addresses use CIDR notation, gateways are optional but need an IP of the same type specified.  The special string 'dhcp' can be used for IP addresses to use DHCP, in which case no explicit gateway should be provided. For IPv6 the special string 'auto' can be used to use stateless autoconfiguration. This requires cloud-init 19.4 or newer.  If cloud-init is enabled and neither an IPv4 nor an IPv6 address is specified, it defaults to using dhcp on IPv4. 
 	Ipconfig10 *string `json:"ipconfig10,omitempty"`
-	// cloud-init: Specify IP addresses and gateways for the corresponding interface.  IP addresses use CIDR notation, gateways are optional but need an IP of the same type specified.  The special string 'dhcp' can be used for IP addresses to use DHCP, in which case no explicit gateway should be provided. For IPv6 the special string 'auto' can be used to use stateless autoconfiguration. This requires cloud-init 19.4 or newer.  If cloud-init is enabled and neither an IPv4 nor an IPv6 address is specified, it defaults to using dhcp on IPv4. 
 	Ipconfig11 *string `json:"ipconfig11,omitempty"`
-	// cloud-init: Specify IP addresses and gateways for the corresponding interface.  IP addresses use CIDR notation, gateways are optional but need an IP of the same type specified.  The special string 'dhcp' can be used for IP addresses to use DHCP, in which case no explicit gateway should be provided. For IPv6 the special string 'auto' can be used to use stateless autoconfiguration. This requires cloud-init 19.4 or newer.  If cloud-init is enabled and neither an IPv4 nor an IPv6 address is specified, it defaults to using dhcp on IPv4. 
 	Ipconfig12 *string `json:"ipconfig12,omitempty"`
-	// cloud-init: Specify IP addresses and gateways for the corresponding interface.  IP addresses use CIDR notation, gateways are optional but need an IP of the same type specified.  The special string 'dhcp' can be used for IP addresses to use DHCP, in which case no explicit gateway should be provided. For IPv6 the special string 'auto' can be used to use stateless autoconfiguration. This requires cloud-init 19.4 or newer.  If cloud-init is enabled and neither an IPv4 nor an IPv6 address is specified, it defaults to using dhcp on IPv4. 
 	Ipconfig13 *string `json:"ipconfig13,omitempty"`
-	// cloud-init: Specify IP addresses and gateways for the corresponding interface.  IP addresses use CIDR notation, gateways are optional but need an IP of the same type specified.  The special string 'dhcp' can be used for IP addresses to use DHCP, in which case no explicit gateway should be provided. For IPv6 the special string 'auto' can be used to use stateless autoconfiguration. This requires cloud-init 19.4 or newer.  If cloud-init is enabled and neither an IPv4 nor an IPv6 address is specified, it defaults to using dhcp on IPv4. 
 	Ipconfig14 *string `json:"ipconfig14,omitempty"`
-	// cloud-init: Specify IP addresses and gateways for the corresponding interface.  IP addresses use CIDR notation, gateways are optional but need an IP of the same type specified.  The special string 'dhcp' can be used for IP addresses to use DHCP, in which case no explicit gateway should be provided. For IPv6 the special string 'auto' can be used to use stateless autoconfiguration. This requires cloud-init 19.4 or newer.  If cloud-init is enabled and neither an IPv4 nor an IPv6 address is specified, it defaults to using dhcp on IPv4. 
 	Ipconfig15 *string `json:"ipconfig15,omitempty"`
-	// cloud-init: Specify IP addresses and gateways for the corresponding interface.  IP addresses use CIDR notation, gateways are optional but need an IP of the same type specified.  The special string 'dhcp' can be used for IP addresses to use DHCP, in which case no explicit gateway should be provided. For IPv6 the special string 'auto' can be used to use stateless autoconfiguration. This requires cloud-init 19.4 or newer.  If cloud-init is enabled and neither an IPv4 nor an IPv6 address is specified, it defaults to using dhcp on IPv4. 
 	Ipconfig16 *string `json:"ipconfig16,omitempty"`
-	// cloud-init: Specify IP addresses and gateways for the corresponding interface.  IP addresses use CIDR notation, gateways are optional but need an IP of the same type specified.  The special string 'dhcp' can be used for IP addresses to use DHCP, in which case no explicit gateway should be provided. For IPv6 the special string 'auto' can be used to use stateless autoconfiguration. This requires cloud-init 19.4 or newer.  If cloud-init is enabled and neither an IPv4 nor an IPv6 address is specified, it defaults to using dhcp on IPv4. 
 	Ipconfig17 *string `json:"ipconfig17,omitempty"`
-	// cloud-init: Specify IP addresses and gateways for the corresponding interface.  IP addresses use CIDR notation, gateways are optional but need an IP of the same type specified.  The special string 'dhcp' can be used for IP addresses to use DHCP, in which case no explicit gateway should be provided. For IPv6 the special string 'auto' can be used to use stateless autoconfiguration. This requires cloud-init 19.4 or newer.  If cloud-init is enabled and neither an IPv4 nor an IPv6 address is specified, it defaults to using dhcp on IPv4. 
 	Ipconfig18 *string `json:"ipconfig18,omitempty"`
-	// cloud-init: Specify IP addresses and gateways for the corresponding interface.  IP addresses use CIDR notation, gateways are optional but need an IP of the same type specified.  The special string 'dhcp' can be used for IP addresses to use DHCP, in which case no explicit gateway should be provided. For IPv6 the special string 'auto' can be used to use stateless autoconfiguration. This requires cloud-init 19.4 or newer.  If cloud-init is enabled and neither an IPv4 nor an IPv6 address is specified, it defaults to using dhcp on IPv4. 
 	Ipconfig19 *string `json:"ipconfig19,omitempty"`
-	// cloud-init: Specify IP addresses and gateways for the corresponding interface.  IP addresses use CIDR notation, gateways are optional but need an IP of the same type specified.  The special string 'dhcp' can be used for IP addresses to use DHCP, in which case no explicit gateway should be provided. For IPv6 the special string 'auto' can be used to use stateless autoconfiguration. This requires cloud-init 19.4 or newer.  If cloud-init is enabled and neither an IPv4 nor an IPv6 address is specified, it defaults to using dhcp on IPv4. 
 	Ipconfig20 *string `json:"ipconfig20,omitempty"`
-	// cloud-init: Specify IP addresses and gateways for the corresponding interface.  IP addresses use CIDR notation, gateways are optional but need an IP of the same type specified.  The special string 'dhcp' can be used for IP addresses to use DHCP, in which case no explicit gateway should be provided. For IPv6 the special string 'auto' can be used to use stateless autoconfiguration. This requires cloud-init 19.4 or newer.  If cloud-init is enabled and neither an IPv4 nor an IPv6 address is specified, it defaults to using dhcp on IPv4. 
 	Ipconfig21 *string `json:"ipconfig21,omitempty"`
-	// cloud-init: Specify IP addresses and gateways for the corresponding interface.  IP addresses use CIDR notation, gateways are optional but need an IP of the same type specified.  The special string 'dhcp' can be used for IP addresses to use DHCP, in which case no explicit gateway should be provided. For IPv6 the special string 'auto' can be used to use stateless autoconfiguration. This requires cloud-init 19.4 or newer.  If cloud-init is enabled and neither an IPv4 nor an IPv6 address is specified, it defaults to using dhcp on IPv4. 
 	Ipconfig22 *string `json:"ipconfig22,omitempty"`
-	// cloud-init: Specify IP addresses and gateways for the corresponding interface.  IP addresses use CIDR notation, gateways are optional but need an IP of the same type specified.  The special string 'dhcp' can be used for IP addresses to use DHCP, in which case no explicit gateway should be provided. For IPv6 the special string 'auto' can be used to use stateless autoconfiguration. This requires cloud-init 19.4 or newer.  If cloud-init is enabled and neither an IPv4 nor an IPv6 address is specified, it defaults to using dhcp on IPv4. 
 	Ipconfig23 *string `json:"ipconfig23,omitempty"`
-	// cloud-init: Specify IP addresses and gateways for the corresponding interface.  IP addresses use CIDR notation, gateways are optional but need an IP of the same type specified.  The special string 'dhcp' can be used for IP addresses to use DHCP, in which case no explicit gateway should be provided. For IPv6 the special string 'auto' can be used to use stateless autoconfiguration. This requires cloud-init 19.4 or newer.  If cloud-init is enabled and neither an IPv4 nor an IPv6 address is specified, it defaults to using dhcp on IPv4. 
 	Ipconfig24 *string `json:"ipconfig24,omitempty"`
-	// cloud-init: Specify IP addresses and gateways for the corresponding interface.  IP addresses use CIDR notation, gateways are optional but need an IP of the same type specified.  The special string 'dhcp' can be used for IP addresses to use DHCP, in which case no explicit gateway should be provided. For IPv6 the special string 'auto' can be used to use stateless autoconfiguration. This requires cloud-init 19.4 or newer.  If cloud-init is enabled and neither an IPv4 nor an IPv6 address is specified, it defaults to using dhcp on IPv4. 
 	Ipconfig25 *string `json:"ipconfig25,omitempty"`
-	// cloud-init: Specify IP addresses and gateways for the corresponding interface.  IP addresses use CIDR notation, gateways are optional but need an IP of the same type specified.  The special string 'dhcp' can be used for IP addresses to use DHCP, in which case no explicit gateway should be provided. For IPv6 the special string 'auto' can be used to use stateless autoconfiguration. This requires cloud-init 19.4 or newer.  If cloud-init is enabled and neither an IPv4 nor an IPv6 address is specified, it defaults to using dhcp on IPv4. 
 	Ipconfig26 *string `json:"ipconfig26,omitempty"`
-	// cloud-init: Specify IP addresses and gateways for the corresponding interface.  IP addresses use CIDR notation, gateways are optional but need an IP of the same type specified.  The special string 'dhcp' can be used for IP addresses to use DHCP, in which case no explicit gateway should be provided. For IPv6 the special string 'auto' can be used to use stateless autoconfiguration. This requires cloud-init 19.4 or newer.  If cloud-init is enabled and neither an IPv4 nor an IPv6 address is specified, it defaults to using dhcp on IPv4. 
 	Ipconfig27 *string `json:"ipconfig27,omitempty"`
-	// cloud-init: Specify IP addresses and gateways for the corresponding interface.  IP addresses use CIDR notation, gateways are optional but need an IP of the same type specified.  The special string 'dhcp' can be used for IP addresses to use DHCP, in which case no explicit gateway should be provided. For IPv6 the special string 'auto' can be used to use stateless autoconfiguration. This requires cloud-init 19.4 or newer.  If cloud-init is enabled and neither an IPv4 nor an IPv6 address is specified, it defaults to using dhcp on IPv4. 
 	Ipconfig28 *string `json:"ipconfig28,omitempty"`
-	// cloud-init: Specify IP addresses and gateways for the corresponding interface.  IP addresses use CIDR notation, gateways are optional but need an IP of the same type specified.  The special string 'dhcp' can be used for IP addresses to use DHCP, in which case no explicit gateway should be provided. For IPv6 the special string 'auto' can be used to use stateless autoconfiguration. This requires cloud-init 19.4 or newer.  If cloud-init is enabled and neither an IPv4 nor an IPv6 address is specified, it defaults to using dhcp on IPv4. 
 	Ipconfig29 *string `json:"ipconfig29,omitempty"`
-	// Inter-VM shared memory. Useful for direct communication between VMs, or to the host.
 	Ivshmem *string `json:"ivshmem,omitempty"`
-	// Use together with hugepages. If enabled, hugepages will not not be deleted after VM shutdown and can be used for subsequent starts.
-	Keephugepages *int32 `json:"keephugepages,omitempty"`
-	// Keyboard layout for VNC server. This option is generally not required and is often better handled from within the guest OS.
+	Keephugepages *bool `json:"keephugepages,omitempty"`
 	Keyboard *string `json:"keyboard,omitempty"`
-	// Enable/disable KVM hardware virtualization.
-	Kvm *int32 `json:"kvm,omitempty"`
-	// Start the VM immediately from the backup and restore in background. PBS only.
-	LiveRestore *int32 `json:"live-restore,omitempty"`
-	// Set the real time clock (RTC) to local time. This is enabled by default if the `ostype` indicates a Microsoft Windows OS.
-	Localtime *int32 `json:"localtime,omitempty"`
-	// Lock/unlock the VM.
+	Kvm *bool `json:"kvm,omitempty"`
+	LiveRestore *bool `json:"live-restore,omitempty"`
+	Localtime *bool `json:"localtime,omitempty"`
 	Lock *string `json:"lock,omitempty"`
-	// Specifies the QEMU machine type.
 	Machine *string `json:"machine,omitempty"`
-	// Memory
-	Memory *int64 `json:"memory,omitempty"`
-	// Set maximum tolerated downtime (in seconds) for migrations.
+	Memory *string `json:"memory,omitempty"`
 	MigrateDowntime *float32 `json:"migrate_downtime,omitempty"`
-	// Set maximum speed (in MB/s) for migrations. Value 0 is no limit.
 	MigrateSpeed *int64 `json:"migrate_speed,omitempty"`
-	// Set a name for the VM. Only used on the configuration web interface.
 	Name *string `json:"name,omitempty"`
-	// cloud-init: Sets DNS server IP address for a container. Create will automatically use the setting from the host if neither searchdomain nor nameserver are set.
 	Nameserver *string `json:"nameserver,omitempty"`
-	// Specify network devices.
 	Net0 *string `json:"net0,omitempty"`
-	// Specify network devices.
 	Net1 *string `json:"net1,omitempty"`
-	// Specify network devices.
 	Net2 *string `json:"net2,omitempty"`
-	// Specify network devices.
 	Net3 *string `json:"net3,omitempty"`
-	// Specify network devices.
 	Net4 *string `json:"net4,omitempty"`
-	// Specify network devices.
 	Net5 *string `json:"net5,omitempty"`
-	// Specify network devices.
 	Net6 *string `json:"net6,omitempty"`
-	// Specify network devices.
 	Net7 *string `json:"net7,omitempty"`
-	// Specify network devices.
 	Net8 *string `json:"net8,omitempty"`
-	// Specify network devices.
 	Net9 *string `json:"net9,omitempty"`
-	// Specify network devices.
 	Net10 *string `json:"net10,omitempty"`
-	// Specify network devices.
 	Net11 *string `json:"net11,omitempty"`
-	// Specify network devices.
 	Net12 *string `json:"net12,omitempty"`
-	// Specify network devices.
 	Net13 *string `json:"net13,omitempty"`
-	// Specify network devices.
 	Net14 *string `json:"net14,omitempty"`
-	// Specify network devices.
 	Net15 *string `json:"net15,omitempty"`
-	// Specify network devices.
 	Net16 *string `json:"net16,omitempty"`
-	// Specify network devices.
 	Net17 *string `json:"net17,omitempty"`
-	// Specify network devices.
 	Net18 *string `json:"net18,omitempty"`
-	// Specify network devices.
 	Net19 *string `json:"net19,omitempty"`
-	// Specify network devices.
 	Net20 *string `json:"net20,omitempty"`
-	// Specify network devices.
 	Net21 *string `json:"net21,omitempty"`
-	// Specify network devices.
 	Net22 *string `json:"net22,omitempty"`
-	// Specify network devices.
 	Net23 *string `json:"net23,omitempty"`
-	// Specify network devices.
 	Net24 *string `json:"net24,omitempty"`
-	// Specify network devices.
 	Net25 *string `json:"net25,omitempty"`
-	// Specify network devices.
 	Net26 *string `json:"net26,omitempty"`
-	// Specify network devices.
 	Net27 *string `json:"net27,omitempty"`
-	// Specify network devices.
 	Net28 *string `json:"net28,omitempty"`
-	// Specify network devices.
 	Net29 *string `json:"net29,omitempty"`
-	// Specify network devices.
 	Net30 *string `json:"net30,omitempty"`
-	// Specify network devices.
 	Net31 *string `json:"net31,omitempty"`
-	// Enable/disable NUMA.
-	Numa *int32 `json:"numa,omitempty"`
-	// NUMA topology.
+	Numa *bool `json:"numa,omitempty"`
 	Numa0 *string `json:"numa0,omitempty"`
-	// NUMA topology.
 	Numa1 *string `json:"numa1,omitempty"`
-	// NUMA topology.
 	Numa2 *string `json:"numa2,omitempty"`
-	// NUMA topology.
 	Numa3 *string `json:"numa3,omitempty"`
-	// NUMA topology.
 	Numa4 *string `json:"numa4,omitempty"`
-	// NUMA topology.
 	Numa5 *string `json:"numa5,omitempty"`
-	// NUMA topology.
 	Numa6 *string `json:"numa6,omitempty"`
-	// NUMA topology.
 	Numa7 *string `json:"numa7,omitempty"`
-	// NUMA topology.
 	Numa8 *string `json:"numa8,omitempty"`
-	// NUMA topology.
 	Numa9 *string `json:"numa9,omitempty"`
-	// NUMA topology.
 	Numa10 *string `json:"numa10,omitempty"`
-	// NUMA topology.
 	Numa11 *string `json:"numa11,omitempty"`
-	// NUMA topology.
 	Numa12 *string `json:"numa12,omitempty"`
-	// NUMA topology.
 	Numa13 *string `json:"numa13,omitempty"`
-	// NUMA topology.
 	Numa14 *string `json:"numa14,omitempty"`
-	// NUMA topology.
 	Numa15 *string `json:"numa15,omitempty"`
-	// NUMA topology.
 	Numa16 *string `json:"numa16,omitempty"`
-	// NUMA topology.
 	Numa17 *string `json:"numa17,omitempty"`
-	// NUMA topology.
 	Numa18 *string `json:"numa18,omitempty"`
-	// NUMA topology.
 	Numa19 *string `json:"numa19,omitempty"`
-	// NUMA topology.
 	Numa20 *string `json:"numa20,omitempty"`
-	// NUMA topology.
 	Numa21 *string `json:"numa21,omitempty"`
-	// NUMA topology.
 	Numa22 *string `json:"numa22,omitempty"`
-	// NUMA topology.
 	Numa23 *string `json:"numa23,omitempty"`
-	// NUMA topology.
 	Numa24 *string `json:"numa24,omitempty"`
-	// NUMA topology.
 	Numa25 *string `json:"numa25,omitempty"`
-	// NUMA topology.
 	Numa26 *string `json:"numa26,omitempty"`
-	// NUMA topology.
 	Numa27 *string `json:"numa27,omitempty"`
-	// NUMA topology.
 	Numa28 *string `json:"numa28,omitempty"`
-	// NUMA topology.
 	Numa29 *string `json:"numa29,omitempty"`
-	// Specifies whether a VM will be started during system bootup.
-	Onboot *int32 `json:"onboot,omitempty"`
-	// Specify guest operating system.
+	Onboot *bool `json:"onboot,omitempty"`
 	Ostype *string `json:"ostype,omitempty"`
-	// Map host parallel devices (n is 0 to 2).
 	Parallel0 *string `json:"parallel0,omitempty"`
-	// Map host parallel devices (n is 0 to 2).
 	Parallel1 *string `json:"parallel1,omitempty"`
-	// Map host parallel devices (n is 0 to 2).
 	Parallel2 *string `json:"parallel2,omitempty"`
-	// Map host parallel devices (n is 0 to 2).
 	Parallel3 *string `json:"parallel3,omitempty"`
-	// Add the VM to the specified pool.
 	Pool *string `json:"pool,omitempty"`
-	// Sets the protection flag of the VM. This will disable the remove VM and remove disk operations.
-	Protection *int32 `json:"protection,omitempty"`
-	// Allow reboot. If set to '0' the VM exit on reboot.
-	Reboot *int32 `json:"reboot,omitempty"`
-	// Configure a VirtIO-based Random Number Generator.
+	Protection *bool `json:"protection,omitempty"`
+	Reboot *bool `json:"reboot,omitempty"`
 	Rng0 *string `json:"rng0,omitempty"`
-	// Use volume as SATA hard disk or CD-ROM (n is 0 to 5). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.
 	Sata0 *string `json:"sata0,omitempty"`
-	// Use volume as SATA hard disk or CD-ROM (n is 0 to 5). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.
 	Sata1 *string `json:"sata1,omitempty"`
-	// Use volume as SATA hard disk or CD-ROM (n is 0 to 5). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.
 	Sata2 *string `json:"sata2,omitempty"`
-	// Use volume as SATA hard disk or CD-ROM (n is 0 to 5). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.
 	Sata3 *string `json:"sata3,omitempty"`
-	// Use volume as SATA hard disk or CD-ROM (n is 0 to 5). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.
 	Sata4 *string `json:"sata4,omitempty"`
-	// Use volume as SATA hard disk or CD-ROM (n is 0 to 5). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.
 	Sata5 *string `json:"sata5,omitempty"`
-	// Use volume as SCSI hard disk or CD-ROM (n is 0 to 30). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.
 	Scsi0 *string `json:"scsi0,omitempty"`
-	// Use volume as SCSI hard disk or CD-ROM (n is 0 to 30). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.
 	Scsi1 *string `json:"scsi1,omitempty"`
-	// Use volume as SCSI hard disk or CD-ROM (n is 0 to 30). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.
 	Scsi2 *string `json:"scsi2,omitempty"`
-	// Use volume as SCSI hard disk or CD-ROM (n is 0 to 30). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.
 	Scsi3 *string `json:"scsi3,omitempty"`
-	// Use volume as SCSI hard disk or CD-ROM (n is 0 to 30). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.
 	Scsi4 *string `json:"scsi4,omitempty"`
-	// Use volume as SCSI hard disk or CD-ROM (n is 0 to 30). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.
 	Scsi5 *string `json:"scsi5,omitempty"`
-	// Use volume as SCSI hard disk or CD-ROM (n is 0 to 30). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.
 	Scsi6 *string `json:"scsi6,omitempty"`
-	// Use volume as SCSI hard disk or CD-ROM (n is 0 to 30). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.
 	Scsi7 *string `json:"scsi7,omitempty"`
-	// Use volume as SCSI hard disk or CD-ROM (n is 0 to 30). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.
 	Scsi8 *string `json:"scsi8,omitempty"`
-	// Use volume as SCSI hard disk or CD-ROM (n is 0 to 30). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.
 	Scsi9 *string `json:"scsi9,omitempty"`
-	// Use volume as SCSI hard disk or CD-ROM (n is 0 to 30). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.
 	Scsi10 *string `json:"scsi10,omitempty"`
-	// Use volume as SCSI hard disk or CD-ROM (n is 0 to 30). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.
 	Scsi11 *string `json:"scsi11,omitempty"`
-	// Use volume as SCSI hard disk or CD-ROM (n is 0 to 30). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.
 	Scsi12 *string `json:"scsi12,omitempty"`
-	// Use volume as SCSI hard disk or CD-ROM (n is 0 to 30). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.
 	Scsi13 *string `json:"scsi13,omitempty"`
-	// Use volume as SCSI hard disk or CD-ROM (n is 0 to 30). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.
 	Scsi14 *string `json:"scsi14,omitempty"`
-	// Use volume as SCSI hard disk or CD-ROM (n is 0 to 30). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.
 	Scsi15 *string `json:"scsi15,omitempty"`
-	// Use volume as SCSI hard disk or CD-ROM (n is 0 to 30). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.
 	Scsi16 *string `json:"scsi16,omitempty"`
-	// Use volume as SCSI hard disk or CD-ROM (n is 0 to 30). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.
 	Scsi17 *string `json:"scsi17,omitempty"`
-	// Use volume as SCSI hard disk or CD-ROM (n is 0 to 30). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.
 	Scsi18 *string `json:"scsi18,omitempty"`
-	// Use volume as SCSI hard disk or CD-ROM (n is 0 to 30). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.
 	Scsi19 *string `json:"scsi19,omitempty"`
-	// Use volume as SCSI hard disk or CD-ROM (n is 0 to 30). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.
 	Scsi20 *string `json:"scsi20,omitempty"`
-	// Use volume as SCSI hard disk or CD-ROM (n is 0 to 30). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.
 	Scsi21 *string `json:"scsi21,omitempty"`
-	// Use volume as SCSI hard disk or CD-ROM (n is 0 to 30). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.
 	Scsi22 *string `json:"scsi22,omitempty"`
-	// Use volume as SCSI hard disk or CD-ROM (n is 0 to 30). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.
 	Scsi23 *string `json:"scsi23,omitempty"`
-	// Use volume as SCSI hard disk or CD-ROM (n is 0 to 30). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.
 	Scsi24 *string `json:"scsi24,omitempty"`
-	// Use volume as SCSI hard disk or CD-ROM (n is 0 to 30). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.
 	Scsi25 *string `json:"scsi25,omitempty"`
-	// Use volume as SCSI hard disk or CD-ROM (n is 0 to 30). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.
 	Scsi26 *string `json:"scsi26,omitempty"`
-	// Use volume as SCSI hard disk or CD-ROM (n is 0 to 30). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.
 	Scsi27 *string `json:"scsi27,omitempty"`
-	// Use volume as SCSI hard disk or CD-ROM (n is 0 to 30). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.
 	Scsi28 *string `json:"scsi28,omitempty"`
-	// Use volume as SCSI hard disk or CD-ROM (n is 0 to 30). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.
 	Scsi29 *string `json:"scsi29,omitempty"`
-	// SCSI controller model
 	Scsihw *string `json:"scsihw,omitempty"`
-	// cloud-init: Sets DNS search domains for a container. Create will automatically use the setting from the host if neither searchdomain nor nameserver are set.
 	Searchdomain *string `json:"searchdomain,omitempty"`
-	// Create a serial device inside the VM (n is 0 to 3)
 	Serial0 *string `json:"serial0,omitempty"`
-	// Create a serial device inside the VM (n is 0 to 3)
 	Serial1 *string `json:"serial1,omitempty"`
-	// Create a serial device inside the VM (n is 0 to 3)
 	Serial2 *string `json:"serial2,omitempty"`
-	// Create a serial device inside the VM (n is 0 to 3)
 	Serial3 *string `json:"serial3,omitempty"`
-	// Amount of memory shares for auto-ballooning. The larger the number is, the more memory this VM gets. Number is relative to weights of all other running VMs. Using zero disables auto-ballooning. Auto-ballooning is done by pvestatd.
 	Shares *int64 `json:"shares,omitempty"`
-	// Specify SMBIOS type 1 fields.
 	Smbios1 *string `json:"smbios1,omitempty"`
-	// The number of CPUs. Please use option -sockets instead.
 	Smp *int64 `json:"smp,omitempty"`
-	// The number of CPU sockets.
 	Sockets *int64 `json:"sockets,omitempty"`
-	// Configure additional enhancements for SPICE.
 	SpiceEnhancements *string `json:"spice_enhancements,omitempty"`
-	// cloud-init: Setup public SSH keys (one key per line, OpenSSH format).
 	Sshkeys *string `json:"sshkeys,omitempty"`
-	// Start VM after it was created successfully.
-	Start *int32 `json:"start,omitempty"`
-	// Set the initial date of the real time clock. Valid format for date are:'now' or '2006-06-17T16:01:21' or '2006-06-17'.
+	Start *bool `json:"start,omitempty"`
 	Startdate *string `json:"startdate,omitempty"`
-	// Startup and shutdown behavior. Order is a non-negative number defining the general startup order. Shutdown in done with reverse ordering. Additionally you can set the 'up' or 'down' delay in seconds, which specifies a delay to wait before the next VM is started or stopped.
 	Startup *string `json:"startup,omitempty"`
-	// Default storage.
 	Storage *string `json:"storage,omitempty"`
-	// Enable/disable the USB tablet device.
-	Tablet *int32 `json:"tablet,omitempty"`
-	// Tags of the VM. This is only meta information.
+	Tablet *bool `json:"tablet,omitempty"`
 	Tags *string `json:"tags,omitempty"`
-	// Enable/disable time drift fix.
-	Tdf *int32 `json:"tdf,omitempty"`
-	// Enable/disable Template.
-	Template *int32 `json:"template,omitempty"`
-	// Configure a Disk for storing TPM state. The format is fixed to 'raw'. Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Note that SIZE_IN_GiB is ignored here and 4 MiB will be used instead. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.
+	Tdf *bool `json:"tdf,omitempty"`
+	Template *bool `json:"template,omitempty"`
 	Tpmstate0 *string `json:"tpmstate0,omitempty"`
-	// Assign a unique random ethernet address.
-	Unique *int32 `json:"unique,omitempty"`
-	// Reference to unused volumes. This is used internally, and should not be modified manually.
+	Unique *bool `json:"unique,omitempty"`
 	Unused0 *string `json:"unused0,omitempty"`
-	// Reference to unused volumes. This is used internally, and should not be modified manually.
 	Unused1 *string `json:"unused1,omitempty"`
-	// Reference to unused volumes. This is used internally, and should not be modified manually.
 	Unused2 *string `json:"unused2,omitempty"`
-	// Reference to unused volumes. This is used internally, and should not be modified manually.
 	Unused3 *string `json:"unused3,omitempty"`
-	// Reference to unused volumes. This is used internally, and should not be modified manually.
 	Unused4 *string `json:"unused4,omitempty"`
-	// Reference to unused volumes. This is used internally, and should not be modified manually.
 	Unused5 *string `json:"unused5,omitempty"`
-	// Reference to unused volumes. This is used internally, and should not be modified manually.
 	Unused6 *string `json:"unused6,omitempty"`
-	// Reference to unused volumes. This is used internally, and should not be modified manually.
 	Unused7 *string `json:"unused7,omitempty"`
-	// Reference to unused volumes. This is used internally, and should not be modified manually.
 	Unused8 *string `json:"unused8,omitempty"`
-	// Reference to unused volumes. This is used internally, and should not be modified manually.
 	Unused9 *string `json:"unused9,omitempty"`
-	// Reference to unused volumes. This is used internally, and should not be modified manually.
 	Unused10 *string `json:"unused10,omitempty"`
-	// Reference to unused volumes. This is used internally, and should not be modified manually.
 	Unused11 *string `json:"unused11,omitempty"`
-	// Reference to unused volumes. This is used internally, and should not be modified manually.
 	Unused12 *string `json:"unused12,omitempty"`
-	// Reference to unused volumes. This is used internally, and should not be modified manually.
 	Unused13 *string `json:"unused13,omitempty"`
-	// Reference to unused volumes. This is used internally, and should not be modified manually.
 	Unused14 *string `json:"unused14,omitempty"`
-	// Reference to unused volumes. This is used internally, and should not be modified manually.
 	Unused15 *string `json:"unused15,omitempty"`
-	// Reference to unused volumes. This is used internally, and should not be modified manually.
 	Unused16 *string `json:"unused16,omitempty"`
-	// Reference to unused volumes. This is used internally, and should not be modified manually.
 	Unused17 *string `json:"unused17,omitempty"`
-	// Reference to unused volumes. This is used internally, and should not be modified manually.
 	Unused18 *string `json:"unused18,omitempty"`
-	// Reference to unused volumes. This is used internally, and should not be modified manually.
 	Unused19 *string `json:"unused19,omitempty"`
-	// Reference to unused volumes. This is used internally, and should not be modified manually.
 	Unused20 *string `json:"unused20,omitempty"`
-	// Reference to unused volumes. This is used internally, and should not be modified manually.
 	Unused21 *string `json:"unused21,omitempty"`
-	// Reference to unused volumes. This is used internally, and should not be modified manually.
 	Unused22 *string `json:"unused22,omitempty"`
-	// Reference to unused volumes. This is used internally, and should not be modified manually.
 	Unused23 *string `json:"unused23,omitempty"`
-	// Reference to unused volumes. This is used internally, and should not be modified manually.
 	Unused24 *string `json:"unused24,omitempty"`
-	// Reference to unused volumes. This is used internally, and should not be modified manually.
 	Unused25 *string `json:"unused25,omitempty"`
-	// Reference to unused volumes. This is used internally, and should not be modified manually.
 	Unused26 *string `json:"unused26,omitempty"`
-	// Reference to unused volumes. This is used internally, and should not be modified manually.
 	Unused27 *string `json:"unused27,omitempty"`
-	// Reference to unused volumes. This is used internally, and should not be modified manually.
 	Unused28 *string `json:"unused28,omitempty"`
-	// Reference to unused volumes. This is used internally, and should not be modified manually.
 	Unused29 *string `json:"unused29,omitempty"`
-	// Configure an USB device (n is 0 to 4, for machine version >= 7.1 and ostype l26 or windows > 7, n can be up to 14).
 	Usb0 *string `json:"usb0,omitempty"`
-	// Configure an USB device (n is 0 to 4, for machine version >= 7.1 and ostype l26 or windows > 7, n can be up to 14).
 	Usb1 *string `json:"usb1,omitempty"`
-	// Configure an USB device (n is 0 to 4, for machine version >= 7.1 and ostype l26 or windows > 7, n can be up to 14).
 	Usb2 *string `json:"usb2,omitempty"`
-	// Configure an USB device (n is 0 to 4, for machine version >= 7.1 and ostype l26 or windows > 7, n can be up to 14).
 	Usb3 *string `json:"usb3,omitempty"`
-	// Number of hotplugged vcpus.
 	Vcpus *int64 `json:"vcpus,omitempty"`
-	// Configure the VGA hardware.
 	Vga *string `json:"vga,omitempty"`
-	// Use volume as VIRTIO hard disk (n is 0 to 15). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.
 	Virtio0 *string `json:"virtio0,omitempty"`
-	// Use volume as VIRTIO hard disk (n is 0 to 15). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.
 	Virtio1 *string `json:"virtio1,omitempty"`
-	// Use volume as VIRTIO hard disk (n is 0 to 15). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.
 	Virtio2 *string `json:"virtio2,omitempty"`
-	// Use volume as VIRTIO hard disk (n is 0 to 15). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.
 	Virtio3 *string `json:"virtio3,omitempty"`
-	// Use volume as VIRTIO hard disk (n is 0 to 15). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.
 	Virtio4 *string `json:"virtio4,omitempty"`
-	// Use volume as VIRTIO hard disk (n is 0 to 15). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.
 	Virtio5 *string `json:"virtio5,omitempty"`
-	// Use volume as VIRTIO hard disk (n is 0 to 15). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.
 	Virtio6 *string `json:"virtio6,omitempty"`
-	// Use volume as VIRTIO hard disk (n is 0 to 15). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.
 	Virtio7 *string `json:"virtio7,omitempty"`
-	// Use volume as VIRTIO hard disk (n is 0 to 15). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.
 	Virtio8 *string `json:"virtio8,omitempty"`
-	// Use volume as VIRTIO hard disk (n is 0 to 15). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.
 	Virtio9 *string `json:"virtio9,omitempty"`
-	// Use volume as VIRTIO hard disk (n is 0 to 15). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.
 	Virtio10 *string `json:"virtio10,omitempty"`
-	// Use volume as VIRTIO hard disk (n is 0 to 15). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.
 	Virtio11 *string `json:"virtio11,omitempty"`
-	// Use volume as VIRTIO hard disk (n is 0 to 15). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.
 	Virtio12 *string `json:"virtio12,omitempty"`
-	// Use volume as VIRTIO hard disk (n is 0 to 15). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.
 	Virtio13 *string `json:"virtio13,omitempty"`
-	// Use volume as VIRTIO hard disk (n is 0 to 15). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.
 	Virtio14 *string `json:"virtio14,omitempty"`
-	// Use volume as VIRTIO hard disk (n is 0 to 15). Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume. Use STORAGE_ID:0 and the 'import-from' parameter to import from an existing volume.
 	Virtio15 *string `json:"virtio15,omitempty"`
-	// Set VM Generation ID. Use '1' to autogenerate on create or update, pass '0' to disable explicitly.
 	Vmgenid *string `json:"vmgenid,omitempty"`
-	// The (unique) ID of the VM.
 	Vmid int64 `json:"vmid"`
-	// Default storage for VM state volumes/files.
 	Vmstatestorage *string `json:"vmstatestorage,omitempty"`
-	// Create a virtual hardware watchdog device.
 	Watchdog *string `json:"watchdog,omitempty"`
 }
-
-type _CreateVMRequest CreateVMRequest
 
 // NewCreateVMRequest instantiates a new CreateVMRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -632,9 +337,9 @@ func NewCreateVMRequestWithDefaults() *CreateVMRequest {
 }
 
 // GetAcpi returns the Acpi field value if set, zero value otherwise.
-func (o *CreateVMRequest) GetAcpi() int32 {
+func (o *CreateVMRequest) GetAcpi() bool {
 	if o == nil || IsNil(o.Acpi) {
-		var ret int32
+		var ret bool
 		return ret
 	}
 	return *o.Acpi
@@ -642,7 +347,7 @@ func (o *CreateVMRequest) GetAcpi() int32 {
 
 // GetAcpiOk returns a tuple with the Acpi field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateVMRequest) GetAcpiOk() (*int32, bool) {
+func (o *CreateVMRequest) GetAcpiOk() (*bool, bool) {
 	if o == nil || IsNil(o.Acpi) {
 		return nil, false
 	}
@@ -658,8 +363,8 @@ func (o *CreateVMRequest) HasAcpi() bool {
 	return false
 }
 
-// SetAcpi gets a reference to the given int32 and assigns it to the Acpi field.
-func (o *CreateVMRequest) SetAcpi(v int32) {
+// SetAcpi gets a reference to the given bool and assigns it to the Acpi field.
+func (o *CreateVMRequest) SetAcpi(v bool) {
 	o.Acpi = &v
 }
 
@@ -725,6 +430,38 @@ func (o *CreateVMRequest) HasAgent() bool {
 // SetAgent gets a reference to the given string and assigns it to the Agent field.
 func (o *CreateVMRequest) SetAgent(v string) {
 	o.Agent = &v
+}
+
+// GetAmdSev returns the AmdSev field value if set, zero value otherwise.
+func (o *CreateVMRequest) GetAmdSev() string {
+	if o == nil || IsNil(o.AmdSev) {
+		var ret string
+		return ret
+	}
+	return *o.AmdSev
+}
+
+// GetAmdSevOk returns a tuple with the AmdSev field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateVMRequest) GetAmdSevOk() (*string, bool) {
+	if o == nil || IsNil(o.AmdSev) {
+		return nil, false
+	}
+	return o.AmdSev, true
+}
+
+// HasAmdSev returns a boolean if a field has been set.
+func (o *CreateVMRequest) HasAmdSev() bool {
+	if o != nil && !IsNil(o.AmdSev) {
+		return true
+	}
+
+	return false
+}
+
+// SetAmdSev gets a reference to the given string and assigns it to the AmdSev field.
+func (o *CreateVMRequest) SetAmdSev(v string) {
+	o.AmdSev = &v
 }
 
 // GetArch returns the Arch field value if set, zero value otherwise.
@@ -856,9 +593,9 @@ func (o *CreateVMRequest) SetAudio0(v string) {
 }
 
 // GetAutostart returns the Autostart field value if set, zero value otherwise.
-func (o *CreateVMRequest) GetAutostart() int32 {
+func (o *CreateVMRequest) GetAutostart() bool {
 	if o == nil || IsNil(o.Autostart) {
-		var ret int32
+		var ret bool
 		return ret
 	}
 	return *o.Autostart
@@ -866,7 +603,7 @@ func (o *CreateVMRequest) GetAutostart() int32 {
 
 // GetAutostartOk returns a tuple with the Autostart field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateVMRequest) GetAutostartOk() (*int32, bool) {
+func (o *CreateVMRequest) GetAutostartOk() (*bool, bool) {
 	if o == nil || IsNil(o.Autostart) {
 		return nil, false
 	}
@@ -882,8 +619,8 @@ func (o *CreateVMRequest) HasAutostart() bool {
 	return false
 }
 
-// SetAutostart gets a reference to the given int32 and assigns it to the Autostart field.
-func (o *CreateVMRequest) SetAutostart(v int32) {
+// SetAutostart gets a reference to the given bool and assigns it to the Autostart field.
+func (o *CreateVMRequest) SetAutostart(v bool) {
 	o.Autostart = &v
 }
 
@@ -1176,9 +913,9 @@ func (o *CreateVMRequest) SetCitype(v string) {
 }
 
 // GetCiupgrade returns the Ciupgrade field value if set, zero value otherwise.
-func (o *CreateVMRequest) GetCiupgrade() int32 {
+func (o *CreateVMRequest) GetCiupgrade() bool {
 	if o == nil || IsNil(o.Ciupgrade) {
-		var ret int32
+		var ret bool
 		return ret
 	}
 	return *o.Ciupgrade
@@ -1186,7 +923,7 @@ func (o *CreateVMRequest) GetCiupgrade() int32 {
 
 // GetCiupgradeOk returns a tuple with the Ciupgrade field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateVMRequest) GetCiupgradeOk() (*int32, bool) {
+func (o *CreateVMRequest) GetCiupgradeOk() (*bool, bool) {
 	if o == nil || IsNil(o.Ciupgrade) {
 		return nil, false
 	}
@@ -1202,8 +939,8 @@ func (o *CreateVMRequest) HasCiupgrade() bool {
 	return false
 }
 
-// SetCiupgrade gets a reference to the given int32 and assigns it to the Ciupgrade field.
-func (o *CreateVMRequest) SetCiupgrade(v int32) {
+// SetCiupgrade gets a reference to the given bool and assigns it to the Ciupgrade field.
+func (o *CreateVMRequest) SetCiupgrade(v bool) {
 	o.Ciupgrade = &v
 }
 
@@ -1432,9 +1169,9 @@ func (o *CreateVMRequest) SetEfidisk0(v string) {
 }
 
 // GetForce returns the Force field value if set, zero value otherwise.
-func (o *CreateVMRequest) GetForce() int32 {
+func (o *CreateVMRequest) GetForce() bool {
 	if o == nil || IsNil(o.Force) {
-		var ret int32
+		var ret bool
 		return ret
 	}
 	return *o.Force
@@ -1442,7 +1179,7 @@ func (o *CreateVMRequest) GetForce() int32 {
 
 // GetForceOk returns a tuple with the Force field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateVMRequest) GetForceOk() (*int32, bool) {
+func (o *CreateVMRequest) GetForceOk() (*bool, bool) {
 	if o == nil || IsNil(o.Force) {
 		return nil, false
 	}
@@ -1458,15 +1195,15 @@ func (o *CreateVMRequest) HasForce() bool {
 	return false
 }
 
-// SetForce gets a reference to the given int32 and assigns it to the Force field.
-func (o *CreateVMRequest) SetForce(v int32) {
+// SetForce gets a reference to the given bool and assigns it to the Force field.
+func (o *CreateVMRequest) SetForce(v bool) {
 	o.Force = &v
 }
 
 // GetFreeze returns the Freeze field value if set, zero value otherwise.
-func (o *CreateVMRequest) GetFreeze() int32 {
+func (o *CreateVMRequest) GetFreeze() bool {
 	if o == nil || IsNil(o.Freeze) {
-		var ret int32
+		var ret bool
 		return ret
 	}
 	return *o.Freeze
@@ -1474,7 +1211,7 @@ func (o *CreateVMRequest) GetFreeze() int32 {
 
 // GetFreezeOk returns a tuple with the Freeze field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateVMRequest) GetFreezeOk() (*int32, bool) {
+func (o *CreateVMRequest) GetFreezeOk() (*bool, bool) {
 	if o == nil || IsNil(o.Freeze) {
 		return nil, false
 	}
@@ -1490,8 +1227,8 @@ func (o *CreateVMRequest) HasFreeze() bool {
 	return false
 }
 
-// SetFreeze gets a reference to the given int32 and assigns it to the Freeze field.
-func (o *CreateVMRequest) SetFreeze(v int32) {
+// SetFreeze gets a reference to the given bool and assigns it to the Freeze field.
+func (o *CreateVMRequest) SetFreeze(v bool) {
 	o.Freeze = &v
 }
 
@@ -2679,6 +2416,38 @@ func (o *CreateVMRequest) SetIde3(v string) {
 	o.Ide3 = &v
 }
 
+// GetImportWorkingStorage returns the ImportWorkingStorage field value if set, zero value otherwise.
+func (o *CreateVMRequest) GetImportWorkingStorage() string {
+	if o == nil || IsNil(o.ImportWorkingStorage) {
+		var ret string
+		return ret
+	}
+	return *o.ImportWorkingStorage
+}
+
+// GetImportWorkingStorageOk returns a tuple with the ImportWorkingStorage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateVMRequest) GetImportWorkingStorageOk() (*string, bool) {
+	if o == nil || IsNil(o.ImportWorkingStorage) {
+		return nil, false
+	}
+	return o.ImportWorkingStorage, true
+}
+
+// HasImportWorkingStorage returns a boolean if a field has been set.
+func (o *CreateVMRequest) HasImportWorkingStorage() bool {
+	if o != nil && !IsNil(o.ImportWorkingStorage) {
+		return true
+	}
+
+	return false
+}
+
+// SetImportWorkingStorage gets a reference to the given string and assigns it to the ImportWorkingStorage field.
+func (o *CreateVMRequest) SetImportWorkingStorage(v string) {
+	o.ImportWorkingStorage = &v
+}
+
 // GetIpconfig0 returns the Ipconfig0 field value if set, zero value otherwise.
 func (o *CreateVMRequest) GetIpconfig0() string {
 	if o == nil || IsNil(o.Ipconfig0) {
@@ -3672,9 +3441,9 @@ func (o *CreateVMRequest) SetIvshmem(v string) {
 }
 
 // GetKeephugepages returns the Keephugepages field value if set, zero value otherwise.
-func (o *CreateVMRequest) GetKeephugepages() int32 {
+func (o *CreateVMRequest) GetKeephugepages() bool {
 	if o == nil || IsNil(o.Keephugepages) {
-		var ret int32
+		var ret bool
 		return ret
 	}
 	return *o.Keephugepages
@@ -3682,7 +3451,7 @@ func (o *CreateVMRequest) GetKeephugepages() int32 {
 
 // GetKeephugepagesOk returns a tuple with the Keephugepages field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateVMRequest) GetKeephugepagesOk() (*int32, bool) {
+func (o *CreateVMRequest) GetKeephugepagesOk() (*bool, bool) {
 	if o == nil || IsNil(o.Keephugepages) {
 		return nil, false
 	}
@@ -3698,8 +3467,8 @@ func (o *CreateVMRequest) HasKeephugepages() bool {
 	return false
 }
 
-// SetKeephugepages gets a reference to the given int32 and assigns it to the Keephugepages field.
-func (o *CreateVMRequest) SetKeephugepages(v int32) {
+// SetKeephugepages gets a reference to the given bool and assigns it to the Keephugepages field.
+func (o *CreateVMRequest) SetKeephugepages(v bool) {
 	o.Keephugepages = &v
 }
 
@@ -3736,9 +3505,9 @@ func (o *CreateVMRequest) SetKeyboard(v string) {
 }
 
 // GetKvm returns the Kvm field value if set, zero value otherwise.
-func (o *CreateVMRequest) GetKvm() int32 {
+func (o *CreateVMRequest) GetKvm() bool {
 	if o == nil || IsNil(o.Kvm) {
-		var ret int32
+		var ret bool
 		return ret
 	}
 	return *o.Kvm
@@ -3746,7 +3515,7 @@ func (o *CreateVMRequest) GetKvm() int32 {
 
 // GetKvmOk returns a tuple with the Kvm field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateVMRequest) GetKvmOk() (*int32, bool) {
+func (o *CreateVMRequest) GetKvmOk() (*bool, bool) {
 	if o == nil || IsNil(o.Kvm) {
 		return nil, false
 	}
@@ -3762,15 +3531,15 @@ func (o *CreateVMRequest) HasKvm() bool {
 	return false
 }
 
-// SetKvm gets a reference to the given int32 and assigns it to the Kvm field.
-func (o *CreateVMRequest) SetKvm(v int32) {
+// SetKvm gets a reference to the given bool and assigns it to the Kvm field.
+func (o *CreateVMRequest) SetKvm(v bool) {
 	o.Kvm = &v
 }
 
 // GetLiveRestore returns the LiveRestore field value if set, zero value otherwise.
-func (o *CreateVMRequest) GetLiveRestore() int32 {
+func (o *CreateVMRequest) GetLiveRestore() bool {
 	if o == nil || IsNil(o.LiveRestore) {
-		var ret int32
+		var ret bool
 		return ret
 	}
 	return *o.LiveRestore
@@ -3778,7 +3547,7 @@ func (o *CreateVMRequest) GetLiveRestore() int32 {
 
 // GetLiveRestoreOk returns a tuple with the LiveRestore field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateVMRequest) GetLiveRestoreOk() (*int32, bool) {
+func (o *CreateVMRequest) GetLiveRestoreOk() (*bool, bool) {
 	if o == nil || IsNil(o.LiveRestore) {
 		return nil, false
 	}
@@ -3794,15 +3563,15 @@ func (o *CreateVMRequest) HasLiveRestore() bool {
 	return false
 }
 
-// SetLiveRestore gets a reference to the given int32 and assigns it to the LiveRestore field.
-func (o *CreateVMRequest) SetLiveRestore(v int32) {
+// SetLiveRestore gets a reference to the given bool and assigns it to the LiveRestore field.
+func (o *CreateVMRequest) SetLiveRestore(v bool) {
 	o.LiveRestore = &v
 }
 
 // GetLocaltime returns the Localtime field value if set, zero value otherwise.
-func (o *CreateVMRequest) GetLocaltime() int32 {
+func (o *CreateVMRequest) GetLocaltime() bool {
 	if o == nil || IsNil(o.Localtime) {
-		var ret int32
+		var ret bool
 		return ret
 	}
 	return *o.Localtime
@@ -3810,7 +3579,7 @@ func (o *CreateVMRequest) GetLocaltime() int32 {
 
 // GetLocaltimeOk returns a tuple with the Localtime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateVMRequest) GetLocaltimeOk() (*int32, bool) {
+func (o *CreateVMRequest) GetLocaltimeOk() (*bool, bool) {
 	if o == nil || IsNil(o.Localtime) {
 		return nil, false
 	}
@@ -3826,8 +3595,8 @@ func (o *CreateVMRequest) HasLocaltime() bool {
 	return false
 }
 
-// SetLocaltime gets a reference to the given int32 and assigns it to the Localtime field.
-func (o *CreateVMRequest) SetLocaltime(v int32) {
+// SetLocaltime gets a reference to the given bool and assigns it to the Localtime field.
+func (o *CreateVMRequest) SetLocaltime(v bool) {
 	o.Localtime = &v
 }
 
@@ -3896,9 +3665,9 @@ func (o *CreateVMRequest) SetMachine(v string) {
 }
 
 // GetMemory returns the Memory field value if set, zero value otherwise.
-func (o *CreateVMRequest) GetMemory() int64 {
+func (o *CreateVMRequest) GetMemory() string {
 	if o == nil || IsNil(o.Memory) {
-		var ret int64
+		var ret string
 		return ret
 	}
 	return *o.Memory
@@ -3906,7 +3675,7 @@ func (o *CreateVMRequest) GetMemory() int64 {
 
 // GetMemoryOk returns a tuple with the Memory field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateVMRequest) GetMemoryOk() (*int64, bool) {
+func (o *CreateVMRequest) GetMemoryOk() (*string, bool) {
 	if o == nil || IsNil(o.Memory) {
 		return nil, false
 	}
@@ -3922,8 +3691,8 @@ func (o *CreateVMRequest) HasMemory() bool {
 	return false
 }
 
-// SetMemory gets a reference to the given int64 and assigns it to the Memory field.
-func (o *CreateVMRequest) SetMemory(v int64) {
+// SetMemory gets a reference to the given string and assigns it to the Memory field.
+func (o *CreateVMRequest) SetMemory(v string) {
 	o.Memory = &v
 }
 
@@ -5080,9 +4849,9 @@ func (o *CreateVMRequest) SetNet31(v string) {
 }
 
 // GetNuma returns the Numa field value if set, zero value otherwise.
-func (o *CreateVMRequest) GetNuma() int32 {
+func (o *CreateVMRequest) GetNuma() bool {
 	if o == nil || IsNil(o.Numa) {
-		var ret int32
+		var ret bool
 		return ret
 	}
 	return *o.Numa
@@ -5090,7 +4859,7 @@ func (o *CreateVMRequest) GetNuma() int32 {
 
 // GetNumaOk returns a tuple with the Numa field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateVMRequest) GetNumaOk() (*int32, bool) {
+func (o *CreateVMRequest) GetNumaOk() (*bool, bool) {
 	if o == nil || IsNil(o.Numa) {
 		return nil, false
 	}
@@ -5106,8 +4875,8 @@ func (o *CreateVMRequest) HasNuma() bool {
 	return false
 }
 
-// SetNuma gets a reference to the given int32 and assigns it to the Numa field.
-func (o *CreateVMRequest) SetNuma(v int32) {
+// SetNuma gets a reference to the given bool and assigns it to the Numa field.
+func (o *CreateVMRequest) SetNuma(v bool) {
 	o.Numa = &v
 }
 
@@ -6072,9 +5841,9 @@ func (o *CreateVMRequest) SetNuma29(v string) {
 }
 
 // GetOnboot returns the Onboot field value if set, zero value otherwise.
-func (o *CreateVMRequest) GetOnboot() int32 {
+func (o *CreateVMRequest) GetOnboot() bool {
 	if o == nil || IsNil(o.Onboot) {
-		var ret int32
+		var ret bool
 		return ret
 	}
 	return *o.Onboot
@@ -6082,7 +5851,7 @@ func (o *CreateVMRequest) GetOnboot() int32 {
 
 // GetOnbootOk returns a tuple with the Onboot field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateVMRequest) GetOnbootOk() (*int32, bool) {
+func (o *CreateVMRequest) GetOnbootOk() (*bool, bool) {
 	if o == nil || IsNil(o.Onboot) {
 		return nil, false
 	}
@@ -6098,8 +5867,8 @@ func (o *CreateVMRequest) HasOnboot() bool {
 	return false
 }
 
-// SetOnboot gets a reference to the given int32 and assigns it to the Onboot field.
-func (o *CreateVMRequest) SetOnboot(v int32) {
+// SetOnboot gets a reference to the given bool and assigns it to the Onboot field.
+func (o *CreateVMRequest) SetOnboot(v bool) {
 	o.Onboot = &v
 }
 
@@ -6296,9 +6065,9 @@ func (o *CreateVMRequest) SetPool(v string) {
 }
 
 // GetProtection returns the Protection field value if set, zero value otherwise.
-func (o *CreateVMRequest) GetProtection() int32 {
+func (o *CreateVMRequest) GetProtection() bool {
 	if o == nil || IsNil(o.Protection) {
-		var ret int32
+		var ret bool
 		return ret
 	}
 	return *o.Protection
@@ -6306,7 +6075,7 @@ func (o *CreateVMRequest) GetProtection() int32 {
 
 // GetProtectionOk returns a tuple with the Protection field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateVMRequest) GetProtectionOk() (*int32, bool) {
+func (o *CreateVMRequest) GetProtectionOk() (*bool, bool) {
 	if o == nil || IsNil(o.Protection) {
 		return nil, false
 	}
@@ -6322,15 +6091,15 @@ func (o *CreateVMRequest) HasProtection() bool {
 	return false
 }
 
-// SetProtection gets a reference to the given int32 and assigns it to the Protection field.
-func (o *CreateVMRequest) SetProtection(v int32) {
+// SetProtection gets a reference to the given bool and assigns it to the Protection field.
+func (o *CreateVMRequest) SetProtection(v bool) {
 	o.Protection = &v
 }
 
 // GetReboot returns the Reboot field value if set, zero value otherwise.
-func (o *CreateVMRequest) GetReboot() int32 {
+func (o *CreateVMRequest) GetReboot() bool {
 	if o == nil || IsNil(o.Reboot) {
-		var ret int32
+		var ret bool
 		return ret
 	}
 	return *o.Reboot
@@ -6338,7 +6107,7 @@ func (o *CreateVMRequest) GetReboot() int32 {
 
 // GetRebootOk returns a tuple with the Reboot field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateVMRequest) GetRebootOk() (*int32, bool) {
+func (o *CreateVMRequest) GetRebootOk() (*bool, bool) {
 	if o == nil || IsNil(o.Reboot) {
 		return nil, false
 	}
@@ -6354,8 +6123,8 @@ func (o *CreateVMRequest) HasReboot() bool {
 	return false
 }
 
-// SetReboot gets a reference to the given int32 and assigns it to the Reboot field.
-func (o *CreateVMRequest) SetReboot(v int32) {
+// SetReboot gets a reference to the given bool and assigns it to the Reboot field.
+func (o *CreateVMRequest) SetReboot(v bool) {
 	o.Reboot = &v
 }
 
@@ -7928,9 +7697,9 @@ func (o *CreateVMRequest) SetSshkeys(v string) {
 }
 
 // GetStart returns the Start field value if set, zero value otherwise.
-func (o *CreateVMRequest) GetStart() int32 {
+func (o *CreateVMRequest) GetStart() bool {
 	if o == nil || IsNil(o.Start) {
-		var ret int32
+		var ret bool
 		return ret
 	}
 	return *o.Start
@@ -7938,7 +7707,7 @@ func (o *CreateVMRequest) GetStart() int32 {
 
 // GetStartOk returns a tuple with the Start field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateVMRequest) GetStartOk() (*int32, bool) {
+func (o *CreateVMRequest) GetStartOk() (*bool, bool) {
 	if o == nil || IsNil(o.Start) {
 		return nil, false
 	}
@@ -7954,8 +7723,8 @@ func (o *CreateVMRequest) HasStart() bool {
 	return false
 }
 
-// SetStart gets a reference to the given int32 and assigns it to the Start field.
-func (o *CreateVMRequest) SetStart(v int32) {
+// SetStart gets a reference to the given bool and assigns it to the Start field.
+func (o *CreateVMRequest) SetStart(v bool) {
 	o.Start = &v
 }
 
@@ -8056,9 +7825,9 @@ func (o *CreateVMRequest) SetStorage(v string) {
 }
 
 // GetTablet returns the Tablet field value if set, zero value otherwise.
-func (o *CreateVMRequest) GetTablet() int32 {
+func (o *CreateVMRequest) GetTablet() bool {
 	if o == nil || IsNil(o.Tablet) {
-		var ret int32
+		var ret bool
 		return ret
 	}
 	return *o.Tablet
@@ -8066,7 +7835,7 @@ func (o *CreateVMRequest) GetTablet() int32 {
 
 // GetTabletOk returns a tuple with the Tablet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateVMRequest) GetTabletOk() (*int32, bool) {
+func (o *CreateVMRequest) GetTabletOk() (*bool, bool) {
 	if o == nil || IsNil(o.Tablet) {
 		return nil, false
 	}
@@ -8082,8 +7851,8 @@ func (o *CreateVMRequest) HasTablet() bool {
 	return false
 }
 
-// SetTablet gets a reference to the given int32 and assigns it to the Tablet field.
-func (o *CreateVMRequest) SetTablet(v int32) {
+// SetTablet gets a reference to the given bool and assigns it to the Tablet field.
+func (o *CreateVMRequest) SetTablet(v bool) {
 	o.Tablet = &v
 }
 
@@ -8120,9 +7889,9 @@ func (o *CreateVMRequest) SetTags(v string) {
 }
 
 // GetTdf returns the Tdf field value if set, zero value otherwise.
-func (o *CreateVMRequest) GetTdf() int32 {
+func (o *CreateVMRequest) GetTdf() bool {
 	if o == nil || IsNil(o.Tdf) {
-		var ret int32
+		var ret bool
 		return ret
 	}
 	return *o.Tdf
@@ -8130,7 +7899,7 @@ func (o *CreateVMRequest) GetTdf() int32 {
 
 // GetTdfOk returns a tuple with the Tdf field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateVMRequest) GetTdfOk() (*int32, bool) {
+func (o *CreateVMRequest) GetTdfOk() (*bool, bool) {
 	if o == nil || IsNil(o.Tdf) {
 		return nil, false
 	}
@@ -8146,15 +7915,15 @@ func (o *CreateVMRequest) HasTdf() bool {
 	return false
 }
 
-// SetTdf gets a reference to the given int32 and assigns it to the Tdf field.
-func (o *CreateVMRequest) SetTdf(v int32) {
+// SetTdf gets a reference to the given bool and assigns it to the Tdf field.
+func (o *CreateVMRequest) SetTdf(v bool) {
 	o.Tdf = &v
 }
 
 // GetTemplate returns the Template field value if set, zero value otherwise.
-func (o *CreateVMRequest) GetTemplate() int32 {
+func (o *CreateVMRequest) GetTemplate() bool {
 	if o == nil || IsNil(o.Template) {
-		var ret int32
+		var ret bool
 		return ret
 	}
 	return *o.Template
@@ -8162,7 +7931,7 @@ func (o *CreateVMRequest) GetTemplate() int32 {
 
 // GetTemplateOk returns a tuple with the Template field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateVMRequest) GetTemplateOk() (*int32, bool) {
+func (o *CreateVMRequest) GetTemplateOk() (*bool, bool) {
 	if o == nil || IsNil(o.Template) {
 		return nil, false
 	}
@@ -8178,8 +7947,8 @@ func (o *CreateVMRequest) HasTemplate() bool {
 	return false
 }
 
-// SetTemplate gets a reference to the given int32 and assigns it to the Template field.
-func (o *CreateVMRequest) SetTemplate(v int32) {
+// SetTemplate gets a reference to the given bool and assigns it to the Template field.
+func (o *CreateVMRequest) SetTemplate(v bool) {
 	o.Template = &v
 }
 
@@ -8216,9 +7985,9 @@ func (o *CreateVMRequest) SetTpmstate0(v string) {
 }
 
 // GetUnique returns the Unique field value if set, zero value otherwise.
-func (o *CreateVMRequest) GetUnique() int32 {
+func (o *CreateVMRequest) GetUnique() bool {
 	if o == nil || IsNil(o.Unique) {
-		var ret int32
+		var ret bool
 		return ret
 	}
 	return *o.Unique
@@ -8226,7 +7995,7 @@ func (o *CreateVMRequest) GetUnique() int32 {
 
 // GetUniqueOk returns a tuple with the Unique field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateVMRequest) GetUniqueOk() (*int32, bool) {
+func (o *CreateVMRequest) GetUniqueOk() (*bool, bool) {
 	if o == nil || IsNil(o.Unique) {
 		return nil, false
 	}
@@ -8242,8 +8011,8 @@ func (o *CreateVMRequest) HasUnique() bool {
 	return false
 }
 
-// SetUnique gets a reference to the given int32 and assigns it to the Unique field.
-func (o *CreateVMRequest) SetUnique(v int32) {
+// SetUnique gets a reference to the given bool and assigns it to the Unique field.
+func (o *CreateVMRequest) SetUnique(v bool) {
 	o.Unique = &v
 }
 
@@ -10050,6 +9819,9 @@ func (o CreateVMRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Agent) {
 		toSerialize["agent"] = o.Agent
 	}
+	if !IsNil(o.AmdSev) {
+		toSerialize["amd-sev"] = o.AmdSev
+	}
 	if !IsNil(o.Arch) {
 		toSerialize["arch"] = o.Arch
 	}
@@ -10232,6 +10004,9 @@ func (o CreateVMRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Ide3) {
 		toSerialize["ide3"] = o.Ide3
+	}
+	if !IsNil(o.ImportWorkingStorage) {
+		toSerialize["import-working-storage"] = o.ImportWorkingStorage
 	}
 	if !IsNil(o.Ipconfig0) {
 		toSerialize["ipconfig0"] = o.Ipconfig0
@@ -10922,41 +10697,6 @@ func (o CreateVMRequest) ToMap() (map[string]interface{}, error) {
 		toSerialize["watchdog"] = o.Watchdog
 	}
 	return toSerialize, nil
-}
-
-func (o *CreateVMRequest) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"vmid",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(bytes, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varCreateVMRequest := _CreateVMRequest{}
-
-	err = json.Unmarshal(bytes, &varCreateVMRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = CreateVMRequest(varCreateVMRequest)
-
-	return err
 }
 
 type NullableCreateVMRequest struct {

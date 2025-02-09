@@ -3,7 +3,7 @@ ProxMox VE API
 
 ProxMox VE API
 
-API version: 8.0
+API version: 8.3
 Contact: baldur@email.de
 */
 
@@ -20,23 +20,14 @@ var _ MappedNullable = &StartVMRequest{}
 
 // StartVMRequest struct for StartVMRequest
 type StartVMRequest struct {
-	// Override QEMU's -cpu argument with the given string.
 	ForceCpu *string `json:"force-cpu,omitempty"`
-	// Specifies the QEMU machine type.
 	Machine *string `json:"machine,omitempty"`
-	// The cluster node name.
 	Migratedfrom *string `json:"migratedfrom,omitempty"`
-	// CIDR of the (sub) network that is used for migration.
 	MigrationNetwork *string `json:"migration_network,omitempty"`
-	// Migration traffic is encrypted using an SSH tunnel by default. On secure, completely private networks this can be disabled to increase performance.
 	MigrationType *string `json:"migration_type,omitempty"`
-	// Ignore locks - only root is allowed to use this option.
-	Skiplock *int32 `json:"skiplock,omitempty"`
-	// Some command save/restore state from this location.
+	Skiplock *bool `json:"skiplock,omitempty"`
 	Stateuri *string `json:"stateuri,omitempty"`
-	// Mapping from source to target storages. Providing only a single storage ID maps all source storages to that storage. Providing the special value '1' will map each source storage to itself.
 	Targetstorage *string `json:"targetstorage,omitempty"`
-	// Wait maximal timeout seconds.
 	Timeout *int64 `json:"timeout,omitempty"`
 }
 
@@ -218,9 +209,9 @@ func (o *StartVMRequest) SetMigrationType(v string) {
 }
 
 // GetSkiplock returns the Skiplock field value if set, zero value otherwise.
-func (o *StartVMRequest) GetSkiplock() int32 {
+func (o *StartVMRequest) GetSkiplock() bool {
 	if o == nil || IsNil(o.Skiplock) {
-		var ret int32
+		var ret bool
 		return ret
 	}
 	return *o.Skiplock
@@ -228,7 +219,7 @@ func (o *StartVMRequest) GetSkiplock() int32 {
 
 // GetSkiplockOk returns a tuple with the Skiplock field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *StartVMRequest) GetSkiplockOk() (*int32, bool) {
+func (o *StartVMRequest) GetSkiplockOk() (*bool, bool) {
 	if o == nil || IsNil(o.Skiplock) {
 		return nil, false
 	}
@@ -244,8 +235,8 @@ func (o *StartVMRequest) HasSkiplock() bool {
 	return false
 }
 
-// SetSkiplock gets a reference to the given int32 and assigns it to the Skiplock field.
-func (o *StartVMRequest) SetSkiplock(v int32) {
+// SetSkiplock gets a reference to the given bool and assigns it to the Skiplock field.
+func (o *StartVMRequest) SetSkiplock(v bool) {
 	o.Skiplock = &v
 }
 

@@ -4,67 +4,68 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Authsupported** | Pointer to **string** | Authsupported. | [optional] 
-**Base** | Pointer to **string** | Base volume. This volume is automatically activated. | [optional] 
-**Blocksize** | Pointer to **string** | block size | [optional] 
-**Bwlimit** | Pointer to **string** | Set I/O bandwidth limit for various operations (in KiB/s). | [optional] 
-**ComstarHg** | Pointer to **string** | host group for comstar views | [optional] 
-**ComstarTg** | Pointer to **string** | target group for comstar views | [optional] 
-**Content** | Pointer to **string** | Allowed content types.  NOTE: the value &#39;rootdir&#39; is used for Containers, and value &#39;images&#39; for VMs.  | [optional] 
-**ContentDirs** | Pointer to **string** | Overrides for default content type directories. | [optional] 
-**CreateBasePath** | Pointer to **int32** | Create the base directory if it doesn&#39;t exist. | [optional] 
-**CreateSubdirs** | Pointer to **int32** | Populate the directory with the default structure. | [optional] 
-**DataPool** | Pointer to **string** | Data Pool (for erasure coding only) | [optional] 
-**Datastore** | Pointer to **string** | Proxmox Backup Server datastore name. | [optional] 
-**Disable** | Pointer to **int32** | Flag to disable the storage. | [optional] 
-**Domain** | Pointer to **string** | CIFS domain. | [optional] 
-**EncryptionKey** | Pointer to **string** | Encryption key. Use &#39;autogen&#39; to generate one automatically without passphrase. | [optional] 
-**Export** | Pointer to **string** | NFS export path. | [optional] 
-**Fingerprint** | Pointer to **string** | Certificate SHA 256 fingerprint. | [optional] 
-**Format** | Pointer to **string** | Default image format. | [optional] 
-**FsName** | Pointer to **string** | The Ceph filesystem name. | [optional] 
-**Fuse** | Pointer to **int32** | Mount CephFS through FUSE. | [optional] 
-**IsMountpoint** | Pointer to **string** | Assume the given path is an externally managed mountpoint and consider the storage offline if it is not mounted. Using a boolean (yes/no) value serves as a shortcut to using the target path in this field. | [optional] 
-**Iscsiprovider** | Pointer to **string** | iscsi provider | [optional] 
-**Keyring** | Pointer to **string** | Client keyring contents (for external clusters). | [optional] 
-**Krbd** | Pointer to **int32** | Always access rbd through krbd kernel module. | [optional] 
-**LioTpg** | Pointer to **string** | target portal group for Linux LIO targets | [optional] 
-**MasterPubkey** | Pointer to **string** | Base64-encoded, PEM-formatted public RSA key. Used to encrypt a copy of the encryption-key which will be added to each encrypted backup. | [optional] 
-**MaxProtectedBackups** | Pointer to **int64** | Maximal number of protected backups per guest. Use &#39;-1&#39; for unlimited. | [optional] 
-**Maxfiles** | Pointer to **int64** | Deprecated: use &#39;prune-backups&#39; instead. Maximal number of backup files per VM. Use &#39;0&#39; for unlimited. | [optional] 
-**Mkdir** | Pointer to **int32** | Create the directory if it doesn&#39;t exist and populate it with default sub-dirs. NOTE: Deprecated, use the &#39;create-base-path&#39; and &#39;create-subdirs&#39; options instead. | [optional] 
-**Monhost** | Pointer to **string** | IP addresses of monitors (for external clusters). | [optional] 
-**Mountpoint** | Pointer to **string** | mount point | [optional] 
-**Namespace** | Pointer to **string** | Namespace. | [optional] 
-**Nocow** | Pointer to **int32** | Set the NOCOW flag on files. Disables data checksumming and causes data errors to be unrecoverable from while allowing direct I/O. Only use this if data does not need to be any more safe than on a single ext4 formatted disk with no underlying raid system. | [optional] 
-**Nodes** | Pointer to **string** | List of cluster node names. | [optional] 
-**Nowritecache** | Pointer to **int32** | disable write caching on the target | [optional] 
-**Options** | Pointer to **string** | NFS/CIFS mount options (see &#39;man nfs&#39; or &#39;man mount.cifs&#39;) | [optional] 
-**Password** | Pointer to **string** | Password for accessing the share/datastore. | [optional] 
-**Path** | Pointer to **string** | File system path. | [optional] 
-**Pool** | Pointer to **string** | Pool. | [optional] 
-**Port** | Pointer to **int64** | For non default port. | [optional] 
-**Portal** | Pointer to **string** | iSCSI portal (IP or DNS name with optional port). | [optional] 
-**Preallocation** | Pointer to **string** | Preallocation mode for raw and qcow2 images. Using &#39;metadata&#39; on raw images results in preallocation&#x3D;off. | [optional] 
-**PruneBackups** | Pointer to **string** | The retention options with shorter intervals are processed first with --keep-last being the very first one. Each option covers a specific period of time. We say that backups within this period are covered by this option. The next option does not take care of already covered backups and only considers older backups. | [optional] 
-**Saferemove** | Pointer to **int32** | Zero-out data when removing LVs. | [optional] 
-**SaferemoveThroughput** | Pointer to **string** | Wipe throughput (cstream -t parameter value). | [optional] 
-**Server** | Pointer to **string** | Server IP or DNS name. | [optional] 
-**Server2** | Pointer to **string** | Backup volfile server IP or DNS name. | [optional] 
-**Share** | Pointer to **string** | CIFS share. | [optional] 
-**Shared** | Pointer to **int32** | Mark storage as shared. | [optional] 
-**Smbversion** | Pointer to **string** | SMB protocol version. &#39;default&#39; if not set, negotiates the highest SMB2+ version supported by both the client and server. | [optional] 
-**Sparse** | Pointer to **int32** | use sparse volumes | [optional] 
-**Storage** | **string** | The storage identifier. | 
-**Subdir** | Pointer to **string** | Subdir to mount. | [optional] 
-**TaggedOnly** | Pointer to **int32** | Only use logical volumes tagged with &#39;pve-vm-ID&#39;. | [optional] 
-**Target** | Pointer to **string** | iSCSI target. | [optional] 
-**Thinpool** | Pointer to **string** | LVM thin pool LV name. | [optional] 
-**Transport** | Pointer to **string** | Gluster transport: tcp or rdma | [optional] 
-**Type** | **string** | Storage type. | 
-**Username** | Pointer to **string** | RBD Id. | [optional] 
-**Vgname** | Pointer to **string** | Volume group name. | [optional] 
-**Volume** | Pointer to **string** | Glusterfs Volume. | [optional] 
+**Authsupported** | Pointer to **string** |  | [optional] 
+**Base** | Pointer to **string** |  | [optional] 
+**Blocksize** | Pointer to **string** |  | [optional] 
+**Bwlimit** | Pointer to **string** |  | [optional] 
+**ComstarHg** | Pointer to **string** |  | [optional] 
+**ComstarTg** | Pointer to **string** |  | [optional] 
+**Content** | Pointer to **string** |  | [optional] 
+**ContentDirs** | Pointer to **string** |  | [optional] 
+**CreateBasePath** | Pointer to **bool** |  | [optional] 
+**CreateSubdirs** | Pointer to **bool** |  | [optional] 
+**DataPool** | Pointer to **string** |  | [optional] 
+**Datastore** | Pointer to **string** |  | [optional] 
+**Disable** | Pointer to **bool** |  | [optional] 
+**Domain** | Pointer to **string** |  | [optional] 
+**EncryptionKey** | Pointer to **string** |  | [optional] 
+**Export** | Pointer to **string** |  | [optional] 
+**Fingerprint** | Pointer to **string** |  | [optional] 
+**Format** | Pointer to **string** |  | [optional] 
+**FsName** | Pointer to **string** |  | [optional] 
+**Fuse** | Pointer to **bool** |  | [optional] 
+**IsMountpoint** | Pointer to **string** |  | [optional] 
+**Iscsiprovider** | Pointer to **string** |  | [optional] 
+**Keyring** | Pointer to **string** |  | [optional] 
+**Krbd** | Pointer to **bool** |  | [optional] 
+**LioTpg** | Pointer to **string** |  | [optional] 
+**MasterPubkey** | Pointer to **string** |  | [optional] 
+**MaxProtectedBackups** | Pointer to **int64** |  | [optional] 
+**Maxfiles** | Pointer to **int64** |  | [optional] 
+**Mkdir** | Pointer to **bool** |  | [optional] 
+**Monhost** | Pointer to **string** |  | [optional] 
+**Mountpoint** | Pointer to **string** |  | [optional] 
+**Namespace** | Pointer to **string** |  | [optional] 
+**Nocow** | Pointer to **bool** |  | [optional] 
+**Nodes** | Pointer to **string** |  | [optional] 
+**Nowritecache** | Pointer to **bool** |  | [optional] 
+**Options** | Pointer to **string** |  | [optional] 
+**Password** | Pointer to **string** |  | [optional] 
+**Path** | Pointer to **string** |  | [optional] 
+**Pool** | Pointer to **string** |  | [optional] 
+**Port** | Pointer to **int64** |  | [optional] 
+**Portal** | Pointer to **string** |  | [optional] 
+**Preallocation** | Pointer to **string** |  | [optional] 
+**PruneBackups** | Pointer to **string** |  | [optional] 
+**Saferemove** | Pointer to **bool** |  | [optional] 
+**SaferemoveThroughput** | Pointer to **string** |  | [optional] 
+**Server** | Pointer to **string** |  | [optional] 
+**Server2** | Pointer to **string** |  | [optional] 
+**Share** | Pointer to **string** |  | [optional] 
+**Shared** | Pointer to **bool** |  | [optional] 
+**SkipCertVerification** | Pointer to **bool** |  | [optional] 
+**Smbversion** | Pointer to **string** |  | [optional] 
+**Sparse** | Pointer to **bool** |  | [optional] 
+**Storage** | **string** |  | 
+**Subdir** | Pointer to **string** |  | [optional] 
+**TaggedOnly** | Pointer to **bool** |  | [optional] 
+**Target** | Pointer to **string** |  | [optional] 
+**Thinpool** | Pointer to **string** |  | [optional] 
+**Transport** | Pointer to **string** |  | [optional] 
+**Type** | **string** |  | 
+**Username** | Pointer to **string** |  | [optional] 
+**Vgname** | Pointer to **string** |  | [optional] 
+**Volume** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -287,20 +288,20 @@ HasContentDirs returns a boolean if a field has been set.
 
 ### GetCreateBasePath
 
-`func (o *CreateStorageRequest) GetCreateBasePath() int32`
+`func (o *CreateStorageRequest) GetCreateBasePath() bool`
 
 GetCreateBasePath returns the CreateBasePath field if non-nil, zero value otherwise.
 
 ### GetCreateBasePathOk
 
-`func (o *CreateStorageRequest) GetCreateBasePathOk() (*int32, bool)`
+`func (o *CreateStorageRequest) GetCreateBasePathOk() (*bool, bool)`
 
 GetCreateBasePathOk returns a tuple with the CreateBasePath field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreateBasePath
 
-`func (o *CreateStorageRequest) SetCreateBasePath(v int32)`
+`func (o *CreateStorageRequest) SetCreateBasePath(v bool)`
 
 SetCreateBasePath sets CreateBasePath field to given value.
 
@@ -312,20 +313,20 @@ HasCreateBasePath returns a boolean if a field has been set.
 
 ### GetCreateSubdirs
 
-`func (o *CreateStorageRequest) GetCreateSubdirs() int32`
+`func (o *CreateStorageRequest) GetCreateSubdirs() bool`
 
 GetCreateSubdirs returns the CreateSubdirs field if non-nil, zero value otherwise.
 
 ### GetCreateSubdirsOk
 
-`func (o *CreateStorageRequest) GetCreateSubdirsOk() (*int32, bool)`
+`func (o *CreateStorageRequest) GetCreateSubdirsOk() (*bool, bool)`
 
 GetCreateSubdirsOk returns a tuple with the CreateSubdirs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreateSubdirs
 
-`func (o *CreateStorageRequest) SetCreateSubdirs(v int32)`
+`func (o *CreateStorageRequest) SetCreateSubdirs(v bool)`
 
 SetCreateSubdirs sets CreateSubdirs field to given value.
 
@@ -387,20 +388,20 @@ HasDatastore returns a boolean if a field has been set.
 
 ### GetDisable
 
-`func (o *CreateStorageRequest) GetDisable() int32`
+`func (o *CreateStorageRequest) GetDisable() bool`
 
 GetDisable returns the Disable field if non-nil, zero value otherwise.
 
 ### GetDisableOk
 
-`func (o *CreateStorageRequest) GetDisableOk() (*int32, bool)`
+`func (o *CreateStorageRequest) GetDisableOk() (*bool, bool)`
 
 GetDisableOk returns a tuple with the Disable field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDisable
 
-`func (o *CreateStorageRequest) SetDisable(v int32)`
+`func (o *CreateStorageRequest) SetDisable(v bool)`
 
 SetDisable sets Disable field to given value.
 
@@ -562,20 +563,20 @@ HasFsName returns a boolean if a field has been set.
 
 ### GetFuse
 
-`func (o *CreateStorageRequest) GetFuse() int32`
+`func (o *CreateStorageRequest) GetFuse() bool`
 
 GetFuse returns the Fuse field if non-nil, zero value otherwise.
 
 ### GetFuseOk
 
-`func (o *CreateStorageRequest) GetFuseOk() (*int32, bool)`
+`func (o *CreateStorageRequest) GetFuseOk() (*bool, bool)`
 
 GetFuseOk returns a tuple with the Fuse field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFuse
 
-`func (o *CreateStorageRequest) SetFuse(v int32)`
+`func (o *CreateStorageRequest) SetFuse(v bool)`
 
 SetFuse sets Fuse field to given value.
 
@@ -662,20 +663,20 @@ HasKeyring returns a boolean if a field has been set.
 
 ### GetKrbd
 
-`func (o *CreateStorageRequest) GetKrbd() int32`
+`func (o *CreateStorageRequest) GetKrbd() bool`
 
 GetKrbd returns the Krbd field if non-nil, zero value otherwise.
 
 ### GetKrbdOk
 
-`func (o *CreateStorageRequest) GetKrbdOk() (*int32, bool)`
+`func (o *CreateStorageRequest) GetKrbdOk() (*bool, bool)`
 
 GetKrbdOk returns a tuple with the Krbd field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetKrbd
 
-`func (o *CreateStorageRequest) SetKrbd(v int32)`
+`func (o *CreateStorageRequest) SetKrbd(v bool)`
 
 SetKrbd sets Krbd field to given value.
 
@@ -787,20 +788,20 @@ HasMaxfiles returns a boolean if a field has been set.
 
 ### GetMkdir
 
-`func (o *CreateStorageRequest) GetMkdir() int32`
+`func (o *CreateStorageRequest) GetMkdir() bool`
 
 GetMkdir returns the Mkdir field if non-nil, zero value otherwise.
 
 ### GetMkdirOk
 
-`func (o *CreateStorageRequest) GetMkdirOk() (*int32, bool)`
+`func (o *CreateStorageRequest) GetMkdirOk() (*bool, bool)`
 
 GetMkdirOk returns a tuple with the Mkdir field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMkdir
 
-`func (o *CreateStorageRequest) SetMkdir(v int32)`
+`func (o *CreateStorageRequest) SetMkdir(v bool)`
 
 SetMkdir sets Mkdir field to given value.
 
@@ -887,20 +888,20 @@ HasNamespace returns a boolean if a field has been set.
 
 ### GetNocow
 
-`func (o *CreateStorageRequest) GetNocow() int32`
+`func (o *CreateStorageRequest) GetNocow() bool`
 
 GetNocow returns the Nocow field if non-nil, zero value otherwise.
 
 ### GetNocowOk
 
-`func (o *CreateStorageRequest) GetNocowOk() (*int32, bool)`
+`func (o *CreateStorageRequest) GetNocowOk() (*bool, bool)`
 
 GetNocowOk returns a tuple with the Nocow field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNocow
 
-`func (o *CreateStorageRequest) SetNocow(v int32)`
+`func (o *CreateStorageRequest) SetNocow(v bool)`
 
 SetNocow sets Nocow field to given value.
 
@@ -937,20 +938,20 @@ HasNodes returns a boolean if a field has been set.
 
 ### GetNowritecache
 
-`func (o *CreateStorageRequest) GetNowritecache() int32`
+`func (o *CreateStorageRequest) GetNowritecache() bool`
 
 GetNowritecache returns the Nowritecache field if non-nil, zero value otherwise.
 
 ### GetNowritecacheOk
 
-`func (o *CreateStorageRequest) GetNowritecacheOk() (*int32, bool)`
+`func (o *CreateStorageRequest) GetNowritecacheOk() (*bool, bool)`
 
 GetNowritecacheOk returns a tuple with the Nowritecache field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNowritecache
 
-`func (o *CreateStorageRequest) SetNowritecache(v int32)`
+`func (o *CreateStorageRequest) SetNowritecache(v bool)`
 
 SetNowritecache sets Nowritecache field to given value.
 
@@ -1162,20 +1163,20 @@ HasPruneBackups returns a boolean if a field has been set.
 
 ### GetSaferemove
 
-`func (o *CreateStorageRequest) GetSaferemove() int32`
+`func (o *CreateStorageRequest) GetSaferemove() bool`
 
 GetSaferemove returns the Saferemove field if non-nil, zero value otherwise.
 
 ### GetSaferemoveOk
 
-`func (o *CreateStorageRequest) GetSaferemoveOk() (*int32, bool)`
+`func (o *CreateStorageRequest) GetSaferemoveOk() (*bool, bool)`
 
 GetSaferemoveOk returns a tuple with the Saferemove field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSaferemove
 
-`func (o *CreateStorageRequest) SetSaferemove(v int32)`
+`func (o *CreateStorageRequest) SetSaferemove(v bool)`
 
 SetSaferemove sets Saferemove field to given value.
 
@@ -1287,20 +1288,20 @@ HasShare returns a boolean if a field has been set.
 
 ### GetShared
 
-`func (o *CreateStorageRequest) GetShared() int32`
+`func (o *CreateStorageRequest) GetShared() bool`
 
 GetShared returns the Shared field if non-nil, zero value otherwise.
 
 ### GetSharedOk
 
-`func (o *CreateStorageRequest) GetSharedOk() (*int32, bool)`
+`func (o *CreateStorageRequest) GetSharedOk() (*bool, bool)`
 
 GetSharedOk returns a tuple with the Shared field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetShared
 
-`func (o *CreateStorageRequest) SetShared(v int32)`
+`func (o *CreateStorageRequest) SetShared(v bool)`
 
 SetShared sets Shared field to given value.
 
@@ -1309,6 +1310,31 @@ SetShared sets Shared field to given value.
 `func (o *CreateStorageRequest) HasShared() bool`
 
 HasShared returns a boolean if a field has been set.
+
+### GetSkipCertVerification
+
+`func (o *CreateStorageRequest) GetSkipCertVerification() bool`
+
+GetSkipCertVerification returns the SkipCertVerification field if non-nil, zero value otherwise.
+
+### GetSkipCertVerificationOk
+
+`func (o *CreateStorageRequest) GetSkipCertVerificationOk() (*bool, bool)`
+
+GetSkipCertVerificationOk returns a tuple with the SkipCertVerification field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSkipCertVerification
+
+`func (o *CreateStorageRequest) SetSkipCertVerification(v bool)`
+
+SetSkipCertVerification sets SkipCertVerification field to given value.
+
+### HasSkipCertVerification
+
+`func (o *CreateStorageRequest) HasSkipCertVerification() bool`
+
+HasSkipCertVerification returns a boolean if a field has been set.
 
 ### GetSmbversion
 
@@ -1337,20 +1363,20 @@ HasSmbversion returns a boolean if a field has been set.
 
 ### GetSparse
 
-`func (o *CreateStorageRequest) GetSparse() int32`
+`func (o *CreateStorageRequest) GetSparse() bool`
 
 GetSparse returns the Sparse field if non-nil, zero value otherwise.
 
 ### GetSparseOk
 
-`func (o *CreateStorageRequest) GetSparseOk() (*int32, bool)`
+`func (o *CreateStorageRequest) GetSparseOk() (*bool, bool)`
 
 GetSparseOk returns a tuple with the Sparse field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSparse
 
-`func (o *CreateStorageRequest) SetSparse(v int32)`
+`func (o *CreateStorageRequest) SetSparse(v bool)`
 
 SetSparse sets Sparse field to given value.
 
@@ -1407,20 +1433,20 @@ HasSubdir returns a boolean if a field has been set.
 
 ### GetTaggedOnly
 
-`func (o *CreateStorageRequest) GetTaggedOnly() int32`
+`func (o *CreateStorageRequest) GetTaggedOnly() bool`
 
 GetTaggedOnly returns the TaggedOnly field if non-nil, zero value otherwise.
 
 ### GetTaggedOnlyOk
 
-`func (o *CreateStorageRequest) GetTaggedOnlyOk() (*int32, bool)`
+`func (o *CreateStorageRequest) GetTaggedOnlyOk() (*bool, bool)`
 
 GetTaggedOnlyOk returns a tuple with the TaggedOnly field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTaggedOnly
 
-`func (o *CreateStorageRequest) SetTaggedOnly(v int32)`
+`func (o *CreateStorageRequest) SetTaggedOnly(v bool)`
 
 SetTaggedOnly sets TaggedOnly field to given value.
 

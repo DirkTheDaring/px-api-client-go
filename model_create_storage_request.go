@@ -3,7 +3,7 @@ ProxMox VE API
 
 ProxMox VE API
 
-API version: 8.0
+API version: 8.3
 Contact: baldur@email.de
 */
 
@@ -13,7 +13,6 @@ package pxapiflat
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the CreateStorageRequest type satisfies the MappedNullable interface at compile time
@@ -21,131 +20,69 @@ var _ MappedNullable = &CreateStorageRequest{}
 
 // CreateStorageRequest struct for CreateStorageRequest
 type CreateStorageRequest struct {
-	// Authsupported.
 	Authsupported *string `json:"authsupported,omitempty"`
-	// Base volume. This volume is automatically activated.
 	Base *string `json:"base,omitempty"`
-	// block size
 	Blocksize *string `json:"blocksize,omitempty"`
-	// Set I/O bandwidth limit for various operations (in KiB/s).
 	Bwlimit *string `json:"bwlimit,omitempty"`
-	// host group for comstar views
 	ComstarHg *string `json:"comstar_hg,omitempty"`
-	// target group for comstar views
 	ComstarTg *string `json:"comstar_tg,omitempty"`
-	// Allowed content types.  NOTE: the value 'rootdir' is used for Containers, and value 'images' for VMs. 
 	Content *string `json:"content,omitempty"`
-	// Overrides for default content type directories.
 	ContentDirs *string `json:"content-dirs,omitempty"`
-	// Create the base directory if it doesn't exist.
-	CreateBasePath *int32 `json:"create-base-path,omitempty"`
-	// Populate the directory with the default structure.
-	CreateSubdirs *int32 `json:"create-subdirs,omitempty"`
-	// Data Pool (for erasure coding only)
+	CreateBasePath *bool `json:"create-base-path,omitempty"`
+	CreateSubdirs *bool `json:"create-subdirs,omitempty"`
 	DataPool *string `json:"data-pool,omitempty"`
-	// Proxmox Backup Server datastore name.
 	Datastore *string `json:"datastore,omitempty"`
-	// Flag to disable the storage.
-	Disable *int32 `json:"disable,omitempty"`
-	// CIFS domain.
+	Disable *bool `json:"disable,omitempty"`
 	Domain *string `json:"domain,omitempty"`
-	// Encryption key. Use 'autogen' to generate one automatically without passphrase.
 	EncryptionKey *string `json:"encryption-key,omitempty"`
-	// NFS export path.
 	Export *string `json:"export,omitempty"`
-	// Certificate SHA 256 fingerprint.
 	Fingerprint *string `json:"fingerprint,omitempty"`
-	// Default image format.
 	Format *string `json:"format,omitempty"`
-	// The Ceph filesystem name.
 	FsName *string `json:"fs-name,omitempty"`
-	// Mount CephFS through FUSE.
-	Fuse *int32 `json:"fuse,omitempty"`
-	// Assume the given path is an externally managed mountpoint and consider the storage offline if it is not mounted. Using a boolean (yes/no) value serves as a shortcut to using the target path in this field.
+	Fuse *bool `json:"fuse,omitempty"`
 	IsMountpoint *string `json:"is_mountpoint,omitempty"`
-	// iscsi provider
 	Iscsiprovider *string `json:"iscsiprovider,omitempty"`
-	// Client keyring contents (for external clusters).
 	Keyring *string `json:"keyring,omitempty"`
-	// Always access rbd through krbd kernel module.
-	Krbd *int32 `json:"krbd,omitempty"`
-	// target portal group for Linux LIO targets
+	Krbd *bool `json:"krbd,omitempty"`
 	LioTpg *string `json:"lio_tpg,omitempty"`
-	// Base64-encoded, PEM-formatted public RSA key. Used to encrypt a copy of the encryption-key which will be added to each encrypted backup.
 	MasterPubkey *string `json:"master-pubkey,omitempty"`
-	// Maximal number of protected backups per guest. Use '-1' for unlimited.
 	MaxProtectedBackups *int64 `json:"max-protected-backups,omitempty"`
-	// Deprecated: use 'prune-backups' instead. Maximal number of backup files per VM. Use '0' for unlimited.
 	Maxfiles *int64 `json:"maxfiles,omitempty"`
-	// Create the directory if it doesn't exist and populate it with default sub-dirs. NOTE: Deprecated, use the 'create-base-path' and 'create-subdirs' options instead.
-	Mkdir *int32 `json:"mkdir,omitempty"`
-	// IP addresses of monitors (for external clusters).
+	Mkdir *bool `json:"mkdir,omitempty"`
 	Monhost *string `json:"monhost,omitempty"`
-	// mount point
 	Mountpoint *string `json:"mountpoint,omitempty"`
-	// Namespace.
 	Namespace *string `json:"namespace,omitempty"`
-	// Set the NOCOW flag on files. Disables data checksumming and causes data errors to be unrecoverable from while allowing direct I/O. Only use this if data does not need to be any more safe than on a single ext4 formatted disk with no underlying raid system.
-	Nocow *int32 `json:"nocow,omitempty"`
-	// List of cluster node names.
+	Nocow *bool `json:"nocow,omitempty"`
 	Nodes *string `json:"nodes,omitempty"`
-	// disable write caching on the target
-	Nowritecache *int32 `json:"nowritecache,omitempty"`
-	// NFS/CIFS mount options (see 'man nfs' or 'man mount.cifs')
+	Nowritecache *bool `json:"nowritecache,omitempty"`
 	Options *string `json:"options,omitempty"`
-	// Password for accessing the share/datastore.
 	Password *string `json:"password,omitempty"`
-	// File system path.
 	Path *string `json:"path,omitempty"`
-	// Pool.
 	Pool *string `json:"pool,omitempty"`
-	// For non default port.
 	Port *int64 `json:"port,omitempty"`
-	// iSCSI portal (IP or DNS name with optional port).
 	Portal *string `json:"portal,omitempty"`
-	// Preallocation mode for raw and qcow2 images. Using 'metadata' on raw images results in preallocation=off.
 	Preallocation *string `json:"preallocation,omitempty"`
-	// The retention options with shorter intervals are processed first with --keep-last being the very first one. Each option covers a specific period of time. We say that backups within this period are covered by this option. The next option does not take care of already covered backups and only considers older backups.
 	PruneBackups *string `json:"prune-backups,omitempty"`
-	// Zero-out data when removing LVs.
-	Saferemove *int32 `json:"saferemove,omitempty"`
-	// Wipe throughput (cstream -t parameter value).
+	Saferemove *bool `json:"saferemove,omitempty"`
 	SaferemoveThroughput *string `json:"saferemove_throughput,omitempty"`
-	// Server IP or DNS name.
 	Server *string `json:"server,omitempty"`
-	// Backup volfile server IP or DNS name.
 	Server2 *string `json:"server2,omitempty"`
-	// CIFS share.
 	Share *string `json:"share,omitempty"`
-	// Mark storage as shared.
-	Shared *int32 `json:"shared,omitempty"`
-	// SMB protocol version. 'default' if not set, negotiates the highest SMB2+ version supported by both the client and server.
+	Shared *bool `json:"shared,omitempty"`
+	SkipCertVerification *bool `json:"skip-cert-verification,omitempty"`
 	Smbversion *string `json:"smbversion,omitempty"`
-	// use sparse volumes
-	Sparse *int32 `json:"sparse,omitempty"`
-	// The storage identifier.
+	Sparse *bool `json:"sparse,omitempty"`
 	Storage string `json:"storage"`
-	// Subdir to mount.
 	Subdir *string `json:"subdir,omitempty"`
-	// Only use logical volumes tagged with 'pve-vm-ID'.
-	TaggedOnly *int32 `json:"tagged_only,omitempty"`
-	// iSCSI target.
+	TaggedOnly *bool `json:"tagged_only,omitempty"`
 	Target *string `json:"target,omitempty"`
-	// LVM thin pool LV name.
 	Thinpool *string `json:"thinpool,omitempty"`
-	// Gluster transport: tcp or rdma
 	Transport *string `json:"transport,omitempty"`
-	// Storage type.
 	Type string `json:"type"`
-	// RBD Id.
 	Username *string `json:"username,omitempty"`
-	// Volume group name.
 	Vgname *string `json:"vgname,omitempty"`
-	// Glusterfs Volume.
 	Volume *string `json:"volume,omitempty"`
 }
-
-type _CreateStorageRequest CreateStorageRequest
 
 // NewCreateStorageRequest instantiates a new CreateStorageRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -423,9 +360,9 @@ func (o *CreateStorageRequest) SetContentDirs(v string) {
 }
 
 // GetCreateBasePath returns the CreateBasePath field value if set, zero value otherwise.
-func (o *CreateStorageRequest) GetCreateBasePath() int32 {
+func (o *CreateStorageRequest) GetCreateBasePath() bool {
 	if o == nil || IsNil(o.CreateBasePath) {
-		var ret int32
+		var ret bool
 		return ret
 	}
 	return *o.CreateBasePath
@@ -433,7 +370,7 @@ func (o *CreateStorageRequest) GetCreateBasePath() int32 {
 
 // GetCreateBasePathOk returns a tuple with the CreateBasePath field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateStorageRequest) GetCreateBasePathOk() (*int32, bool) {
+func (o *CreateStorageRequest) GetCreateBasePathOk() (*bool, bool) {
 	if o == nil || IsNil(o.CreateBasePath) {
 		return nil, false
 	}
@@ -449,15 +386,15 @@ func (o *CreateStorageRequest) HasCreateBasePath() bool {
 	return false
 }
 
-// SetCreateBasePath gets a reference to the given int32 and assigns it to the CreateBasePath field.
-func (o *CreateStorageRequest) SetCreateBasePath(v int32) {
+// SetCreateBasePath gets a reference to the given bool and assigns it to the CreateBasePath field.
+func (o *CreateStorageRequest) SetCreateBasePath(v bool) {
 	o.CreateBasePath = &v
 }
 
 // GetCreateSubdirs returns the CreateSubdirs field value if set, zero value otherwise.
-func (o *CreateStorageRequest) GetCreateSubdirs() int32 {
+func (o *CreateStorageRequest) GetCreateSubdirs() bool {
 	if o == nil || IsNil(o.CreateSubdirs) {
-		var ret int32
+		var ret bool
 		return ret
 	}
 	return *o.CreateSubdirs
@@ -465,7 +402,7 @@ func (o *CreateStorageRequest) GetCreateSubdirs() int32 {
 
 // GetCreateSubdirsOk returns a tuple with the CreateSubdirs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateStorageRequest) GetCreateSubdirsOk() (*int32, bool) {
+func (o *CreateStorageRequest) GetCreateSubdirsOk() (*bool, bool) {
 	if o == nil || IsNil(o.CreateSubdirs) {
 		return nil, false
 	}
@@ -481,8 +418,8 @@ func (o *CreateStorageRequest) HasCreateSubdirs() bool {
 	return false
 }
 
-// SetCreateSubdirs gets a reference to the given int32 and assigns it to the CreateSubdirs field.
-func (o *CreateStorageRequest) SetCreateSubdirs(v int32) {
+// SetCreateSubdirs gets a reference to the given bool and assigns it to the CreateSubdirs field.
+func (o *CreateStorageRequest) SetCreateSubdirs(v bool) {
 	o.CreateSubdirs = &v
 }
 
@@ -551,9 +488,9 @@ func (o *CreateStorageRequest) SetDatastore(v string) {
 }
 
 // GetDisable returns the Disable field value if set, zero value otherwise.
-func (o *CreateStorageRequest) GetDisable() int32 {
+func (o *CreateStorageRequest) GetDisable() bool {
 	if o == nil || IsNil(o.Disable) {
-		var ret int32
+		var ret bool
 		return ret
 	}
 	return *o.Disable
@@ -561,7 +498,7 @@ func (o *CreateStorageRequest) GetDisable() int32 {
 
 // GetDisableOk returns a tuple with the Disable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateStorageRequest) GetDisableOk() (*int32, bool) {
+func (o *CreateStorageRequest) GetDisableOk() (*bool, bool) {
 	if o == nil || IsNil(o.Disable) {
 		return nil, false
 	}
@@ -577,8 +514,8 @@ func (o *CreateStorageRequest) HasDisable() bool {
 	return false
 }
 
-// SetDisable gets a reference to the given int32 and assigns it to the Disable field.
-func (o *CreateStorageRequest) SetDisable(v int32) {
+// SetDisable gets a reference to the given bool and assigns it to the Disable field.
+func (o *CreateStorageRequest) SetDisable(v bool) {
 	o.Disable = &v
 }
 
@@ -775,9 +712,9 @@ func (o *CreateStorageRequest) SetFsName(v string) {
 }
 
 // GetFuse returns the Fuse field value if set, zero value otherwise.
-func (o *CreateStorageRequest) GetFuse() int32 {
+func (o *CreateStorageRequest) GetFuse() bool {
 	if o == nil || IsNil(o.Fuse) {
-		var ret int32
+		var ret bool
 		return ret
 	}
 	return *o.Fuse
@@ -785,7 +722,7 @@ func (o *CreateStorageRequest) GetFuse() int32 {
 
 // GetFuseOk returns a tuple with the Fuse field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateStorageRequest) GetFuseOk() (*int32, bool) {
+func (o *CreateStorageRequest) GetFuseOk() (*bool, bool) {
 	if o == nil || IsNil(o.Fuse) {
 		return nil, false
 	}
@@ -801,8 +738,8 @@ func (o *CreateStorageRequest) HasFuse() bool {
 	return false
 }
 
-// SetFuse gets a reference to the given int32 and assigns it to the Fuse field.
-func (o *CreateStorageRequest) SetFuse(v int32) {
+// SetFuse gets a reference to the given bool and assigns it to the Fuse field.
+func (o *CreateStorageRequest) SetFuse(v bool) {
 	o.Fuse = &v
 }
 
@@ -903,9 +840,9 @@ func (o *CreateStorageRequest) SetKeyring(v string) {
 }
 
 // GetKrbd returns the Krbd field value if set, zero value otherwise.
-func (o *CreateStorageRequest) GetKrbd() int32 {
+func (o *CreateStorageRequest) GetKrbd() bool {
 	if o == nil || IsNil(o.Krbd) {
-		var ret int32
+		var ret bool
 		return ret
 	}
 	return *o.Krbd
@@ -913,7 +850,7 @@ func (o *CreateStorageRequest) GetKrbd() int32 {
 
 // GetKrbdOk returns a tuple with the Krbd field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateStorageRequest) GetKrbdOk() (*int32, bool) {
+func (o *CreateStorageRequest) GetKrbdOk() (*bool, bool) {
 	if o == nil || IsNil(o.Krbd) {
 		return nil, false
 	}
@@ -929,8 +866,8 @@ func (o *CreateStorageRequest) HasKrbd() bool {
 	return false
 }
 
-// SetKrbd gets a reference to the given int32 and assigns it to the Krbd field.
-func (o *CreateStorageRequest) SetKrbd(v int32) {
+// SetKrbd gets a reference to the given bool and assigns it to the Krbd field.
+func (o *CreateStorageRequest) SetKrbd(v bool) {
 	o.Krbd = &v
 }
 
@@ -1063,9 +1000,9 @@ func (o *CreateStorageRequest) SetMaxfiles(v int64) {
 }
 
 // GetMkdir returns the Mkdir field value if set, zero value otherwise.
-func (o *CreateStorageRequest) GetMkdir() int32 {
+func (o *CreateStorageRequest) GetMkdir() bool {
 	if o == nil || IsNil(o.Mkdir) {
-		var ret int32
+		var ret bool
 		return ret
 	}
 	return *o.Mkdir
@@ -1073,7 +1010,7 @@ func (o *CreateStorageRequest) GetMkdir() int32 {
 
 // GetMkdirOk returns a tuple with the Mkdir field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateStorageRequest) GetMkdirOk() (*int32, bool) {
+func (o *CreateStorageRequest) GetMkdirOk() (*bool, bool) {
 	if o == nil || IsNil(o.Mkdir) {
 		return nil, false
 	}
@@ -1089,8 +1026,8 @@ func (o *CreateStorageRequest) HasMkdir() bool {
 	return false
 }
 
-// SetMkdir gets a reference to the given int32 and assigns it to the Mkdir field.
-func (o *CreateStorageRequest) SetMkdir(v int32) {
+// SetMkdir gets a reference to the given bool and assigns it to the Mkdir field.
+func (o *CreateStorageRequest) SetMkdir(v bool) {
 	o.Mkdir = &v
 }
 
@@ -1191,9 +1128,9 @@ func (o *CreateStorageRequest) SetNamespace(v string) {
 }
 
 // GetNocow returns the Nocow field value if set, zero value otherwise.
-func (o *CreateStorageRequest) GetNocow() int32 {
+func (o *CreateStorageRequest) GetNocow() bool {
 	if o == nil || IsNil(o.Nocow) {
-		var ret int32
+		var ret bool
 		return ret
 	}
 	return *o.Nocow
@@ -1201,7 +1138,7 @@ func (o *CreateStorageRequest) GetNocow() int32 {
 
 // GetNocowOk returns a tuple with the Nocow field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateStorageRequest) GetNocowOk() (*int32, bool) {
+func (o *CreateStorageRequest) GetNocowOk() (*bool, bool) {
 	if o == nil || IsNil(o.Nocow) {
 		return nil, false
 	}
@@ -1217,8 +1154,8 @@ func (o *CreateStorageRequest) HasNocow() bool {
 	return false
 }
 
-// SetNocow gets a reference to the given int32 and assigns it to the Nocow field.
-func (o *CreateStorageRequest) SetNocow(v int32) {
+// SetNocow gets a reference to the given bool and assigns it to the Nocow field.
+func (o *CreateStorageRequest) SetNocow(v bool) {
 	o.Nocow = &v
 }
 
@@ -1255,9 +1192,9 @@ func (o *CreateStorageRequest) SetNodes(v string) {
 }
 
 // GetNowritecache returns the Nowritecache field value if set, zero value otherwise.
-func (o *CreateStorageRequest) GetNowritecache() int32 {
+func (o *CreateStorageRequest) GetNowritecache() bool {
 	if o == nil || IsNil(o.Nowritecache) {
-		var ret int32
+		var ret bool
 		return ret
 	}
 	return *o.Nowritecache
@@ -1265,7 +1202,7 @@ func (o *CreateStorageRequest) GetNowritecache() int32 {
 
 // GetNowritecacheOk returns a tuple with the Nowritecache field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateStorageRequest) GetNowritecacheOk() (*int32, bool) {
+func (o *CreateStorageRequest) GetNowritecacheOk() (*bool, bool) {
 	if o == nil || IsNil(o.Nowritecache) {
 		return nil, false
 	}
@@ -1281,8 +1218,8 @@ func (o *CreateStorageRequest) HasNowritecache() bool {
 	return false
 }
 
-// SetNowritecache gets a reference to the given int32 and assigns it to the Nowritecache field.
-func (o *CreateStorageRequest) SetNowritecache(v int32) {
+// SetNowritecache gets a reference to the given bool and assigns it to the Nowritecache field.
+func (o *CreateStorageRequest) SetNowritecache(v bool) {
 	o.Nowritecache = &v
 }
 
@@ -1543,9 +1480,9 @@ func (o *CreateStorageRequest) SetPruneBackups(v string) {
 }
 
 // GetSaferemove returns the Saferemove field value if set, zero value otherwise.
-func (o *CreateStorageRequest) GetSaferemove() int32 {
+func (o *CreateStorageRequest) GetSaferemove() bool {
 	if o == nil || IsNil(o.Saferemove) {
-		var ret int32
+		var ret bool
 		return ret
 	}
 	return *o.Saferemove
@@ -1553,7 +1490,7 @@ func (o *CreateStorageRequest) GetSaferemove() int32 {
 
 // GetSaferemoveOk returns a tuple with the Saferemove field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateStorageRequest) GetSaferemoveOk() (*int32, bool) {
+func (o *CreateStorageRequest) GetSaferemoveOk() (*bool, bool) {
 	if o == nil || IsNil(o.Saferemove) {
 		return nil, false
 	}
@@ -1569,8 +1506,8 @@ func (o *CreateStorageRequest) HasSaferemove() bool {
 	return false
 }
 
-// SetSaferemove gets a reference to the given int32 and assigns it to the Saferemove field.
-func (o *CreateStorageRequest) SetSaferemove(v int32) {
+// SetSaferemove gets a reference to the given bool and assigns it to the Saferemove field.
+func (o *CreateStorageRequest) SetSaferemove(v bool) {
 	o.Saferemove = &v
 }
 
@@ -1703,9 +1640,9 @@ func (o *CreateStorageRequest) SetShare(v string) {
 }
 
 // GetShared returns the Shared field value if set, zero value otherwise.
-func (o *CreateStorageRequest) GetShared() int32 {
+func (o *CreateStorageRequest) GetShared() bool {
 	if o == nil || IsNil(o.Shared) {
-		var ret int32
+		var ret bool
 		return ret
 	}
 	return *o.Shared
@@ -1713,7 +1650,7 @@ func (o *CreateStorageRequest) GetShared() int32 {
 
 // GetSharedOk returns a tuple with the Shared field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateStorageRequest) GetSharedOk() (*int32, bool) {
+func (o *CreateStorageRequest) GetSharedOk() (*bool, bool) {
 	if o == nil || IsNil(o.Shared) {
 		return nil, false
 	}
@@ -1729,9 +1666,41 @@ func (o *CreateStorageRequest) HasShared() bool {
 	return false
 }
 
-// SetShared gets a reference to the given int32 and assigns it to the Shared field.
-func (o *CreateStorageRequest) SetShared(v int32) {
+// SetShared gets a reference to the given bool and assigns it to the Shared field.
+func (o *CreateStorageRequest) SetShared(v bool) {
 	o.Shared = &v
+}
+
+// GetSkipCertVerification returns the SkipCertVerification field value if set, zero value otherwise.
+func (o *CreateStorageRequest) GetSkipCertVerification() bool {
+	if o == nil || IsNil(o.SkipCertVerification) {
+		var ret bool
+		return ret
+	}
+	return *o.SkipCertVerification
+}
+
+// GetSkipCertVerificationOk returns a tuple with the SkipCertVerification field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateStorageRequest) GetSkipCertVerificationOk() (*bool, bool) {
+	if o == nil || IsNil(o.SkipCertVerification) {
+		return nil, false
+	}
+	return o.SkipCertVerification, true
+}
+
+// HasSkipCertVerification returns a boolean if a field has been set.
+func (o *CreateStorageRequest) HasSkipCertVerification() bool {
+	if o != nil && !IsNil(o.SkipCertVerification) {
+		return true
+	}
+
+	return false
+}
+
+// SetSkipCertVerification gets a reference to the given bool and assigns it to the SkipCertVerification field.
+func (o *CreateStorageRequest) SetSkipCertVerification(v bool) {
+	o.SkipCertVerification = &v
 }
 
 // GetSmbversion returns the Smbversion field value if set, zero value otherwise.
@@ -1767,9 +1736,9 @@ func (o *CreateStorageRequest) SetSmbversion(v string) {
 }
 
 // GetSparse returns the Sparse field value if set, zero value otherwise.
-func (o *CreateStorageRequest) GetSparse() int32 {
+func (o *CreateStorageRequest) GetSparse() bool {
 	if o == nil || IsNil(o.Sparse) {
-		var ret int32
+		var ret bool
 		return ret
 	}
 	return *o.Sparse
@@ -1777,7 +1746,7 @@ func (o *CreateStorageRequest) GetSparse() int32 {
 
 // GetSparseOk returns a tuple with the Sparse field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateStorageRequest) GetSparseOk() (*int32, bool) {
+func (o *CreateStorageRequest) GetSparseOk() (*bool, bool) {
 	if o == nil || IsNil(o.Sparse) {
 		return nil, false
 	}
@@ -1793,8 +1762,8 @@ func (o *CreateStorageRequest) HasSparse() bool {
 	return false
 }
 
-// SetSparse gets a reference to the given int32 and assigns it to the Sparse field.
-func (o *CreateStorageRequest) SetSparse(v int32) {
+// SetSparse gets a reference to the given bool and assigns it to the Sparse field.
+func (o *CreateStorageRequest) SetSparse(v bool) {
 	o.Sparse = &v
 }
 
@@ -1855,9 +1824,9 @@ func (o *CreateStorageRequest) SetSubdir(v string) {
 }
 
 // GetTaggedOnly returns the TaggedOnly field value if set, zero value otherwise.
-func (o *CreateStorageRequest) GetTaggedOnly() int32 {
+func (o *CreateStorageRequest) GetTaggedOnly() bool {
 	if o == nil || IsNil(o.TaggedOnly) {
-		var ret int32
+		var ret bool
 		return ret
 	}
 	return *o.TaggedOnly
@@ -1865,7 +1834,7 @@ func (o *CreateStorageRequest) GetTaggedOnly() int32 {
 
 // GetTaggedOnlyOk returns a tuple with the TaggedOnly field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateStorageRequest) GetTaggedOnlyOk() (*int32, bool) {
+func (o *CreateStorageRequest) GetTaggedOnlyOk() (*bool, bool) {
 	if o == nil || IsNil(o.TaggedOnly) {
 		return nil, false
 	}
@@ -1881,8 +1850,8 @@ func (o *CreateStorageRequest) HasTaggedOnly() bool {
 	return false
 }
 
-// SetTaggedOnly gets a reference to the given int32 and assigns it to the TaggedOnly field.
-func (o *CreateStorageRequest) SetTaggedOnly(v int32) {
+// SetTaggedOnly gets a reference to the given bool and assigns it to the TaggedOnly field.
+func (o *CreateStorageRequest) SetTaggedOnly(v bool) {
 	o.TaggedOnly = &v
 }
 
@@ -2259,6 +2228,9 @@ func (o CreateStorageRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Shared) {
 		toSerialize["shared"] = o.Shared
 	}
+	if !IsNil(o.SkipCertVerification) {
+		toSerialize["skip-cert-verification"] = o.SkipCertVerification
+	}
 	if !IsNil(o.Smbversion) {
 		toSerialize["smbversion"] = o.Smbversion
 	}
@@ -2292,42 +2264,6 @@ func (o CreateStorageRequest) ToMap() (map[string]interface{}, error) {
 		toSerialize["volume"] = o.Volume
 	}
 	return toSerialize, nil
-}
-
-func (o *CreateStorageRequest) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"storage",
-		"type",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(bytes, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varCreateStorageRequest := _CreateStorageRequest{}
-
-	err = json.Unmarshal(bytes, &varCreateStorageRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = CreateStorageRequest(varCreateStorageRequest)
-
-	return err
 }
 
 type NullableCreateStorageRequest struct {

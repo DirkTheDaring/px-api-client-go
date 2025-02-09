@@ -3,7 +3,7 @@ ProxMox VE API
 
 ProxMox VE API
 
-API version: 8.0
+API version: 8.3
 Contact: baldur@email.de
 */
 
@@ -20,8 +20,7 @@ var _ MappedNullable = &RollbackContainerSnapshotRequest{}
 
 // RollbackContainerSnapshotRequest struct for RollbackContainerSnapshotRequest
 type RollbackContainerSnapshotRequest struct {
-	// Whether the container should get started after rolling back successfully
-	Start *int32 `json:"start,omitempty"`
+	Start *bool `json:"start,omitempty"`
 }
 
 // NewRollbackContainerSnapshotRequest instantiates a new RollbackContainerSnapshotRequest object
@@ -42,9 +41,9 @@ func NewRollbackContainerSnapshotRequestWithDefaults() *RollbackContainerSnapsho
 }
 
 // GetStart returns the Start field value if set, zero value otherwise.
-func (o *RollbackContainerSnapshotRequest) GetStart() int32 {
+func (o *RollbackContainerSnapshotRequest) GetStart() bool {
 	if o == nil || IsNil(o.Start) {
-		var ret int32
+		var ret bool
 		return ret
 	}
 	return *o.Start
@@ -52,7 +51,7 @@ func (o *RollbackContainerSnapshotRequest) GetStart() int32 {
 
 // GetStartOk returns a tuple with the Start field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RollbackContainerSnapshotRequest) GetStartOk() (*int32, bool) {
+func (o *RollbackContainerSnapshotRequest) GetStartOk() (*bool, bool) {
 	if o == nil || IsNil(o.Start) {
 		return nil, false
 	}
@@ -68,8 +67,8 @@ func (o *RollbackContainerSnapshotRequest) HasStart() bool {
 	return false
 }
 
-// SetStart gets a reference to the given int32 and assigns it to the Start field.
-func (o *RollbackContainerSnapshotRequest) SetStart(v int32) {
+// SetStart gets a reference to the given bool and assigns it to the Start field.
+func (o *RollbackContainerSnapshotRequest) SetStart(v bool) {
 	o.Start = &v
 }
 

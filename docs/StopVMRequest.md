@@ -4,10 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**KeepActive** | Pointer to **int32** | Do not deactivate storage volumes. | [optional] 
-**Migratedfrom** | Pointer to **string** | The cluster node name. | [optional] 
-**Skiplock** | Pointer to **int32** | Ignore locks - only root is allowed to use this option. | [optional] 
-**Timeout** | Pointer to **int64** | Wait maximal timeout seconds. | [optional] 
+**KeepActive** | Pointer to **bool** |  | [optional] 
+**Migratedfrom** | Pointer to **string** |  | [optional] 
+**OverruleShutdown** | Pointer to **bool** |  | [optional] 
+**Skiplock** | Pointer to **bool** |  | [optional] 
+**Timeout** | Pointer to **int64** |  | [optional] 
 
 ## Methods
 
@@ -30,20 +31,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetKeepActive
 
-`func (o *StopVMRequest) GetKeepActive() int32`
+`func (o *StopVMRequest) GetKeepActive() bool`
 
 GetKeepActive returns the KeepActive field if non-nil, zero value otherwise.
 
 ### GetKeepActiveOk
 
-`func (o *StopVMRequest) GetKeepActiveOk() (*int32, bool)`
+`func (o *StopVMRequest) GetKeepActiveOk() (*bool, bool)`
 
 GetKeepActiveOk returns a tuple with the KeepActive field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetKeepActive
 
-`func (o *StopVMRequest) SetKeepActive(v int32)`
+`func (o *StopVMRequest) SetKeepActive(v bool)`
 
 SetKeepActive sets KeepActive field to given value.
 
@@ -78,22 +79,47 @@ SetMigratedfrom sets Migratedfrom field to given value.
 
 HasMigratedfrom returns a boolean if a field has been set.
 
+### GetOverruleShutdown
+
+`func (o *StopVMRequest) GetOverruleShutdown() bool`
+
+GetOverruleShutdown returns the OverruleShutdown field if non-nil, zero value otherwise.
+
+### GetOverruleShutdownOk
+
+`func (o *StopVMRequest) GetOverruleShutdownOk() (*bool, bool)`
+
+GetOverruleShutdownOk returns a tuple with the OverruleShutdown field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOverruleShutdown
+
+`func (o *StopVMRequest) SetOverruleShutdown(v bool)`
+
+SetOverruleShutdown sets OverruleShutdown field to given value.
+
+### HasOverruleShutdown
+
+`func (o *StopVMRequest) HasOverruleShutdown() bool`
+
+HasOverruleShutdown returns a boolean if a field has been set.
+
 ### GetSkiplock
 
-`func (o *StopVMRequest) GetSkiplock() int32`
+`func (o *StopVMRequest) GetSkiplock() bool`
 
 GetSkiplock returns the Skiplock field if non-nil, zero value otherwise.
 
 ### GetSkiplockOk
 
-`func (o *StopVMRequest) GetSkiplockOk() (*int32, bool)`
+`func (o *StopVMRequest) GetSkiplockOk() (*bool, bool)`
 
 GetSkiplockOk returns a tuple with the Skiplock field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSkiplock
 
-`func (o *StopVMRequest) SetSkiplock(v int32)`
+`func (o *StopVMRequest) SetSkiplock(v bool)`
 
 SetSkiplock sets Skiplock field to given value.
 

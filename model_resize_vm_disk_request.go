@@ -3,7 +3,7 @@ ProxMox VE API
 
 ProxMox VE API
 
-API version: 8.0
+API version: 8.3
 Contact: baldur@email.de
 */
 
@@ -13,7 +13,6 @@ package pxapiflat
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the ResizeVMDiskRequest type satisfies the MappedNullable interface at compile time
@@ -21,17 +20,11 @@ var _ MappedNullable = &ResizeVMDiskRequest{}
 
 // ResizeVMDiskRequest struct for ResizeVMDiskRequest
 type ResizeVMDiskRequest struct {
-	// Prevent changes if current configuration file has different SHA1 digest. This can be used to prevent concurrent modifications.
 	Digest *string `json:"digest,omitempty"`
-	// The disk you want to resize.
 	Disk string `json:"disk"`
-	// The new size. With the `+` sign the value is added to the actual size of the volume and without it, the value is taken as an absolute one. Shrinking disk size is not supported.
 	Size string `json:"size"`
-	// Ignore locks - only root is allowed to use this option.
-	Skiplock *int32 `json:"skiplock,omitempty"`
+	Skiplock *bool `json:"skiplock,omitempty"`
 }
-
-type _ResizeVMDiskRequest ResizeVMDiskRequest
 
 // NewResizeVMDiskRequest instantiates a new ResizeVMDiskRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -133,9 +126,9 @@ func (o *ResizeVMDiskRequest) SetSize(v string) {
 }
 
 // GetSkiplock returns the Skiplock field value if set, zero value otherwise.
-func (o *ResizeVMDiskRequest) GetSkiplock() int32 {
+func (o *ResizeVMDiskRequest) GetSkiplock() bool {
 	if o == nil || IsNil(o.Skiplock) {
-		var ret int32
+		var ret bool
 		return ret
 	}
 	return *o.Skiplock
@@ -143,7 +136,7 @@ func (o *ResizeVMDiskRequest) GetSkiplock() int32 {
 
 // GetSkiplockOk returns a tuple with the Skiplock field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResizeVMDiskRequest) GetSkiplockOk() (*int32, bool) {
+func (o *ResizeVMDiskRequest) GetSkiplockOk() (*bool, bool) {
 	if o == nil || IsNil(o.Skiplock) {
 		return nil, false
 	}
@@ -159,8 +152,8 @@ func (o *ResizeVMDiskRequest) HasSkiplock() bool {
 	return false
 }
 
-// SetSkiplock gets a reference to the given int32 and assigns it to the Skiplock field.
-func (o *ResizeVMDiskRequest) SetSkiplock(v int32) {
+// SetSkiplock gets a reference to the given bool and assigns it to the Skiplock field.
+func (o *ResizeVMDiskRequest) SetSkiplock(v bool) {
 	o.Skiplock = &v
 }
 
@@ -183,42 +176,6 @@ func (o ResizeVMDiskRequest) ToMap() (map[string]interface{}, error) {
 		toSerialize["skiplock"] = o.Skiplock
 	}
 	return toSerialize, nil
-}
-
-func (o *ResizeVMDiskRequest) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"disk",
-		"size",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(bytes, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varResizeVMDiskRequest := _ResizeVMDiskRequest{}
-
-	err = json.Unmarshal(bytes, &varResizeVMDiskRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ResizeVMDiskRequest(varResizeVMDiskRequest)
-
-	return err
 }
 
 type NullableResizeVMDiskRequest struct {

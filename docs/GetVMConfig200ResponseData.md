@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Acpi** | Pointer to **int32** | Enable/disable ACPI. | [optional] 
 **Affinity** | Pointer to **string** | List of host cores used to execute guest processes, for example: 0,5,8-11 | [optional] 
 **Agent** | Pointer to **string** | Enable/disable communication with the QEMU Guest Agent and its properties. | [optional] 
+**AmdSev** | Pointer to **string** | Secure Encrypted Virtualization (SEV) features by AMD CPUs | [optional] 
 **Arch** | Pointer to **string** | Virtual processor architecture. Defaults to the host. | [optional] 
 **Args** | Pointer to **string** | Arbitrary arguments passed to kvm. | [optional] 
 **Audio0** | Pointer to **string** | Configure a audio device, useful in combination with QXL/Spice. | [optional] 
@@ -102,9 +103,9 @@ Name | Type | Description | Notes
 **Kvm** | Pointer to **int32** | Enable/disable KVM hardware virtualization. | [optional] 
 **Localtime** | Pointer to **int32** | Set the real time clock (RTC) to local time. This is enabled by default if the &#x60;ostype&#x60; indicates a Microsoft Windows OS. | [optional] 
 **Lock** | Pointer to **string** | Lock/unlock the VM. | [optional] 
-**Machine** | Pointer to **string** | Specifies the QEMU machine type. | [optional] 
-**Memory** | Pointer to **string** | Memory | [optional] 
-**MigrateDowntime** | Pointer to **float32** | Set maximum tolerated downtime (in seconds) for migrations. | [optional] 
+**Machine** | Pointer to **string** | Specify the QEMU machine. | [optional] 
+**Memory** | Pointer to **string** | Memory properties. | [optional] 
+**MigrateDowntime** | Pointer to **float32** | Set maximum tolerated downtime (in seconds) for migrations. Should the migration not be able to converge in the very end, because too much newly dirtied RAM needs to be transferred, the limit will be increased automatically step-by-step until migration can converge. | [optional] 
 **MigrateSpeed** | Pointer to **int64** | Set maximum speed (in MB/s) for migrations. Value 0 is no limit. | [optional] 
 **Name** | Pointer to **string** | Set a name for the VM. Only used on the configuration web interface. | [optional] 
 **Nameserver** | Pointer to **string** | cloud-init: Sets DNS server IP address for a container. Create will automatically use the setting from the host if neither searchdomain nor nameserver are set. | [optional] 
@@ -384,6 +385,31 @@ SetAgent sets Agent field to given value.
 `func (o *GetVMConfig200ResponseData) HasAgent() bool`
 
 HasAgent returns a boolean if a field has been set.
+
+### GetAmdSev
+
+`func (o *GetVMConfig200ResponseData) GetAmdSev() string`
+
+GetAmdSev returns the AmdSev field if non-nil, zero value otherwise.
+
+### GetAmdSevOk
+
+`func (o *GetVMConfig200ResponseData) GetAmdSevOk() (*string, bool)`
+
+GetAmdSevOk returns a tuple with the AmdSev field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAmdSev
+
+`func (o *GetVMConfig200ResponseData) SetAmdSev(v string)`
+
+SetAmdSev sets AmdSev field to given value.
+
+### HasAmdSev
+
+`func (o *GetVMConfig200ResponseData) HasAmdSev() bool`
+
+HasAmdSev returns a boolean if a field has been set.
 
 ### GetArch
 

@@ -3,7 +3,7 @@ ProxMox VE API
 
 ProxMox VE API
 
-API version: 8.0
+API version: 8.3
 Contact: baldur@email.de
 */
 
@@ -26,6 +26,8 @@ type GetVMConfig200ResponseData struct {
 	Affinity *string `json:"affinity,omitempty"`
 	// Enable/disable communication with the QEMU Guest Agent and its properties.
 	Agent *string `json:"agent,omitempty"`
+	// Secure Encrypted Virtualization (SEV) features by AMD CPUs
+	AmdSev *string `json:"amd-sev,omitempty"`
 	// Virtual processor architecture. Defaults to the host.
 	Arch *string `json:"arch,omitempty"`
 	// Arbitrary arguments passed to kvm.
@@ -216,11 +218,11 @@ type GetVMConfig200ResponseData struct {
 	Localtime *int32 `json:"localtime,omitempty"`
 	// Lock/unlock the VM.
 	Lock *string `json:"lock,omitempty"`
-	// Specifies the QEMU machine type.
+	// Specify the QEMU machine.
 	Machine *string `json:"machine,omitempty"`
-	// Memory
+	// Memory properties.
 	Memory *string `json:"memory,omitempty"`
-	// Set maximum tolerated downtime (in seconds) for migrations.
+	// Set maximum tolerated downtime (in seconds) for migrations. Should the migration not be able to converge in the very end, because too much newly dirtied RAM needs to be transferred, the limit will be increased automatically step-by-step until migration can converge.
 	MigrateDowntime *float32 `json:"migrate_downtime,omitempty"`
 	// Set maximum speed (in MB/s) for migrations. Value 0 is no limit.
 	MigrateSpeed *int64 `json:"migrate_speed,omitempty"`
@@ -705,6 +707,38 @@ func (o *GetVMConfig200ResponseData) HasAgent() bool {
 // SetAgent gets a reference to the given string and assigns it to the Agent field.
 func (o *GetVMConfig200ResponseData) SetAgent(v string) {
 	o.Agent = &v
+}
+
+// GetAmdSev returns the AmdSev field value if set, zero value otherwise.
+func (o *GetVMConfig200ResponseData) GetAmdSev() string {
+	if o == nil || IsNil(o.AmdSev) {
+		var ret string
+		return ret
+	}
+	return *o.AmdSev
+}
+
+// GetAmdSevOk returns a tuple with the AmdSev field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetVMConfig200ResponseData) GetAmdSevOk() (*string, bool) {
+	if o == nil || IsNil(o.AmdSev) {
+		return nil, false
+	}
+	return o.AmdSev, true
+}
+
+// HasAmdSev returns a boolean if a field has been set.
+func (o *GetVMConfig200ResponseData) HasAmdSev() bool {
+	if o != nil && !IsNil(o.AmdSev) {
+		return true
+	}
+
+	return false
+}
+
+// SetAmdSev gets a reference to the given string and assigns it to the AmdSev field.
+func (o *GetVMConfig200ResponseData) SetAmdSev(v string) {
+	o.AmdSev = &v
 }
 
 // GetArch returns the Arch field value if set, zero value otherwise.
@@ -9781,6 +9815,9 @@ func (o GetVMConfig200ResponseData) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Agent) {
 		toSerialize["agent"] = o.Agent
+	}
+	if !IsNil(o.AmdSev) {
+		toSerialize["amd-sev"] = o.AmdSev
 	}
 	if !IsNil(o.Arch) {
 		toSerialize["arch"] = o.Arch
