@@ -20,156 +20,307 @@ var _ MappedNullable = &UpdateContainerConfigSyncRequest{}
 
 // UpdateContainerConfigSyncRequest struct for UpdateContainerConfigSyncRequest
 type UpdateContainerConfigSyncRequest struct {
+	// OS architecture type.
 	Arch *string `json:"arch,omitempty"`
+	// Console mode. By default, the console command tries to open a connection to one of the available tty devices. By setting cmode to 'console' it tries to attach to /dev/console instead. If you set cmode to 'shell', it simply invokes a shell inside the container (no login).
 	Cmode *string `json:"cmode,omitempty"`
+	// Attach a console device (/dev/console) to the container.
 	Console *bool `json:"console,omitempty"`
+	// The number of cores assigned to the container. A container can use all available cores by default.
 	Cores *int64 `json:"cores,omitempty"`
+	// Limit of CPU usage.  NOTE: If the computer has 2 CPUs, it has a total of '2' CPU time. Value '0' indicates no CPU limit.
 	Cpulimit *float32 `json:"cpulimit,omitempty"`
+	// CPU weight for a container, will be clamped to [1, 10000] in cgroup v2.
 	Cpuunits *int64 `json:"cpuunits,omitempty"`
+	// Try to be more verbose. For now this only enables debug log-level on start.
 	Debug *bool `json:"debug,omitempty"`
+	// A list of settings you want to delete.
 	Delete *string `json:"delete,omitempty"`
+	// Description for the Container. Shown in the web-interface CT's summary. This is saved as comment inside the configuration file.
 	Description *string `json:"description,omitempty"`
+	// Device to pass through to the container
 	Dev0 *string `json:"dev0,omitempty"`
+	// Device to pass through to the container
 	Dev1 *string `json:"dev1,omitempty"`
+	// Device to pass through to the container
 	Dev2 *string `json:"dev2,omitempty"`
+	// Device to pass through to the container
 	Dev3 *string `json:"dev3,omitempty"`
+	// Device to pass through to the container
 	Dev4 *string `json:"dev4,omitempty"`
+	// Device to pass through to the container
 	Dev5 *string `json:"dev5,omitempty"`
+	// Device to pass through to the container
 	Dev6 *string `json:"dev6,omitempty"`
+	// Device to pass through to the container
 	Dev7 *string `json:"dev7,omitempty"`
+	// Device to pass through to the container
 	Dev8 *string `json:"dev8,omitempty"`
+	// Device to pass through to the container
 	Dev9 *string `json:"dev9,omitempty"`
+	// Device to pass through to the container
 	Dev10 *string `json:"dev10,omitempty"`
+	// Device to pass through to the container
 	Dev11 *string `json:"dev11,omitempty"`
+	// Device to pass through to the container
 	Dev12 *string `json:"dev12,omitempty"`
+	// Device to pass through to the container
 	Dev13 *string `json:"dev13,omitempty"`
+	// Device to pass through to the container
 	Dev14 *string `json:"dev14,omitempty"`
+	// Device to pass through to the container
 	Dev15 *string `json:"dev15,omitempty"`
+	// Device to pass through to the container
 	Dev16 *string `json:"dev16,omitempty"`
+	// Device to pass through to the container
 	Dev17 *string `json:"dev17,omitempty"`
+	// Device to pass through to the container
 	Dev18 *string `json:"dev18,omitempty"`
+	// Device to pass through to the container
 	Dev19 *string `json:"dev19,omitempty"`
+	// Device to pass through to the container
 	Dev20 *string `json:"dev20,omitempty"`
+	// Device to pass through to the container
 	Dev21 *string `json:"dev21,omitempty"`
+	// Device to pass through to the container
 	Dev22 *string `json:"dev22,omitempty"`
+	// Device to pass through to the container
 	Dev23 *string `json:"dev23,omitempty"`
+	// Device to pass through to the container
 	Dev24 *string `json:"dev24,omitempty"`
+	// Device to pass through to the container
 	Dev25 *string `json:"dev25,omitempty"`
+	// Device to pass through to the container
 	Dev26 *string `json:"dev26,omitempty"`
+	// Device to pass through to the container
 	Dev27 *string `json:"dev27,omitempty"`
+	// Device to pass through to the container
 	Dev28 *string `json:"dev28,omitempty"`
+	// Device to pass through to the container
 	Dev29 *string `json:"dev29,omitempty"`
+	// Prevent changes if current configuration file has different SHA1 digest. This can be used to prevent concurrent modifications.
 	Digest *string `json:"digest,omitempty"`
+	// Allow containers access to advanced features.
 	Features *string `json:"features,omitempty"`
+	// Script that will be executed during various steps in the containers lifetime.
 	Hookscript *string `json:"hookscript,omitempty"`
+	// Set a host name for the container.
 	Hostname *string `json:"hostname,omitempty"`
+	// Lock/unlock the container.
 	Lock *string `json:"lock,omitempty"`
+	// Amount of RAM for the container in MB.
 	Memory *int64 `json:"memory,omitempty"`
+	// Use volume as container mount point. Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume.
 	Mp0 *string `json:"mp0,omitempty"`
+	// Use volume as container mount point. Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume.
 	Mp1 *string `json:"mp1,omitempty"`
+	// Use volume as container mount point. Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume.
 	Mp2 *string `json:"mp2,omitempty"`
+	// Use volume as container mount point. Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume.
 	Mp3 *string `json:"mp3,omitempty"`
+	// Use volume as container mount point. Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume.
 	Mp4 *string `json:"mp4,omitempty"`
+	// Use volume as container mount point. Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume.
 	Mp5 *string `json:"mp5,omitempty"`
+	// Use volume as container mount point. Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume.
 	Mp6 *string `json:"mp6,omitempty"`
+	// Use volume as container mount point. Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume.
 	Mp7 *string `json:"mp7,omitempty"`
+	// Use volume as container mount point. Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume.
 	Mp8 *string `json:"mp8,omitempty"`
+	// Use volume as container mount point. Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume.
 	Mp9 *string `json:"mp9,omitempty"`
+	// Use volume as container mount point. Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume.
 	Mp10 *string `json:"mp10,omitempty"`
+	// Use volume as container mount point. Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume.
 	Mp11 *string `json:"mp11,omitempty"`
+	// Use volume as container mount point. Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume.
 	Mp12 *string `json:"mp12,omitempty"`
+	// Use volume as container mount point. Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume.
 	Mp13 *string `json:"mp13,omitempty"`
+	// Use volume as container mount point. Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume.
 	Mp14 *string `json:"mp14,omitempty"`
+	// Use volume as container mount point. Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume.
 	Mp15 *string `json:"mp15,omitempty"`
+	// Use volume as container mount point. Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume.
 	Mp16 *string `json:"mp16,omitempty"`
+	// Use volume as container mount point. Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume.
 	Mp17 *string `json:"mp17,omitempty"`
+	// Use volume as container mount point. Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume.
 	Mp18 *string `json:"mp18,omitempty"`
+	// Use volume as container mount point. Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume.
 	Mp19 *string `json:"mp19,omitempty"`
+	// Use volume as container mount point. Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume.
 	Mp20 *string `json:"mp20,omitempty"`
+	// Use volume as container mount point. Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume.
 	Mp21 *string `json:"mp21,omitempty"`
+	// Use volume as container mount point. Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume.
 	Mp22 *string `json:"mp22,omitempty"`
+	// Use volume as container mount point. Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume.
 	Mp23 *string `json:"mp23,omitempty"`
+	// Use volume as container mount point. Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume.
 	Mp24 *string `json:"mp24,omitempty"`
+	// Use volume as container mount point. Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume.
 	Mp25 *string `json:"mp25,omitempty"`
+	// Use volume as container mount point. Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume.
 	Mp26 *string `json:"mp26,omitempty"`
+	// Use volume as container mount point. Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume.
 	Mp27 *string `json:"mp27,omitempty"`
+	// Use volume as container mount point. Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume.
 	Mp28 *string `json:"mp28,omitempty"`
+	// Use volume as container mount point. Use the special syntax STORAGE_ID:SIZE_IN_GiB to allocate a new volume.
 	Mp29 *string `json:"mp29,omitempty"`
+	// Sets DNS server IP address for a container. Create will automatically use the setting from the host if you neither set searchdomain nor nameserver.
 	Nameserver *string `json:"nameserver,omitempty"`
+	// Specifies network interfaces for the container.
 	Net0 *string `json:"net0,omitempty"`
+	// Specifies network interfaces for the container.
 	Net1 *string `json:"net1,omitempty"`
+	// Specifies network interfaces for the container.
 	Net2 *string `json:"net2,omitempty"`
+	// Specifies network interfaces for the container.
 	Net3 *string `json:"net3,omitempty"`
+	// Specifies network interfaces for the container.
 	Net4 *string `json:"net4,omitempty"`
+	// Specifies network interfaces for the container.
 	Net5 *string `json:"net5,omitempty"`
+	// Specifies network interfaces for the container.
 	Net6 *string `json:"net6,omitempty"`
+	// Specifies network interfaces for the container.
 	Net7 *string `json:"net7,omitempty"`
+	// Specifies network interfaces for the container.
 	Net8 *string `json:"net8,omitempty"`
+	// Specifies network interfaces for the container.
 	Net9 *string `json:"net9,omitempty"`
+	// Specifies network interfaces for the container.
 	Net10 *string `json:"net10,omitempty"`
+	// Specifies network interfaces for the container.
 	Net11 *string `json:"net11,omitempty"`
+	// Specifies network interfaces for the container.
 	Net12 *string `json:"net12,omitempty"`
+	// Specifies network interfaces for the container.
 	Net13 *string `json:"net13,omitempty"`
+	// Specifies network interfaces for the container.
 	Net14 *string `json:"net14,omitempty"`
+	// Specifies network interfaces for the container.
 	Net15 *string `json:"net15,omitempty"`
+	// Specifies network interfaces for the container.
 	Net16 *string `json:"net16,omitempty"`
+	// Specifies network interfaces for the container.
 	Net17 *string `json:"net17,omitempty"`
+	// Specifies network interfaces for the container.
 	Net18 *string `json:"net18,omitempty"`
+	// Specifies network interfaces for the container.
 	Net19 *string `json:"net19,omitempty"`
+	// Specifies network interfaces for the container.
 	Net20 *string `json:"net20,omitempty"`
+	// Specifies network interfaces for the container.
 	Net21 *string `json:"net21,omitempty"`
+	// Specifies network interfaces for the container.
 	Net22 *string `json:"net22,omitempty"`
+	// Specifies network interfaces for the container.
 	Net23 *string `json:"net23,omitempty"`
+	// Specifies network interfaces for the container.
 	Net24 *string `json:"net24,omitempty"`
+	// Specifies network interfaces for the container.
 	Net25 *string `json:"net25,omitempty"`
+	// Specifies network interfaces for the container.
 	Net26 *string `json:"net26,omitempty"`
+	// Specifies network interfaces for the container.
 	Net27 *string `json:"net27,omitempty"`
+	// Specifies network interfaces for the container.
 	Net28 *string `json:"net28,omitempty"`
+	// Specifies network interfaces for the container.
 	Net29 *string `json:"net29,omitempty"`
+	// Specifies network interfaces for the container.
 	Net30 *string `json:"net30,omitempty"`
+	// Specifies network interfaces for the container.
 	Net31 *string `json:"net31,omitempty"`
+	// Specifies whether a container will be started during system bootup.
 	Onboot *bool `json:"onboot,omitempty"`
+	// OS type. This is used to setup configuration inside the container, and corresponds to lxc setup scripts in /usr/share/lxc/config/<ostype>.common.conf. Value 'unmanaged' can be used to skip and OS specific setup.
 	Ostype *string `json:"ostype,omitempty"`
+	// Sets the protection flag of the container. This will prevent the CT or CT's disk remove/update operation.
 	Protection *bool `json:"protection,omitempty"`
+	// Revert a pending change.
 	Revert *string `json:"revert,omitempty"`
+	// Use volume as container root.
 	Rootfs *string `json:"rootfs,omitempty"`
+	// Sets DNS search domains for a container. Create will automatically use the setting from the host if you neither set searchdomain nor nameserver.
 	Searchdomain *string `json:"searchdomain,omitempty"`
+	// Startup and shutdown behavior. Order is a non-negative number defining the general startup order. Shutdown in done with reverse ordering. Additionally you can set the 'up' or 'down' delay in seconds, which specifies a delay to wait before the next VM is started or stopped.
 	Startup *string `json:"startup,omitempty"`
+	// Amount of SWAP for the container in MB.
 	Swap *int64 `json:"swap,omitempty"`
+	// Tags of the Container. This is only meta information.
 	Tags *string `json:"tags,omitempty"`
+	// Enable/disable Template.
 	Template *bool `json:"template,omitempty"`
+	// Time zone to use in the container. If option isn't set, then nothing will be done. Can be set to 'host' to match the host time zone, or an arbitrary time zone option from /usr/share/zoneinfo/zone.tab
 	Timezone *string `json:"timezone,omitempty"`
+	// Specify the number of tty available to the container
 	Tty *int64 `json:"tty,omitempty"`
+	// Makes the container run as unprivileged user. (Should not be modified manually.)
 	Unprivileged *bool `json:"unprivileged,omitempty"`
+	// Reference to unused volumes. This is used internally, and should not be modified manually.
 	Unused0 *string `json:"unused0,omitempty"`
+	// Reference to unused volumes. This is used internally, and should not be modified manually.
 	Unused1 *string `json:"unused1,omitempty"`
+	// Reference to unused volumes. This is used internally, and should not be modified manually.
 	Unused2 *string `json:"unused2,omitempty"`
+	// Reference to unused volumes. This is used internally, and should not be modified manually.
 	Unused3 *string `json:"unused3,omitempty"`
+	// Reference to unused volumes. This is used internally, and should not be modified manually.
 	Unused4 *string `json:"unused4,omitempty"`
+	// Reference to unused volumes. This is used internally, and should not be modified manually.
 	Unused5 *string `json:"unused5,omitempty"`
+	// Reference to unused volumes. This is used internally, and should not be modified manually.
 	Unused6 *string `json:"unused6,omitempty"`
+	// Reference to unused volumes. This is used internally, and should not be modified manually.
 	Unused7 *string `json:"unused7,omitempty"`
+	// Reference to unused volumes. This is used internally, and should not be modified manually.
 	Unused8 *string `json:"unused8,omitempty"`
+	// Reference to unused volumes. This is used internally, and should not be modified manually.
 	Unused9 *string `json:"unused9,omitempty"`
+	// Reference to unused volumes. This is used internally, and should not be modified manually.
 	Unused10 *string `json:"unused10,omitempty"`
+	// Reference to unused volumes. This is used internally, and should not be modified manually.
 	Unused11 *string `json:"unused11,omitempty"`
+	// Reference to unused volumes. This is used internally, and should not be modified manually.
 	Unused12 *string `json:"unused12,omitempty"`
+	// Reference to unused volumes. This is used internally, and should not be modified manually.
 	Unused13 *string `json:"unused13,omitempty"`
+	// Reference to unused volumes. This is used internally, and should not be modified manually.
 	Unused14 *string `json:"unused14,omitempty"`
+	// Reference to unused volumes. This is used internally, and should not be modified manually.
 	Unused15 *string `json:"unused15,omitempty"`
+	// Reference to unused volumes. This is used internally, and should not be modified manually.
 	Unused16 *string `json:"unused16,omitempty"`
+	// Reference to unused volumes. This is used internally, and should not be modified manually.
 	Unused17 *string `json:"unused17,omitempty"`
+	// Reference to unused volumes. This is used internally, and should not be modified manually.
 	Unused18 *string `json:"unused18,omitempty"`
+	// Reference to unused volumes. This is used internally, and should not be modified manually.
 	Unused19 *string `json:"unused19,omitempty"`
+	// Reference to unused volumes. This is used internally, and should not be modified manually.
 	Unused20 *string `json:"unused20,omitempty"`
+	// Reference to unused volumes. This is used internally, and should not be modified manually.
 	Unused21 *string `json:"unused21,omitempty"`
+	// Reference to unused volumes. This is used internally, and should not be modified manually.
 	Unused22 *string `json:"unused22,omitempty"`
+	// Reference to unused volumes. This is used internally, and should not be modified manually.
 	Unused23 *string `json:"unused23,omitempty"`
+	// Reference to unused volumes. This is used internally, and should not be modified manually.
 	Unused24 *string `json:"unused24,omitempty"`
+	// Reference to unused volumes. This is used internally, and should not be modified manually.
 	Unused25 *string `json:"unused25,omitempty"`
+	// Reference to unused volumes. This is used internally, and should not be modified manually.
 	Unused26 *string `json:"unused26,omitempty"`
+	// Reference to unused volumes. This is used internally, and should not be modified manually.
 	Unused27 *string `json:"unused27,omitempty"`
+	// Reference to unused volumes. This is used internally, and should not be modified manually.
 	Unused28 *string `json:"unused28,omitempty"`
+	// Reference to unused volumes. This is used internally, and should not be modified manually.
 	Unused29 *string `json:"unused29,omitempty"`
 }
 
