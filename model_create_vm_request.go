@@ -229,7 +229,7 @@ type CreateVMRequest struct {
 	// Specify the QEMU machine.
 	Machine *string `json:"machine,omitempty"`
 	// Memory properties.
-	Memory *int64 `json:"memory,omitempty"`
+	Memory *string `json:"memory,omitempty"`
 	// Set maximum tolerated downtime (in seconds) for migrations. Should the migration not be able to converge in the very end, because too much newly dirtied RAM needs to be transferred, the limit will be increased automatically step-by-step until migration can converge.
 	MigrateDowntime *float32 `json:"migrate_downtime,omitempty"`
 	// Set maximum speed (in MB/s) for migrations. Value 0 is no limit.
@@ -3961,9 +3961,9 @@ func (o *CreateVMRequest) SetMachine(v string) {
 }
 
 // GetMemory returns the Memory field value if set, zero value otherwise.
-func (o *CreateVMRequest) GetMemory() int64 {
+func (o *CreateVMRequest) GetMemory() string {
 	if o == nil || IsNil(o.Memory) {
-		var ret int64
+		var ret string
 		return ret
 	}
 	return *o.Memory
@@ -3971,7 +3971,7 @@ func (o *CreateVMRequest) GetMemory() int64 {
 
 // GetMemoryOk returns a tuple with the Memory field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateVMRequest) GetMemoryOk() (*int64, bool) {
+func (o *CreateVMRequest) GetMemoryOk() (*string, bool) {
 	if o == nil || IsNil(o.Memory) {
 		return nil, false
 	}
@@ -3987,8 +3987,8 @@ func (o *CreateVMRequest) HasMemory() bool {
 	return false
 }
 
-// SetMemory gets a reference to the given int64 and assigns it to the Memory field.
-func (o *CreateVMRequest) SetMemory(v int64) {
+// SetMemory gets a reference to the given string and assigns it to the Memory field.
+func (o *CreateVMRequest) SetMemory(v string) {
 	o.Memory = &v
 }
 
